@@ -71,7 +71,7 @@
                                 </span>
                                 @if($property->featured_at && $property->featured_at->gt(now()->subDays(3)))
                                     <span class="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black shadow-md flex items-center gap-1 animate-pulse">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span> نوێ
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span> {{ __('نوێ') }}
                                     </span>
                                 @endif
                             @else
@@ -81,8 +81,8 @@
                             @endif
 
                             @if($property->has_video)
-                                <span class="px-2 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black shadow-md flex items-center gap-1" title="خاوەنی گەشتی ڤیدیۆییە">
-                                    <i class="fa-solid fa-play text-[8px]"></i> ڤیدیۆ
+                                <span class="px-2 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black shadow-md flex items-center gap-1" title="{{ __('خاوەنی گەشتی ڤیدیۆییە') }}">
+                                    <i class="fa-solid fa-play text-[8px]"></i> {{ __('ڤیدیۆ') }}
                                 </span>
                             @endif
                         </div>
@@ -93,7 +93,7 @@
                                     onclick="toggleFavorite({{ $property->id }}, '{{ addslashes($property->title) }}')"
                                     data-favorite-id="{{ $property->id }}"
                                     class="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md text-slate-400 hover:text-rose-500 hover:bg-rose-50 flex items-center justify-center shadow-md border border-slate-150 transition-all hover:scale-110 active:scale-95"
-                                    title="پاشەکەوتکردن لە دڵخوازەکان">
+                                    title="{{ __('پاشەکەوتکردن لە دڵخوازەکان') }}">
                                 <i class="fa-regular fa-heart text-xs"></i>
                             </button>
                             <span class="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-900 text-xs font-black shadow-md border border-slate-150 font-mono">
@@ -107,7 +107,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
                             <div class="absolute bottom-3 right-3 text-white text-xs font-bold flex items-center gap-1.5 drop-shadow">
                                 <i class="fa-solid fa-location-dot text-rose-400"></i>
-                                <span>{{ $property->neighborhood }}</span>
+                                <span>{{ __($property->neighborhood) }}</span>
                             </div>
                         </a>
 
@@ -116,27 +116,27 @@
                             <div>
                                 <h3 class="font-black text-slate-900 text-base line-clamp-1 group-hover:text-emerald-700 transition-colors">
                                     <a href="{{ route('properties.show', $property->slug) }}">
-                                        {{ $property->title }}
+                                        {{ __($property->title) }}
                                     </a>
                                 </h3>
                                 <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                    {{ $property->description ?: 'خانوویەکی مۆدێرن و گونجاو لە گەڕەکی دڵخوازی سلێمانی بە نرخی گونجاو.' }}
+                                    {{ __($property->description) ?: __('خانوویەکی مۆدێرن و گونجاو لە گەڕەکی دڵخوازی سلێمانی بە نرخی گونجاو.') }}
                                 </p>
                             </div>
 
                             <!-- Specs Row -->
                             <div class="grid grid-cols-3 gap-2 py-2 border-y border-slate-150/80 text-center text-xs font-bold text-slate-700">
-                                <div class="flex items-center justify-center gap-1.5" title="ژووری خەوتن">
+                                <div class="flex items-center justify-center gap-1.5" title="{{ __('ژووری خەوتن') }}">
                                     <i class="fa-solid fa-bed text-emerald-600"></i>
-                                    <span>{{ $property->bedrooms }} خەوتن</span>
+                                    <span>{{ $property->bedrooms }} {{ __('خەوتن') }}</span>
                                 </div>
-                                <div class="flex items-center justify-center gap-1.5 border-x border-slate-200" title="گەرماو">
+                                <div class="flex items-center justify-center gap-1.5 border-x border-slate-200" title="{{ __('گەرماو') }}">
                                     <i class="fa-solid fa-bath text-teal-600"></i>
-                                    <span>{{ $property->bathrooms }} گەرماو</span>
+                                    <span>{{ $property->bathrooms }} {{ __('گەرماو') }}</span>
                                 </div>
-                                <div class="flex items-center justify-center gap-1.5" title="ڕووبەر بە مەتر دووجا">
+                                <div class="flex items-center justify-center gap-1.5" title="{{ __('ڕووبەر بە مەتر دووجا') }}">
                                     <i class="fa-solid fa-ruler-combined text-blue-600"></i>
-                                    <span class="font-mono">{{ $property->area_sqm }} م²</span>
+                                    <span class="font-mono">{{ $property->area_sqm }} {{ __('م²') }}</span>
                                 </div>
                             </div>
 
@@ -145,21 +145,21 @@
                                 <div class="flex items-center gap-2.5">
                                     <img src="{{ $property->agency?->logo_url ?? 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80' }}" alt="{{ $property->agency?->name }}" class="w-8 h-8 rounded-full object-cover border border-slate-200">
                                     <div class="flex flex-col">
-                                        <span class="text-xs font-bold text-slate-900 line-clamp-1">{{ $property->agency?->name ?? 'نووسینگەی خانوبەرە' }}</span>
+                                        <span class="text-xs font-bold text-slate-900 line-clamp-1">{{ __($property->agency?->name) ?? __('نووسینگەی خانوبەرە') }}</span>
                                         <span class="text-[10px] text-emerald-600 font-extrabold flex items-center gap-0.5">
-                                            <i class="fa-solid fa-circle-check text-[9px]"></i> باوەڕپێکراو
+                                            <i class="fa-solid fa-circle-check text-[9px]"></i> {{ __('باوەڕپێکراو') }}
                                         </span>
                                     </div>
                                 </div>
 
                                 <div class="flex items-center gap-1.5">
                                     @if($property->agency?->whatsapp_link)
-                                        <a href="{{ $property->agency->whatsapp_link }}?text={{ urlencode('سڵاو، دەمەوێت سەبارەت بەم خانوە پرسیار بکەم: ' . route('properties.show', $property->slug)) }}" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white flex items-center justify-center transition-colors shadow-sm" title="پەیوەندی لە واتسئەپ">
+                                        <a href="{{ $property->agency->whatsapp_link }}?text={{ urlencode('سڵاو، دەمەوێت سەبارەت بەم خانوە پرسیار بکەم: ' . route('properties.show', $property->slug)) }}" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white flex items-center justify-center transition-colors shadow-sm" title="{{ __('پەیوەندی لە واتسئەپ') }}">
                                             <i class="fa-brands fa-whatsapp text-sm"></i>
                                         </a>
                                     @endif
                                     <a href="{{ route('properties.show', $property->slug) }}" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-800 text-xs font-black transition-colors">
-                                        وردەکاری
+                                        {{ __('وردەکاری') }}
                                     </a>
                                 </div>
                             </div>
@@ -265,7 +265,7 @@
                             <img src="{{ $agency->logo_url }}" alt="{{ $agency->name }}" class="w-12 h-12 rounded-2xl object-cover border border-slate-200 group-hover:scale-105 transition-transform">
                             <div class="flex-1 min-w-0">
                                 <h3 class="text-sm font-black text-slate-900 truncate group-hover:text-emerald-700 transition-colors">
-                                    {{ $agency->name }}
+                                    {{ __($agency->name) }}
                                 </h3>
                                 <div class="text-[11px] text-emerald-600 font-bold flex items-center gap-1 mt-0.5">
                                     <i class="fa-solid fa-circle-check text-[10px]"></i> {{ __('باوەڕپێکراو') }}
@@ -276,7 +276,7 @@
                         <div class="space-y-1.5 text-xs text-slate-500">
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-location-dot text-slate-400 text-xs"></i>
-                                <span class="truncate">{{ $agency->address ?: 'سلێمانی' }}</span>
+                                <span class="truncate">{{ __($agency->address) ?: __('سلێمانی') }}</span>
                             </div>
                             <div class="flex items-center gap-1.5 font-bold text-slate-700">
                                 <i class="fa-solid fa-house text-emerald-600 text-xs"></i>
@@ -341,10 +341,10 @@
                             <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
                                 <div>
                                     <h3 class="font-black text-slate-900 text-base line-clamp-1 group-hover:text-amber-700 transition-colors">
-                                        {{ $hotel->name }}
+                                        {{ __($hotel->name) }}
                                     </h3>
                                     <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                        {{ $hotel->description ?: 'ئوتێلێکی ناوازە لە شوێنێکی ئارامی سلێمانی بە خزمەتگوزاری تەواوەوە.' }}
+                                        {{ __($hotel->description) ?: __('ئوتێلێکی ناوازە لە شوێنێکی ئارامی سلێمانی بە خزمەتگوزاری تەواوەوە.') }}
                                     </p>
                                 </div>
 

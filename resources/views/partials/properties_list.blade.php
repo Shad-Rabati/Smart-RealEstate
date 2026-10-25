@@ -96,14 +96,14 @@
                             onclick="toggleFavorite({{ $prop->id }}, '{{ addslashes($prop->title) }}')"
                             data-favorite-id="{{ $prop->id }}"
                             class="w-8 h-8 rounded-full bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-500 flex items-center justify-center transition-all border border-slate-200/80 active:scale-90"
-                            title="پاشەکەوتکردن لە دڵخوازەکان">
+                            title="{{ __('پاشەکەوتکردن لە دڵخوازەکان') }}">
                         <i class="fa-regular fa-heart text-xs"></i>
                     </button>
                 </div>
 
                 <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors line-clamp-1 mt-1 leading-snug">
                     <a href="{{ route('properties.show', $prop->slug) }}">
-                        {{ $prop->title }}
+                        {{ __($prop->title) }}
                     </a>
                 </h3>
 
@@ -141,9 +141,9 @@
 
         <!-- Footer: Agency & Actions -->
         <div class="pt-3 px-1 mt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <a href="{{ route('agencies.show', $prop->agency->slug) }}" class="text-slate-500 hover:text-slate-900 font-semibold truncate max-w-[130px] flex items-center gap-1.5" title="{{ $prop->agency->name }}">
+            <a href="{{ route('agencies.show', $prop->agency->slug) }}" class="text-slate-500 hover:text-slate-900 font-semibold truncate max-w-[130px] flex items-center gap-1.5" title="{{ __($prop->agency->name) }}">
                 <i class="fa-solid fa-building text-slate-400 text-[11px]"></i>
-                <span class="truncate">{{ $prop->agency->name }}</span>
+                <span class="truncate">{{ __($prop->agency->name) }}</span>
             </a>
 
             <div class="flex items-center gap-1.5">
@@ -165,11 +165,11 @@
         <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400 text-2xl mb-3">
             <i class="fa-solid fa-house-circle-xmark"></i>
         </div>
-        <h3 class="text-base font-bold text-slate-800 mb-1">هیچ خانوویەک بەم فلتەرانە نەدۆزرایەوە</h3>
-        <p class="text-xs text-slate-500 mb-4">تکایە فلتەرەکان بگۆڕە یان سڕینەوەی فلتەر لێبدە بۆ بینینی هەموو خانووەکانی سلێمانی.</p>
+        <h3 class="text-base font-bold text-slate-800 mb-1">{{ __('هیچ خانوویەک بەم فلتەرانە نەدۆزرایەوە') }}</h3>
+        <p class="text-xs text-slate-500 mb-4">{{ __('تکایە فلتەرەکان بگۆڕە یان سڕینەوەی فلتەر لێبدە بۆ بینینی هەموو خانووەکانی سلێمانی.') }}</p>
         <button type="button" onclick="clearFiltersAjax()" class="px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs inline-flex items-center gap-2 shadow-md transition-all">
             <i class="fa-solid fa-arrow-rotate-right"></i>
-            <span>پیشاندانی هەموو موڵکەکان</span>
+            <span>{{ __('پیشاندانی هەموو موڵکەکان') }}</span>
         </button>
     </div>
 @endforelse

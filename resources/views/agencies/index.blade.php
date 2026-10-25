@@ -37,11 +37,11 @@
                         <div class="flex-1">
                             <h3 class="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 transition-colors">
                                 <a href="{{ route('agencies.show', $agency->slug) }}">
-                                    {{ $agency->name }}
+                                    {{ __($agency->name) }}
                                 </a>
                             </h3>
                             @if($agency->owner_name)
-                                <span class="text-xs text-slate-700 block">{{ __('بەڕێوەبەر:') }} {{ $agency->owner_name }}</span>
+                                <span class="text-xs text-slate-700 block">{{ __('بەڕێوەبەر:') }} {{ __($agency->owner_name) }}</span>
                             @endif
                             <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 mt-1">
                                 <i class="fa-solid fa-circle-check"></i> {{ __('نووسینگەی چالاک') }}
@@ -50,13 +50,13 @@
                     </div>
 
                     <p class="text-xs text-slate-700 line-clamp-2 leading-relaxed">
-                        {{ $agency->description ?: __('نووسینگەی فەرمی کڕین و فرۆشتن و بەکرێدانی خانوبەرە لە شاری سلێمانی.') }}
+                        {{ __($agency->description) ?: __('نووسینگەی فەرمی کڕین و فرۆشتن و بەکرێدانی خانوبەرە لە شاری سلێمانی.') }}
                     </p>
 
                     <div class="text-xs text-slate-700 space-y-1.5 pt-2 border-t border-slate-100">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-location-dot text-slate-400"></i>
-                            <span class="truncate">{{ $agency->address }}</span>
+                            <span class="truncate">{{ __($agency->address) }}</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-phone text-slate-400"></i>

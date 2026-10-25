@@ -13,17 +13,17 @@
                 
                 <div class="space-y-1.5">
                     <div class="flex items-center gap-2">
-                        <h1 class="text-xl sm:text-2xl font-black text-slate-900">{{ $agency->name }}</h1>
+                        <h1 class="text-xl sm:text-2xl font-black text-slate-900">{{ __($agency->name) }}</h1>
                         <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">{{ __('باوەڕپێکراو') }}</span>
                     </div>
 
                     @if($agency->owner_name)
-                        <div class="text-xs text-slate-700 font-medium">{{ __('بەڕێوەبەر:') }} {{ $agency->owner_name }}</div>
+                        <div class="text-xs text-slate-700 font-medium">{{ __('بەڕێوەبەر:') }} {{ __($agency->owner_name) }}</div>
                     @endif
 
                     <div class="flex items-center gap-2 text-xs text-slate-700">
                         <i class="fa-solid fa-location-dot text-emerald-600"></i>
-                        <span>{{ $agency->address }}</span>
+                        <span>{{ __($agency->address) }}</span>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
 
         @if($agency->description)
             <div class="mt-6 pt-6 border-t border-slate-100 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                {{ $agency->description }}
+                {{ __($agency->description) }}
             </div>
         @endif
 
@@ -120,7 +120,7 @@
 
                         <h3 class="font-bold text-slate-900 text-sm group-hover:text-emerald-700 line-clamp-1 mb-1">
                             <a href="{{ route('properties.show', $prop->slug) }}">
-                                {{ $prop->title }}
+                                {{ __($prop->title) }}
                             </a>
                         </h3>
 

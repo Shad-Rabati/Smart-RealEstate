@@ -470,6 +470,8 @@ class RealEstateTest extends TestCase
         $responseEn->assertSee('lang="en"', false);
         $responseEn->assertSee('Sulaymaniyah Real Estate');
         $responseEn->assertSee('Search Properties');
+        $responseEn->assertSee('Verified');
+        $responseEn->assertSee('Details');
 
         // 3. Switch to Arabic
         $switchAr = $this->get(route('locale.switch', 'ar'));
@@ -482,6 +484,8 @@ class RealEstateTest extends TestCase
         $responseAr->assertSee('lang="ar"', false);
         $responseAr->assertSee('عقارات السليمانية');
         $responseAr->assertSee('بحث العقارات');
+        $responseAr->assertSee('معتمد');
+        $responseAr->assertSee('التفاصيل');
 
         // 4. Test properties, hotels, and agencies pages translate properly
         $responsePropEn = $this->withSession(['locale' => 'en'])->get(route('properties.index'));

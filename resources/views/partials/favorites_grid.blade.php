@@ -50,11 +50,11 @@
                 <div>
                     <h3 class="font-black text-slate-900 text-base line-clamp-1 group-hover:text-emerald-700 transition-colors">
                         <a href="{{ route('properties.show', $property->slug) }}">
-                            {{ $property->title }}
+                            {{ __($property->title) }}
                         </a>
                     </h3>
                     <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                        {{ $property->description ?: __('خانوویەکی مۆدێرن و گونجاو لە گەڕەکی دڵخوازی سلێمانی.') }}
+                        {{ __($property->description) ?: __('خانوویەکی مۆدێرن و گونجاو لە گەڕەکی دڵخوازی سلێمانی.') }}
                     </p>
                 </div>
 
@@ -78,7 +78,7 @@
                 <div class="flex items-center justify-between pt-1">
                     <div class="flex items-center gap-2">
                         <img src="{{ $property->agency?->logo_url ?? 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80' }}" alt="{{ $property->agency?->name }}" class="w-7 h-7 rounded-full object-cover border border-slate-200">
-                        <span class="text-xs font-bold text-slate-800 truncate max-w-[120px]">{{ $property->agency?->name ?? __('نووسینگە') }}</span>
+                        <span class="text-xs font-bold text-slate-800 truncate max-w-[120px]">{{ __($property->agency?->name) ?? __('نووسینگە') }}</span>
                     </div>
 
                     <div class="flex items-center gap-1.5">

@@ -291,7 +291,7 @@ class HomeController extends Controller
 
             return [
                 'id' => $prop->id,
-                'title' => $prop->title,
+                'title' => __($prop->title),
                 'slug' => $prop->slug,
                 'url' => route('properties.show', $prop->slug),
                 'status' => $prop->status,
@@ -306,8 +306,8 @@ class HomeController extends Controller
                 'bedrooms' => $prop->bedrooms,
                 'bathrooms' => $prop->bathrooms,
                 'area_sqm' => $prop->area_sqm,
-                'neighborhood' => $prop->neighborhood,
-                'street_address' => $prop->street_address,
+                'neighborhood' => __($prop->neighborhood),
+                'street_address' => __($prop->street_address),
                 'latitude' => (float) $prop->latitude,
                 'longitude' => (float) $prop->longitude,
                 'image' => $prop->primary_image_url,
@@ -315,7 +315,7 @@ class HomeController extends Controller
                 'distance_km' => $distance,
                 'agency' => [
                     'id' => $prop->agency->id,
-                    'name' => $prop->agency->name,
+                    'name' => __($prop->agency->name),
                     'phone' => $prop->agency->phone,
                     'whatsapp' => $prop->agency->whatsapp,
                     'whatsapp_link' => $prop->agency->whatsapp_link,

@@ -13,7 +13,7 @@
         <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px] text-slate-400"></i>
         <a href="{{ route('properties.index', ['neighborhood' => $property->neighborhood]) }}" class="hover:text-emerald-700">{{ __($property->neighborhood) }}</a>
         <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px] text-slate-400"></i>
-        <span class="text-slate-900 font-bold truncate max-w-xs">{{ $property->title }}</span>
+        <span class="text-slate-900 font-bold truncate max-w-xs">{{ __($property->title) }}</span>
     </nav>
 
     <!-- Top Headline & Price Header -->
@@ -55,7 +55,7 @@
             </div>
 
             <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 leading-tight">
-                {{ $property->title }}
+                {{ __($property->title) }}
             </h1>
 
             <div class="flex items-center gap-2 text-sm text-slate-700">
@@ -63,7 +63,7 @@
                 <span>{{ __('سلێمانی') }}، {{ __($property->neighborhood) }}</span>
                 @if($property->street_address)
                     <span class="text-slate-400">|</span>
-                    <span class="text-slate-700">{{ $property->street_address }}</span>
+                    <span class="text-slate-700">{{ __($property->street_address) }}</span>
                 @endif
             </div>
         </div>
@@ -163,7 +163,7 @@
                     <i class="fa-solid fa-align-right text-emerald-600"></i> {{ __('وەسف و وردەکاری خانوو') }}
                 </h3>
                 <div class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
-                    {{ $property->description ?: __('هیچ وەسفێکی زیادە دانەنراوە.') }}
+                    {{ __($property->description) ?: __('هیچ وەسفێکی زیادە دانەنراوە.') }}
                 </div>
 
                 @if($property->features && count($property->features) > 0)
@@ -345,11 +345,11 @@
                     <div>
                         <h4 class="font-bold text-slate-900 text-base">
                             <a href="{{ route('agencies.show', $property->agency->slug) }}" class="hover:text-emerald-700 transition-colors">
-                                {{ $property->agency->name }}
+                                {{ __($property->agency->name) }}
                             </a>
                         </h4>
                         @if($property->agency->owner_name)
-                            <span class="text-xs text-slate-700 block">{{ __('خاوەنکار:') }} {{ $property->agency->owner_name }}</span>
+                            <span class="text-xs text-slate-700 block">{{ __('خاوەنکار:') }} {{ __($property->agency->owner_name) }}</span>
                         @endif
                         <span class="text-xs text-emerald-700 font-bold block mt-0.5">
                             <i class="fa-solid fa-circle-check text-xs"></i> {{ __('نووسینگەی باوەڕپێکراو') }}
@@ -360,7 +360,7 @@
                 <div class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-100">
                     <div class="flex items-start gap-2">
                         <i class="fa-solid fa-map-pin text-slate-400 mt-0.5"></i>
-                        <span>{{ $property->agency->address }}</span>
+                        <span>{{ __($property->agency->address) }}</span>
                     </div>
                 </div>
 
@@ -419,7 +419,7 @@
                         </div>
                         <h4 class="font-bold text-sm text-slate-900 line-clamp-1 mb-1 group-hover:text-emerald-700">
                             <a href="{{ route('properties.show', $np->slug) }}">
-                                {{ $np->title }}
+                                {{ __($np->title) }}
                             </a>
                         </h4>
                         <div class="text-emerald-600 font-extrabold text-sm mb-2">

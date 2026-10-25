@@ -96,7 +96,7 @@
         <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px]"></i>
         <a href="{{ route('hotels.index') }}" class="hover:text-slate-900 transition-colors">{{ __('ئوتێلەکان') }}</a>
         <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px]"></i>
-        <span class="text-slate-800 font-bold truncate max-w-xs">{{ $hotel->name }}</span>
+        <span class="text-slate-800 font-bold truncate max-w-xs">{{ __($hotel->name) }}</span>
     </nav>
 
     <!-- Header Section -->
@@ -121,13 +121,13 @@
             </div>
 
             <h1 class="text-xl sm:text-3xl font-black text-slate-900">
-                {{ $hotel->name }}
+                {{ __($hotel->name) }}
             </h1>
 
             @if($hotel->address)
                 <p class="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 font-medium">
                     <i class="fa-solid fa-location-dot text-amber-500"></i>
-                    <span>{{ $hotel->address }}</span>
+                    <span>{{ __($hotel->address) }}</span>
                 </p>
             @endif
         </div>
@@ -174,7 +174,7 @@
                     <i class="fa-solid fa-circle-info text-amber-500"></i> {{ __('دەربارەی ئوتێلەکە') }}
                 </h2>
                 <div class="text-sm text-slate-700 leading-relaxed space-y-3">
-                    {!! nl2br(e($hotel->description ?? __('زانیاری وەسف نەنووسراوە.'))) !!}
+                    {!! nl2br(e(__($hotel->description) ?: __('زانیاری وەسف نەنووسراوە.'))) !!}
                 </div>
             </div>
 
@@ -208,7 +208,7 @@
                             <i class="fa-solid fa-map-location-dot text-amber-500"></i> {{ __('لۆکەیشن لەسەر نەخشەی سلێمانی') }}
                         </h2>
                         <p class="text-xs text-slate-500 mt-0.5">
-                            {{ __('سلێمانی') }}، {{ __($hotel->neighborhood) }} • {{ $hotel->address ?? __('سلێمانی') }}
+                            {{ __('سلێمانی') }}، {{ __($hotel->neighborhood) }} • {{ __($hotel->address) ?: __('سلێمانی') }}
                         </p>
                     </div>
 
@@ -264,7 +264,7 @@
                                             <span id="hotelRouteDistanceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/30"></span>
                                         </div>
                                         <div class="text-xs font-black text-white truncate max-w-[260px]">
-                                            {{ $hotel->name }} • {{ __($hotel->neighborhood) }}
+                                            {{ __($hotel->name) }} • {{ __($hotel->neighborhood) }}
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +289,7 @@
                 
                 <div class="text-xs text-slate-500 flex items-center gap-2">
                     <i class="fa-solid fa-location-crosshairs text-amber-500"></i>
-                    <span>{{ __('ناونیشان:') }} {{ $hotel->address ?? __('سلێمانی') . '، ' . __($hotel->neighborhood) }}</span>
+                    <span>{{ __('ناونیشان:') }} {{ __($hotel->address) ?: __('سلێمانی') . '، ' . __($hotel->neighborhood) }}</span>
                 </div>
             </div>
 
@@ -372,7 +372,7 @@
                         <img src="{{ $rel->primary_image_url }}" alt="{{ $rel->name }}" class="w-16 h-16 rounded-2xl object-cover shrink-0">
                         <div class="overflow-hidden">
                             <div class="text-[10px] text-amber-500 font-bold">{{ str_repeat('★', $rel->stars) }}</div>
-                            <h4 class="text-xs font-black text-slate-900 group-hover:text-amber-600 transition-colors truncate">{{ $rel->name }}</h4>
+                            <h4 class="text-xs font-black text-slate-900 group-hover:text-amber-600 transition-colors truncate">{{ __($rel->name) }}</h4>
                             <div class="text-[11px] text-slate-500 truncate">{{ __($rel->neighborhood) }}</div>
                             <div class="text-xs font-black text-emerald-600 mt-0.5">${{ number_format($rel->price_per_night) }} {{ __('/ شەو') }}</div>
                         </div>

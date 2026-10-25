@@ -236,9 +236,9 @@
                 <!-- Map Top Clean Header -->
                 <div class="flex items-center justify-between px-2 py-1.5 border-b border-slate-100 mb-2.5">
                     <div class="flex items-center gap-2">
-                        <span class="font-black text-slate-900 text-sm">نەخشەی سلێمانی</span>
+                        <span class="font-black text-slate-900 text-sm">{{ __('نەخشەی سلێمانی') }}</span>
                         <span id="mapPropertiesCountBadge" class="text-[11px] bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-full font-bold">
-                            {{ $properties->total() }} خانوو
+                            {{ $properties->total() }} {{ __('خانوو') }}
                         </span>
                     </div>
 
@@ -247,19 +247,19 @@
                         <div class="p-0.5 rounded-xl bg-slate-100 flex items-center gap-0.5 border border-slate-200/80 text-xs">
                             <button type="button" id="btnTileVoyager" onclick="switchMapLayer('voyager')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-[11px] shadow-sm transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-map text-emerald-400 text-[10px]"></i>
-                                <span>مۆدێرن</span>
+                                <span>{{ __('مۆدێرن') }}</span>
                             </button>
                             <button type="button" id="btnTileSatellite" onclick="switchMapLayer('satellite')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-[11px] transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-earth-americas text-blue-500 text-[10px]"></i>
-                                <span>سەتەلایت</span>
+                                <span>{{ __('سەتەلایت') }}</span>
                             </button>
                         </div>
 
                         <!-- Recenter & Fullscreen buttons -->
-                        <button type="button" onclick="resetSulaimaniView()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="گەڕانەوە بۆ ناوەندی سلێمانی">
+                        <button type="button" onclick="resetSulaimaniView()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="{{ __('گەڕانەوە بۆ ناوەندی سلێمانی') }}">
                             <i class="fa-solid fa-crosshairs text-[11px]"></i>
                         </button>
-                        <button type="button" onclick="toggleMapFullscreen()" id="mapFullscreenBtn" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="تەواوی شاشە">
+                        <button type="button" onclick="toggleMapFullscreen()" id="mapFullscreenBtn" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="{{ __('تەواوی شاشە') }}">
                             <i class="fa-solid fa-expand text-[11px]"></i>
                         </button>
                     </div>
@@ -271,10 +271,10 @@
 
                     <!-- Clean Floating Zoom Controls in corner -->
                     <div class="absolute left-3 top-3 z-[400] flex flex-col gap-1 pointer-events-auto">
-                        <button type="button" onclick="customMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="نزیککردنەوە">
+                        <button type="button" onclick="customMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('نزیککردنەوە') }}">
                             <i class="fa-solid fa-plus text-xs"></i>
                         </button>
-                        <button type="button" onclick="customMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="دوورخستنەوە">
+                        <button type="button" onclick="customMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('دوورخستنەوە') }}">
                             <i class="fa-solid fa-minus text-xs"></i>
                         </button>
                     </div>
@@ -289,7 +289,7 @@
                                     </div>
                                     <div class="min-w-0">
                                         <div class="flex items-center gap-1.5 flex-wrap">
-                                            <span class="text-[11px] font-bold text-blue-300">ڕێگەی گەیشتن:</span>
+                                            <span class="text-[11px] font-bold text-blue-300">{{ __('ڕێگەی گەیشتن:') }}</span>
                                             <span id="routeDistanceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/30"></span>
                                         </div>
                                         <div id="routeDestTitle" class="text-xs font-black text-white truncate max-w-[260px]"></div>
@@ -301,7 +301,7 @@
                                         <i class="fa-solid fa-location-arrow text-[10px]"></i>
                                         <span>Google Maps</span>
                                     </a>
-                                    <button type="button" onclick="clearNavigationRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="لابردنی هێڵی ڕێگە">
+                                    <button type="button" onclick="clearNavigationRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="{{ __('لابردنی هێڵی ڕێگە') }}">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -315,10 +315,10 @@
                 <div class="px-2 pt-2 text-[11px] text-slate-500 flex items-center justify-between">
                     <span class="flex items-center gap-1.5">
                         <i class="fa-solid fa-circle-info text-emerald-600"></i>
-                        کلیک لەسەر هەر نرخێک بکە بۆ بینینی هەموو وردەکاری و پەیوەندی
+                        {{ __('کلیک لەسەر هەر نرخێک بکە بۆ بینینی هەموو وردەکاری و پەیوەندی') }}
                     </span>
                     <span class="text-emerald-700 font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-mountain-city"></i> سلێمانی
+                        <i class="fa-solid fa-mountain-city"></i> {{ __('سلێمانی') }}
                     </span>
                 </div>
             </div>
@@ -719,15 +719,15 @@
             // Popup HTML Card - Ultra Modern Luxury Design
             let statusBadgeHtml = '';
             if (prop.status === 'available') {
-                statusBadgeHtml = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-emerald-500 text-white backdrop-blur-md shadow-md border border-white/30"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> بەردەست</span>`;
+                statusBadgeHtml = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-emerald-500 text-white backdrop-blur-md shadow-md border border-white/30"><span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> {{ __('بەردەست') }}</span>`;
             } else if (prop.status === 'reserved') {
-                statusBadgeHtml = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-slate-700 text-white backdrop-blur-md shadow-md border border-white/30"><span class="w-2 h-2 rounded-full bg-slate-300"></span> دانوستان</span>`;
+                statusBadgeHtml = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-slate-700 text-white backdrop-blur-md shadow-md border border-white/30"><span class="w-2 h-2 rounded-full bg-slate-300"></span> {{ __('دانوستان') }}</span>`;
             } else {
-                statusBadgeHtml = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-rose-600 text-white backdrop-blur-md shadow-md border border-white/30"><span class="w-2 h-2 rounded-full bg-white"></span> گیراوە</span>`;
+                statusBadgeHtml = `<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-rose-600 text-white backdrop-blur-md shadow-md border border-white/30"><span class="w-2 h-2 rounded-full bg-white"></span> {{ __('گیراوە') }}</span>`;
             }
 
             const distanceBadge = prop.distance_km 
-                ? `<div class="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200"><i class="fa-solid fa-route text-blue-500"></i> ${prop.distance_km < 1 ? Math.round(prop.distance_km * 1000) + ' مەتر' : prop.distance_km + ' کم'} لە تۆوە</div>` 
+                ? `<div class="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200"><i class="fa-solid fa-route text-blue-500"></i> ${prop.distance_km < 1 ? Math.round(prop.distance_km * 1000) + ' {{ __('مەتر') }}' : prop.distance_km + ' {{ __('کم') }}'} {{ __('لە تۆوە') }}</div>` 
                 : '';
 
             const popupContent = `
@@ -739,7 +739,7 @@
                         <div class="absolute top-2.5 left-2.5 text-[10.5px] font-bold px-2.5 py-1 rounded-xl bg-slate-900/80 backdrop-blur-md text-white border border-white/20">${prop.property_type_label}</div>
                         <div class="absolute bottom-2.5 right-3 text-white">
                             <span class="font-black text-lg drop-shadow-md tracking-tight">${prop.formatted_price}</span>
-                            <span class="text-[11px] text-emerald-300 font-medium"> / مانگانە</span>
+                            <span class="text-[11px] text-emerald-300 font-medium"> / {{ __('مانگانە') }}</span>
                         </div>
                     </div>
                     <div class="p-3.5 space-y-2.5">
@@ -749,16 +749,16 @@
                         <!-- Property Metrics -->
                         <div class="grid grid-cols-3 gap-1.5 py-1.5 border-y border-slate-100 text-center">
                             <div class="bg-slate-50 rounded-xl py-1 px-1">
-                                <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-location-dot text-slate-400"></i> گەڕەک</span>
+                                <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-location-dot text-slate-400"></i> {{ __('گەڕەک') }}</span>
                                 <span class="text-xs font-bold text-slate-700 truncate block">${prop.neighborhood}</span>
                             </div>
                             <div class="bg-slate-50 rounded-xl py-1 px-1">
-                                <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-bed text-slate-400"></i> ژوور</span>
-                                <span class="text-xs font-bold text-slate-700 block">${prop.bedrooms} ژوور</span>
+                                <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-bed text-slate-400"></i> {{ __('ژوور') }}</span>
+                                <span class="text-xs font-bold text-slate-700 block">${prop.bedrooms} {{ __('ژوور') }}</span>
                             </div>
                             <div class="bg-slate-50 rounded-xl py-1 px-1">
-                                <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-ruler-combined text-slate-400"></i> ڕووبەر</span>
-                                <span class="text-xs font-bold text-slate-700 block">${prop.area_sqm}م²</span>
+                                <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-ruler-combined text-slate-400"></i> {{ __('ڕووبەر') }}</span>
+                                <span class="text-xs font-bold text-slate-700 block">${prop.area_sqm}{{ __('م²') }}</span>
                             </div>
                         </div>
 
@@ -769,15 +769,15 @@
                                 <span class="truncate">${prop.agency.name}</span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <button type="button" onclick="showRouteToProperty(${prop.latitude}, ${prop.longitude}, '${prop.title.replace(/'/g, "\\'")}', '${prop.neighborhood}')" class="px-2.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1 hover:scale-105 active:scale-95 cursor-pointer" title="ڕێ نیشاندەر بەسەر نەخشەدا تا ئەم خانوو">
+                                <button type="button" onclick="showRouteToProperty(${prop.latitude}, ${prop.longitude}, '${prop.title.replace(/'/g, "\\'")}', '${prop.neighborhood}')" class="px-2.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1 hover:scale-105 active:scale-95 cursor-pointer" title="{{ __('ڕێ نیشاندەر بەسەر نەخشەدا تا ئەم خانوو') }}">
                                     <i class="fa-solid fa-diamond-turn-right text-[11px] text-blue-200"></i>
-                                    <span>ڕێگە</span>
+                                    <span>{{ __('ڕێگە') }}</span>
                                 </button>
                                 <a href="${prop.url}" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1">
-                                    <span>بینین</span>
+                                    <span>{{ __('بینین') }}</span>
                                     <i class="fa-solid fa-arrow-left text-[9px]"></i>
                                 </a>
-                                ${prop.agency.whatsapp_link ? `<a href="${prop.agency.whatsapp_link}" target="_blank" class="w-8 h-8 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center text-sm shadow-sm transition-all hover:scale-105 active:scale-95" title="پەیوەندی بە واتسئاپ"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
+                                ${prop.agency.whatsapp_link ? `<a href="${prop.agency.whatsapp_link}" target="_blank" class="w-8 h-8 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center text-sm shadow-sm transition-all hover:scale-105 active:scale-95" title="{{ __('پەیوەندی بە واتسئاپ') }}"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
                             </div>
                         </div>
                     </div>
@@ -832,8 +832,8 @@
         userMarker.bindPopup(`
             <div style="text-align: center; font-weight: bold; padding: 4px; font-family: 'Vazirmatn';">
                 <div class="text-blue-600 mb-0.5 font-black">📍 ${label}</div>
-                <div style="font-size: 11px; color: #64748b; font-weight: normal;">خانووەکانی دەوروبەرت پیشان دراون</div>
-                <div style="font-size: 10px; color: #3b82f6; margin-top: 3px;">💡 دەتوانیت ئەم پینە ڕابکێشیت بۆ هەر شوێنێک</div>
+                <div style="font-size: 11px; color: #64748b; font-weight: normal;">{{ __('خانووەکانی دەوروبەرت پیشان دراون') }}</div>
+                <div style="font-size: 10px; color: #3b82f6; margin-top: 3px;">💡 {{ __('دەتوانیت ئەم پینە ڕابکێشیت بۆ هەر شوێنێک') }}</div>
             </div>
         `).openPopup();
 
@@ -847,7 +847,7 @@
             const banner = document.getElementById('userLocationBanner');
             if (banner) banner.classList.remove('hidden');
             const titleEl = document.getElementById('userLocationTitle');
-            if (titleEl) titleEl.innerText = 'شوێنی ئێوە دیاریکرا: شوێنی دەستنیشانکراو';
+            if (titleEl) titleEl.innerText = '{{ __('شوێنی ئێوە دیاریکرا: شوێنی دەستنیشانکراو') }}';
 
             if (currentRouteDest) {
                 fetchAndDrawRoute(pos.lat, pos.lng, currentRouteDest.lat, currentRouteDest.lng, currentRouteDest.title, currentRouteDest.neighborhood);

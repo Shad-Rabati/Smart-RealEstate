@@ -121,13 +121,13 @@ class HotelController extends Controller
         $mapHotels = $mapHotelsCollection->map(function ($hotel) {
             return [
                 'id' => $hotel->id,
-                'name' => $hotel->name,
+                'name' => __($hotel->name),
                 'slug' => $hotel->slug,
                 'stars' => $hotel->stars,
                 'price_per_night' => (float) $hotel->price_per_night,
                 'price_currency' => $hotel->price_currency,
-                'neighborhood' => $hotel->neighborhood,
-                'address' => $hotel->address,
+                'neighborhood' => __($hotel->neighborhood),
+                'address' => __($hotel->address),
                 'latitude' => (float) $hotel->latitude,
                 'longitude' => (float) $hotel->longitude,
                 'primary_image_url' => $hotel->primary_image_url,

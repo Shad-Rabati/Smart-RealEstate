@@ -74,13 +74,13 @@
 
                         <h3 class="font-black text-slate-900 text-base group-hover:text-amber-600 transition-colors line-clamp-1">
                             <a href="{{ route('hotels.show', $hotel->slug) }}">
-                                {{ $hotel->name }}
+                                {{ __($hotel->name) }}
                             </a>
                         </h3>
 
                         @if($hotel->description)
                             <p class="text-xs text-slate-600 line-clamp-2 mt-2 leading-relaxed">
-                                {{ $hotel->description }}
+                                {{ __($hotel->description) }}
                             </p>
                         @endif
 
