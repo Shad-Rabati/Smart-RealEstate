@@ -1,0 +1,557 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Agency;
+use App\Models\Property;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // 0. Create Default Admin User
+        User::updateOrCreate(
+            ['email' => 'admin@estate.test'],
+            [
+                'name' => 'سەرپەرشتیاری سیستەم',
+                'password' => Hash::make('admin123'),
+                'role' => 'admin',
+                'phone' => '07700000000',
+            ]
+        );
+
+        // 1. Create Agencies with users
+        $agenciesData = [
+            [
+                'user' => [
+                    'name' => 'نووسینگەی ڕێبین بۆ خانوبەرە',
+                    'email' => 'rebin@estate.test',
+                    'password' => Hash::make('password'),
+                    'role' => 'agency',
+                    'phone' => '07701234567',
+                ],
+                'agency' => [
+                    'name' => 'نووسینگەی ڕێبین بۆ خانوبەرە',
+                    'slug' => 'rebin-real-estate',
+                    'owner_name' => 'ڕێبین ئەحمەد',
+                    'phone' => '07701234567',
+                    'whatsapp' => '07701234567',
+                    'address' => 'سلێمانی، شەقامی سەرەکی سەرچنار بەرامبەر پارکی نەورۆز',
+                    'city' => 'سلێمانی',
+                    'description' => 'نووسینگەی ڕێبین تایبەت بە بەکرێدان و کڕین و فرۆشتنی سەرجەم جۆرەکانی خانوو و شوقە لە جوانترین گەڕەکەکانی سلێمانی بە گونجاوترین نرخ.',
+                    'logo' => 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=300&q=80',
+                    'verified' => true,
+                ],
+            ],
+            [
+                'user' => [
+                    'name' => 'نووسینگەی بەختیاری بۆ خانوبەرە',
+                    'email' => 'bakhtiari@estate.test',
+                    'password' => Hash::make('password'),
+                    'role' => 'agency',
+                    'phone' => '07509876543',
+                ],
+                'agency' => [
+                    'name' => 'نووسینگەی بەختیاری بۆ خانوبەرە',
+                    'slug' => 'bakhtiari-real-estate',
+                    'owner_name' => 'کاروان محەمەد',
+                    'phone' => '07509876543',
+                    'whatsapp' => '07509876543',
+                    'address' => 'سلێمانی، گەڕەکی بەختیاری، نزیک نەخۆشخانەی ئەنوەر شێخە',
+                    'city' => 'سلێمانی',
+                    'description' => 'شارەزا لە کڕین و فرۆشتن و بەکرێدانی ڤێلا و خانووی مۆدێرن و شوقەی شاهانە لە گەڕەکەکانی بەختیاری، توی مەلیک، و گۆیژە.',
+                    'logo' => 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=300&q=80',
+                    'verified' => true,
+                ],
+            ],
+            [
+                'user' => [
+                    'name' => 'نووسینگەی گۆیژە لاند',
+                    'email' => 'goyzha@estate.test',
+                    'password' => Hash::make('password'),
+                    'role' => 'agency',
+                    'phone' => '07713456789',
+                ],
+                'agency' => [
+                    'name' => 'نووسینگەی گۆیژە لاند',
+                    'slug' => 'goyzha-land-estate',
+                    'owner_name' => 'پێشەوا سالار',
+                    'phone' => '07713456789',
+                    'whatsapp' => '07713456789',
+                    'address' => 'سلێمانی، توی مەلیک، خوار بازنەیی مەلیک مەحمود',
+                    'city' => 'سلێمانی',
+                    'description' => 'نووسینگەی گۆیژە لاند بۆ خزمەتگوزارییەکانی خانوبەرە لە شاری سلێمانی، خاوەنی سەدان کەیسی کرێی ماڵ و شوقە بە کەلوپەل و بەتاڵ.',
+                    'logo' => 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=300&q=80',
+                    'verified' => true,
+                ],
+            ],
+            [
+                'user' => [
+                    'name' => 'نووسینگەی ڕاپەڕین و تاسڵوجە',
+                    'email' => 'raparin@estate.test',
+                    'password' => Hash::make('password'),
+                    'role' => 'agency',
+                    'phone' => '07501112233',
+                ],
+                'agency' => [
+                    'name' => 'نووسینگەی ڕاپەڕین و تاسڵوجە',
+                    'slug' => 'raparin-estate',
+                    'owner_name' => 'ئاراس کەریم',
+                    'phone' => '07501112233',
+                    'whatsapp' => '07501112233',
+                    'address' => 'سلێمانی، شارۆچکەی ڕاپەڕین، شەقامی بازاڕ',
+                    'city' => 'سلێمانی',
+                    'description' => 'دابینکەری خانووی کرێی ئابووری و نرخ گونجاو لە سنوری ڕاپەڕین و تاسڵوجە و بەکرەجۆ بۆ خێزان و قوتابیان.',
+                    'logo' => 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=300&q=80',
+                    'verified' => true,
+                ],
+            ],
+        ];
+
+        $createdAgencies = [];
+
+        foreach ($agenciesData as $item) {
+            $user = User::create($item['user']);
+            $agency = Agency::create(array_merge($item['agency'], ['user_id' => $user->id]));
+            $createdAgencies[] = $agency;
+        }
+
+        // 2. Realistic Sulaymaniyah Rental Properties
+        // Note colors:
+        // status: available (سەوز - Green)
+        // status: rented (سور - Red)
+        // status: reserved (رەساسی - Gray / In progress)
+        $properties = [
+            // Sarchinar (سەرچنار)
+            [
+                'agency_id' => $createdAgencies[0]->id,
+                'title' => 'خانووی ٢ نهۆمی مۆدێرن بە باخچەوە لە سەرچنار',
+                'slug' => 'modern-2-floor-house-sarchinar',
+                'property_type' => 'house',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 550,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 3,
+                'bathrooms' => 2,
+                'area_sqm' => 200,
+                'neighborhood' => 'سەرچنار',
+                'street_address' => 'کۆڵانی نزیک چێشتخانەی سەروەر، سەرچنار',
+                'latitude' => 35.5685,
+                'longitude' => 45.3950,
+                'is_furnished' => false,
+                'floor_number' => 2,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['باخچەی سەوز', 'کۆڵانی پان ١٥ مەتری', 'تەنکی ئاوی نوێ', 'پەنجەرەی دوو قاتی دژە دەنگ'],
+                'description' => 'خانوویەکی زۆر پاک و تازە لە گەڕەکی سەرچنار، پێکهاتووە لە هۆڵێکی گەورە، میوانخانە، ٣ ژووری خەوتن، ٢ حەمام، مەتبەخ بە تەواوی کاشی کراوە. نزیکە لە مەکتەب و بازاڕ.',
+                'is_featured' => true,
+            ],
+            [
+                'agency_id' => $createdAgencies[0]->id,
+                'title' => 'شوقەی گەورەی ٣ ژووری لە سەرچناری نوێ',
+                'slug' => 'spacious-apartment-new-sarchinar',
+                'property_type' => 'apartment',
+                'status' => 'rented', // 🔴 سور
+                'rent_price' => 400,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 3,
+                'bathrooms' => 2,
+                'area_sqm' => 165,
+                'neighborhood' => 'سەرچنار',
+                'street_address' => 'باڵەخانەی نێرگز، نهۆمی ٣',
+                'latitude' => 35.5720,
+                'longitude' => 45.3990,
+                'is_furnished' => true,
+                'floor_number' => 3,
+                'has_parking' => true,
+                'has_elevator' => true,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['بە کەلوپەلی تەواوەوە', 'ئەسانسۆری خێرا', 'پاسەوانی ٢٤ کاتژمێری', 'موەلیدەی بەردەوام'],
+                'description' => 'ئەم موڵکە لە ئێستادا بەکرێ گیراوە و لە ڕێگەی نوسینگەی ڕێبینەوە ڕادەست کراوە.',
+                'is_featured' => false,
+            ],
+            // Tuwi Malik (تووی مەلیک)
+            [
+                'agency_id' => $createdAgencies[2]->id,
+                'title' => 'نهۆمێکی تەواو سەربەخۆ و پاک لە تووی مەلیک',
+                'slug' => 'independent-floor-tuwi-malik',
+                'property_type' => 'floor',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 450,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 2,
+                'bathrooms' => 1,
+                'area_sqm' => 140,
+                'neighborhood' => 'تووی مەلیک',
+                'street_address' => 'پشتی مزگەوتی تووی مەلیک، کۆڵانی ٨',
+                'latitude' => 35.5640,
+                'longitude' => 45.4410,
+                'is_furnished' => false,
+                'floor_number' => 1,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['دەرگای سەربەخۆ', 'کاونتەری نوێ', 'نزیک بازاڕ و خزمەتگوزارییەکان', 'تەزووی ئاوی فەرمی بەردەوام'],
+                'description' => 'نهۆمی یەکەمی خانوویەکی پاک لە دڵی تووی مەلیک، گونجاوە بۆ خێزانی بچووک یان نوێ، شوێنێکی زۆر هێمن و ئارام.',
+                'is_featured' => true,
+            ],
+            [
+                'agency_id' => $createdAgencies[2]->id,
+                'title' => 'شوقەی VIP مەفروش لە باڵەخانەی تووی مەلیک',
+                'slug' => 'vip-furnished-apartment-tuwi-malik',
+                'property_type' => 'apartment',
+                'status' => 'reserved', // ⚪ رەساسی
+                'rent_price' => 650,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 2,
+                'bathrooms' => 2,
+                'area_sqm' => 150,
+                'neighborhood' => 'تووی مەلیک',
+                'street_address' => 'بەرامبەر باخچەی ساوا، باڵەخانەی ڕوانگە',
+                'latitude' => 35.5665,
+                'longitude' => 45.4380,
+                'is_furnished' => true,
+                'floor_number' => 4,
+                'has_parking' => true,
+                'has_elevator' => true,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1502005229762-ae1b4649eeb1?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1502005229762-ae1b4649eeb1?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['کەلوپەلی نوێی تورکی', 'سپلێتی هەموو ژوورەکان', 'ڕوانگەی گۆیژە'],
+                'description' => 'ئەم شوقەیە ئێستا لە گفتوگۆ و قۆناغی گرێبەستدایە لەگەڵ بەکرێگرتەیەکدا.',
+                'is_featured' => false,
+            ],
+            // Bakhtiari (بەختیاری)
+            [
+                'agency_id' => $createdAgencies[1]->id,
+                'title' => 'ڤێلای لوکس لە بەختیاری کۆن بە حەوشە و گەراجی فراوان',
+                'slug' => 'luxury-villa-bakhtiari',
+                'property_type' => 'villa',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 1200,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 4,
+                'bathrooms' => 4,
+                'area_sqm' => 350,
+                'neighborhood' => 'بەختیاری',
+                'street_address' => 'بەختیاری کۆن، بەرامبەر پارکی بەختیاری',
+                'latitude' => 35.5510,
+                'longitude' => 45.4120,
+                'is_furnished' => true,
+                'floor_number' => 2,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['سیستەمی گەرمکەرەوەی مەرکەزی', 'کامێرای چاودێری', 'باخچەی گەورە', 'گەراج بۆ دوو سەیارە'],
+                'description' => 'ڤێلایەکی ناوازە بە دیزاینی کلاسیک و هاوچەرخ لە بەختیاری. زۆر گونجاوە بۆ خێزان یان نێردەی دیپلۆماسی و کۆمپانیاکان.',
+                'is_featured' => true,
+            ],
+            [
+                'agency_id' => $createdAgencies[1]->id,
+                'title' => 'خانووی خنجیلانەی ٢ نهۆم لە بەختیاری نوێ',
+                'slug' => 'cozy-house-new-bakhtiari',
+                'property_type' => 'house',
+                'status' => 'rented', // 🔴 سور
+                'rent_price' => 600,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 3,
+                'bathrooms' => 2,
+                'area_sqm' => 180,
+                'neighborhood' => 'بەختیاری',
+                'street_address' => 'کۆڵانی نزیک فەرمانگەی پاسپۆرت',
+                'latitude' => 35.5480,
+                'longitude' => 45.4180,
+                'is_furnished' => false,
+                'floor_number' => 2,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1576941089067-2de3c901e126?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['گەراجی سەردابۆشراو', 'بۆری ئاوی سەرەکی', 'سپلێت لە هەموو نهۆمێک'],
+                'description' => 'ئەم خانووە بەسەرکەوتوویی بەکرێ دراوە لە ڕێگەی نووسینگەی بەختیاری.',
+                'is_featured' => false,
+            ],
+            // Goyzha & Chwarchra (گۆیژە و چوارچرا)
+            [
+                'agency_id' => $createdAgencies[2]->id,
+                'title' => 'شوقەی قاتی بەرز بە بینینی سلێمانی لە گۆیژە',
+                'slug' => 'high-floor-apartment-goyzha',
+                'property_type' => 'apartment',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 500,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 3,
+                'bathrooms' => 2,
+                'area_sqm' => 170,
+                'neighborhood' => 'گۆیژە',
+                'street_address' => 'تاوەری گۆیژە، سەر شەقامی سەرەکی، نهۆمی ٧',
+                'latitude' => 35.5780,
+                'longitude' => 45.4520,
+                'is_furnished' => false,
+                'floor_number' => 7,
+                'has_parking' => true,
+                'has_elevator' => true,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80',
+                    'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['ڕوانگەی گەورە بەرەو شاری سلێمانی', 'ئەسانسۆری بار و کەس', 'پاسەوانی ڕاگرتنی سەیارە'],
+                'description' => 'شوقەیەکی دڵگیر و پڕ لە رووناکی سروشتی بە کەشێکی فێنک لە بناری گۆیژە بە کرێی مانگانەی ٥٠٠ دۆلار.',
+                'is_featured' => true,
+            ],
+            [
+                'agency_id' => $createdAgencies[0]->id,
+                'title' => 'خانووی سەر ڕێگای سەرەکی چوارچرا',
+                'slug' => 'chwarchra-house-main-road',
+                'property_type' => 'house',
+                'status' => 'reserved', // ⚪ رەساسی
+                'rent_price' => 480,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 3,
+                'bathrooms' => 2,
+                'area_sqm' => 160,
+                'neighborhood' => 'چوارچرا',
+                'street_address' => 'چوارچرا، نزیک مەیدانی یاری، کۆڵانی ١٢',
+                'latitude' => 35.5720,
+                'longitude' => 45.4260,
+                'is_furnished' => false,
+                'floor_number' => 2,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['دیواری دەورەبەری بەرز', 'تەنکی ئاوی گەورە', 'سەربانی قیرتاوکراو'],
+                'description' => 'خانووەکە لە ئێستادا چاوپێکەوتنی گرێبەستی بۆ دەکرێت و دانوستان لەسەری بەردەوامە.',
+                'is_featured' => false,
+            ],
+            // Raparin & Tasluja (ڕاپەڕین و تاسڵوجە)
+            [
+                'agency_id' => $createdAgencies[3]->id,
+                'title' => 'خانووی ئابووری نرخی گونجاو لە ڕاپەڕین',
+                'slug' => 'budget-house-raparin',
+                'property_type' => 'house',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 300,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 2,
+                'bathrooms' => 1,
+                'area_sqm' => 125,
+                'neighborhood' => 'ڕاپەڕین',
+                'street_address' => 'ڕاپەڕینی خواروو، نزیک کۆلێژەکان',
+                'latitude' => 35.5820,
+                'longitude' => 45.3620,
+                'is_furnished' => false,
+                'floor_number' => 1,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['نرخێکی زۆر هەرزان', 'نزیک لە پاس و هێڵی هاتووچۆ', 'گەراجی بچووک'],
+                'description' => 'خانوویەکی زۆر گونجاوە بۆ خێزان یان قوتابییانی زانکۆ بە کرێی مانگانەی تەنها ٣٠٠ دۆلار.',
+                'is_featured' => false,
+            ],
+            [
+                'agency_id' => $createdAgencies[3]->id,
+                'title' => 'شوقەی تازە دروستکراو لە تاسڵوجە',
+                'slug' => 'new-apartment-tasluja',
+                'property_type' => 'apartment',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 250,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 2,
+                'bathrooms' => 1,
+                'area_sqm' => 110,
+                'neighborhood' => 'تاسڵوجە',
+                'street_address' => 'تاسڵوجە، پشت شارەوانی نوێ',
+                'latitude' => 35.6020,
+                'longitude' => 45.2850,
+                'is_furnished' => false,
+                'floor_number' => 2,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['تازە تەواوبوو (سفر)', 'کاشی تەواو و پاک', 'ئاوی بیری تایبەت'],
+                'description' => 'شوقەیەکی زۆر خاوێن بە گونجاوترین نرخ لە دەروازەی ڕۆژئاوای سلێمانی.',
+                'is_featured' => false,
+            ],
+            // Zergeta & Ibrahim Ahmad (زەرگەتە و ئیبراهیم ئەحمەد)
+            [
+                'agency_id' => $createdAgencies[1]->id,
+                'title' => 'خانووی خاوێن لە زەرگەتە، نزیک پردی خەبات',
+                'slug' => 'clean-house-zergeta',
+                'property_type' => 'house',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 420,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 3,
+                'bathrooms' => 2,
+                'area_sqm' => 175,
+                'neighborhood' => 'زەرگەتە',
+                'street_address' => 'زەرگەتە، خوار شەقامی بازنەیی مەلیک مەحمود',
+                'latitude' => 35.5420,
+                'longitude' => 45.4220,
+                'is_furnished' => false,
+                'floor_number' => 2,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['کۆڵانی ئارام', 'مەتبەخی گەورەی ئەوروپی', 'ئاو و کارەبای بەردەوام'],
+                'description' => 'خانوویەکی زۆر گونجاو لە گەڕەکی زەرگەتە بە نرخێکی زۆر لەبار، نزیک لە سەنتەری شار و بازار.',
+                'is_featured' => false,
+            ],
+            [
+                'agency_id' => $createdAgencies[2]->id,
+                'title' => 'شوقەی ٢ ژووری لە ئیبراهیم ئەحمەد',
+                'slug' => 'apartment-ibrahim-ahmad',
+                'property_type' => 'apartment',
+                'status' => 'rented', // 🔴 سور
+                'rent_price' => 350,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 2,
+                'bathrooms' => 1,
+                'area_sqm' => 120,
+                'neighborhood' => 'ئیبراهیم ئەحمەد',
+                'street_address' => 'ئیبراهیم ئەحمەد، نزیک مەڵبەندی تەندروستی',
+                'latitude' => 35.5350,
+                'longitude' => 45.4450,
+                'is_furnished' => false,
+                'floor_number' => 2,
+                'has_parking' => false,
+                'has_elevator' => true,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['ئەسانسۆر', 'پاسەوان', 'موەلیدە'],
+                'description' => 'ئەم موڵکە لە ڕێگەی نوسینگەی گۆیژە لاندەوە بەکرێ دراوە.',
+                'is_featured' => false,
+            ],
+            // Shorsh & Salim St (شۆڕش و ناوەندی شار)
+            [
+                'agency_id' => $createdAgencies[0]->id,
+                'title' => 'شوقەی مەفروشی ڕاقی لە شۆڕش، نزیک باخی گشتی',
+                'slug' => 'furnished-apartment-shorsh',
+                'property_type' => 'apartment',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 500,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 2,
+                'bathrooms' => 2,
+                'area_sqm' => 135,
+                'neighborhood' => 'شۆڕش',
+                'street_address' => 'شەقامی شۆڕش، باڵەخانەی نێرگز',
+                'latitude' => 35.5560,
+                'longitude' => 45.4590,
+                'is_furnished' => true,
+                'floor_number' => 4,
+                'has_parking' => true,
+                'has_elevator' => true,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1502005035532-6dd330c69d80?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1502005035532-6dd330c69d80?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['بە کەلوپەلی تەواو', 'سپلێت و تیڤی و مەتبەخ', 'نزیک باخی گشتی و سەنتەری شار'],
+                'description' => 'شوقەیەکی شاهانە لە دڵی شۆڕش بۆ ئەوانەی حەز بە ناوەندی شار و ئاسانی گەیشتن بە هەموو شوێنێک دەکەن.',
+                'is_featured' => true,
+            ],
+            [
+                'agency_id' => $createdAgencies[1]->id,
+                'title' => 'دوکانی بازرگانی بۆ کرێ لە شەقامی سەرەکی ڕزگاری',
+                'slug' => 'commercial-shop-rzgary',
+                'property_type' => 'commercial',
+                'status' => 'available', // 🟢 سەوز
+                'rent_price' => 700,
+                'price_currency' => 'USD',
+                'rent_period' => 'monthly',
+                'bedrooms' => 1,
+                'bathrooms' => 1,
+                'area_sqm' => 85,
+                'neighborhood' => 'ڕزگاری',
+                'street_address' => 'شەقامی بازاڕی ڕزگاری',
+                'latitude' => 35.5460,
+                'longitude' => 45.4480,
+                'is_furnished' => false,
+                'floor_number' => 0,
+                'has_parking' => true,
+                'has_elevator' => false,
+                'has_generator' => true,
+                'primary_image' => 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
+                'gallery_images' => [
+                    'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
+                ],
+                'features' => ['جامخانەی گەورە', 'شەقامی قەرەباڵغ', 'گونجاوە بۆ دەرمانخانە یان مارکێت'],
+                'description' => 'دوکانی مۆدێرن بە ڕووبەری ٨٥ مەتر لە سەر شەقامی سەرەکی و شوێنێکی زۆر بازرگانی و قەرەباڵغ.',
+                'is_featured' => false,
+            ],
+        ];
+
+        foreach ($properties as $prop) {
+            Property::create($prop);
+        }
+    }
+}
