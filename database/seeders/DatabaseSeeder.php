@@ -159,7 +159,9 @@ class DatabaseSeeder extends Seeder
                 ],
                 'features' => ['باخچەی سەوز', 'کۆڵانی پان ١٥ مەتری', 'تەنکی ئاوی نوێ', 'پەنجەرەی دوو قاتی دژە دەنگ'],
                 'description' => 'خانوویەکی زۆر پاک و تازە لە گەڕەکی سەرچنار، پێکهاتووە لە هۆڵێکی گەورە، میوانخانە، ٣ ژووری خەوتن، ٢ حەمام، مەتبەخ بە تەواوی کاشی کراوە. نزیکە لە مەکتەب و بازاڕ.',
+                'video_url' => 'https://www.youtube.com/watch?v=kJQP7kiw5Fk',
                 'is_featured' => true,
+                'featured_at' => now(),
             ],
             [
                 'agency_id' => $createdAgencies[0]->id,
