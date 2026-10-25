@@ -37,6 +37,7 @@ class Property extends Model
         'gallery_images',
         'features',
         'description',
+        'video_url',
         'is_featured',
         'featured_at',
         'views_count',
@@ -185,5 +186,41 @@ class Property extends Model
 
         $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
         return round($earthRadius * $c, 2);
+    }
+
+    public function getHasVideoAttribute(): bool
+    {
+        return !empty($this->video_url);
+    }
+
+    public function getVideoEmbedUrlAttribute(): ?string
+    {
+        if (empty($this->video_url)) {
+            return null;
+        }
+
+        $url = trim($this->video_url);
+
+        // YouTube Shorts: https://www.youtube.com/shorts/VIDEO_ID
+        if (preg_match('/(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]+)/i', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?rel=0&modestbranding=1';
+        }
+
+        // Standard YouTube / youtu.be: https://www.youtube.com/watch?v=VIDEO_ID
+        if (preg_match('/(?:youtube\.com\/(?:watch\?.*v=|embed\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/i', $url, $matches)) {
+            return 'https://www.youtube.com/embed/' . $matches[1] . '?rel=0&modestbranding=1';
+        }
+
+        return null;
+    }
+
+    public function getVideoTypeAttribute(): string
+    {
+        if (empty($this->video_url)) return 'none';
+        $url = strtolower($this->video_url);
+        if (str_contains($url, 'youtube.com') || str_contains($url, 'youtu.be')) return 'youtube';
+        if (str_contains($url, 'instagram.com')) return 'instagram';
+        if (str_contains($url, 'tiktok.com')) return 'tiktok';
+        return 'other';
     }
 }

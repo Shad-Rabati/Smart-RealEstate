@@ -45,6 +45,13 @@
                 <span class="text-xs text-slate-600">
                     <i class="fa-solid fa-eye ml-1"></i> {{ $property->views_count }} بینین
                 </span>
+
+                @if($property->has_video)
+                    <a href="#videoTourSection" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-600 border border-rose-200 hover:bg-rose-100 transition-colors">
+                        <i class="fa-solid fa-circle-play text-rose-600"></i>
+                        <span>گەشتی ڤیدیۆیی (Video Tour)</span>
+                    </a>
+                @endif
             </div>
 
             <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 leading-tight">
@@ -161,6 +168,54 @@
                     </div>
                 @endif
             </div>
+
+            @if($property->has_video)
+                <!-- Video Tour / Reels Section -->
+                <div id="videoTourSection" class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm">
+                                <i class="fa-solid fa-circle-play"></i>
+                            </span>
+                            <span>گەشتی ڤیدیۆیی خانوو (Video Tour / Reels)</span>
+                        </h3>
+                        <a href="{{ $property->video_url }}" target="_blank" rel="noopener" class="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1">
+                            <span>کردنەوە لە سەرچاوە</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+
+                    @if($property->video_embed_url)
+                        <!-- Responsive Embedded Player -->
+                        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
+                            <iframe 
+                                src="{{ $property->video_embed_url }}" 
+                                title="Video Tour" 
+                                class="w-full h-full border-0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    @else
+                        <!-- Direct / Social Link Card (Instagram / TikTok / others) -->
+                        <div class="p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">ڤیدیۆی تەواوی ئەم خانووە ببینە</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">بە کوالێتی بەرز لە {{ ucfirst($property->video_type) }} بڵاوکراوەتەوە</p>
+                                </div>
+                            </div>
+                            <a href="{{ $property->video_url }}" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-md shrink-0">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>سەیرکردنی ڤیدیۆ</span>
+                            </a>
+                        </div>
+                    @endif
+                </div>
+            @endif
 
             <!-- Location Interactive Map & Live Navigation Route -->
             <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-sm border border-slate-200 space-y-4" id="propertyMapCard">

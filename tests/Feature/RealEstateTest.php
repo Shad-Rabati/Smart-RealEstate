@@ -87,6 +87,21 @@ class RealEstateTest extends TestCase
         $response->assertSee($property->title);
     }
 
+    public function test_property_with_video_tour_displays_video_section(): void
+    {
+        $property = Property::first();
+        $this->assertNotNull($property);
+
+        $property->update([
+            'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        ]);
+
+        $response = $this->get('/properties/' . $property->slug);
+        $response->assertStatus(200);
+        $response->assertSee('گەشتی ڤیدیۆیی');
+        $response->assertSee('https://www.youtube.com/embed/dQw4w9WgXcQ');
+    }
+
     public function test_agencies_directory_and_single_agency_load(): void
     {
         $agency = Agency::first();

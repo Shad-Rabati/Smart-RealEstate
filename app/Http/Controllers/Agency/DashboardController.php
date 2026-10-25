@@ -96,6 +96,7 @@ class DashboardController extends Controller
             'has_generator' => 'nullable|boolean',
             'primary_image' => 'nullable|image|max:5120',
             'primary_image_url' => 'nullable|url',
+            'video_url' => 'nullable|url|max:500',
             'description' => 'nullable|string',
             'features' => 'nullable|array',
         ]);
@@ -132,6 +133,7 @@ class DashboardController extends Controller
             'has_elevator' => $request->boolean('has_elevator'),
             'has_generator' => $request->boolean('has_generator', true),
             'primary_image' => $imagePath,
+            'video_url' => $validated['video_url'] ?? null,
             'description' => $validated['description'] ?? null,
             'features' => $request->input('features', []),
         ]);
@@ -186,6 +188,7 @@ class DashboardController extends Controller
             'has_generator' => 'nullable|boolean',
             'primary_image' => 'nullable|image|max:5120',
             'primary_image_url' => 'nullable|url',
+            'video_url' => 'nullable|url|max:500',
             'description' => 'nullable|string',
             'features' => 'nullable|array',
         ]);
@@ -217,6 +220,7 @@ class DashboardController extends Controller
             'has_elevator' => $request->boolean('has_elevator'),
             'has_generator' => $request->boolean('has_generator'),
             'primary_image' => $imagePath,
+            'video_url' => $validated['video_url'] ?? null,
             'description' => $validated['description'] ?? null,
             'features' => $request->input('features', []),
         ]);

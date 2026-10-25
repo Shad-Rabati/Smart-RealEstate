@@ -75,6 +75,12 @@
                                     {{ $property->property_type_label }}
                                 </span>
                             @endif
+
+                            @if($property->has_video)
+                                <span class="px-2 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black shadow-md flex items-center gap-1" title="خاوەنی گەشتی ڤیدیۆییە">
+                                    <i class="fa-solid fa-play text-[8px]"></i> ڤیدیۆ
+                                </span>
+                            @endif
                         </div>
 
                         <!-- Price Tag Badge Floating -->

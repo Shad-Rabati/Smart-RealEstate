@@ -73,8 +73,13 @@
                     @endif
                 </div>
 
-                <!-- Type Badge (Top Left) -->
-                <div class="absolute top-2.5 left-2.5 pointer-events-none">
+                <!-- Type & Video Badges (Top Left) -->
+                <div class="absolute top-2.5 left-2.5 pointer-events-none flex items-center gap-1.5">
+                    @if($prop->has_video)
+                        <span class="px-2 py-0.5 rounded-xl text-[10px] font-black bg-rose-600 text-white border border-white/20 shadow-md flex items-center gap-1">
+                            <i class="fa-solid fa-play text-[8px]"></i> ڤیدیۆ
+                        </span>
+                    @endif
                     <span class="px-2.5 py-1 rounded-xl text-[10.5px] font-extrabold bg-slate-900/80 backdrop-blur-md text-white border border-white/20 shadow-sm">
                         {{ $prop->property_type_label }}
                     </span>

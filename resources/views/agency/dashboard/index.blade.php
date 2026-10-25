@@ -165,6 +165,11 @@
                                                     <i class="fa-solid fa-crown text-amber-500 text-[9px]"></i> VIP
                                                 </span>
                                             @endif
+                                            @if($prop->has_video)
+                                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-200 text-[10px] font-black" title="خاوەنی لینکی ڤیدیۆیە">
+                                                    <i class="fa-solid fa-play text-[8px]"></i> ڤیدیۆ
+                                                </span>
+                                            @endif
                                         </div>
                                         <span class="text-[11px] text-slate-600 block">
                                             {{ $prop->property_type_label }} • {{ $prop->bedrooms }} ژوور • {{ $prop->area_sqm }}م²

@@ -158,6 +158,11 @@
                                                     نوێ
                                                 </span>
                                             @endif
+                                            @if($prop->has_video)
+                                                <span class="px-1.5 py-0.5 rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30 text-[9px] font-black" title="خاوەنی ڤیدیۆیە">
+                                                    <i class="fa-solid fa-play text-[7px]"></i> ڤیدیۆ
+                                                </span>
+                                            @endif
                                         </div>
                                         <span class="text-[10px] text-slate-400 font-medium">
                                             {{ $prop->property_type_label }} • {{ $prop->bedrooms }} ژوور • {{ $prop->area_sqm }}م²
