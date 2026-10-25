@@ -412,4 +412,42 @@ class RealEstateTest extends TestCase
         $deleteResponse->assertRedirect(route('admin.hotels.index'));
         $this->assertDatabaseMissing('hotels', ['id' => $hotel->id]);
     }
+
+    public function test_favorites_page_loads_successfully(): void
+    {
+        $response = $this->get(route('favorites.index'));
+        $response->assertStatus(200);
+        $response->assertSee('خانووە دڵخوازەکانم');
+        $response->assertSee('دڵخوازەکان');
+    }
+
+    public function test_favorites_api_returns_properties(): void
+    {
+        $property = Property::first();
+        $this->assertNotNull($property);
+
+        // Valid IDs
+        $response = $this->postJson(route('api.favorites.properties'), [
+            'ids' => [$property->id],
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'count' => 1,
+        ]);
+        $this->assertStringContainsString($property->title, $response->json('html'));
+
+        // Empty IDs
+        $emptyResponse = $this->postJson(route('api.favorites.properties'), [
+            'ids' => [],
+        ]);
+
+        $emptyResponse->assertStatus(200);
+        $emptyResponse->assertJson([
+            'success' => true,
+            'count' => 0,
+            'html' => '',
+        ]);
+    }
 }

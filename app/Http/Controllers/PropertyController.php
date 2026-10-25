@@ -32,4 +32,40 @@ class PropertyController extends Controller
 
         return view('properties.show', compact('property', 'nearbyProperties'));
     }
+
+    public function favorites(Request $request)
+    {
+        $properties = collect();
+
+        if ($request->filled('ids')) {
+            $ids = array_filter(array_map('intval', explode(',', $request->query('ids', ''))));
+            if (!empty($ids)) {
+                $properties = Property::with('agency')->whereIn('id', $ids)->get();
+            }
+        }
+
+        return view('properties.favorites', compact('properties'));
+    }
+
+    public function getFavoriteProperties(Request $request)
+    {
+        $ids = $request->input('ids', []);
+        if (!is_array($ids) || empty($ids)) {
+            return response()->json([
+                'success' => true,
+                'count' => 0,
+                'html' => '',
+            ]);
+        }
+
+        $properties = Property::with('agency')
+            ->whereIn('id', array_slice($ids, 0, 50))
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'count' => $properties->count(),
+            'html' => view('partials.favorites_grid', compact('properties'))->render(),
+        ], 200, [], JSON_UNESCAPED_UNICODE);
+    }
 }

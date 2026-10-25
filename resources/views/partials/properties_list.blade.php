@@ -88,10 +88,17 @@
 
             <!-- Card Content -->
             <div class="pt-3 px-1">
-                <div class="flex items-baseline justify-between gap-2">
+                <div class="flex items-center justify-between gap-2">
                     <div class="text-xl font-black text-slate-900 tracking-tight">
                         {{ $prop->formatted_price }}
                     </div>
+                    <button type="button" 
+                            onclick="toggleFavorite({{ $prop->id }}, '{{ addslashes($prop->title) }}')"
+                            data-favorite-id="{{ $prop->id }}"
+                            class="w-8 h-8 rounded-full bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-500 flex items-center justify-center transition-all border border-slate-200/80 active:scale-90"
+                            title="پاشەکەوتکردن لە دڵخوازەکان">
+                        <i class="fa-regular fa-heart text-xs"></i>
+                    </button>
                 </div>
 
                 <h3 class="font-extrabold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors line-clamp-1 mt-1 leading-snug">

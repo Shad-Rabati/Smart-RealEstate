@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/login', '/agency/login')->name('login');
 Route::get('/', [HomeController::class, 'landing'])->name('home');
 Route::get('/properties', [HomeController::class, 'index'])->name('properties.index');
+Route::get('/favorites', [PropertyController::class, 'favorites'])->name('favorites.index');
+Route::post('/api/favorites/properties', [PropertyController::class, 'getFavoriteProperties'])->name('api.favorites.properties');
 Route::get('/api/properties/map', [HomeController::class, 'mapData'])->name('api.properties.map');
 Route::get('/properties/{slug}', [PropertyController::class, 'show'])->name('properties.show');
 

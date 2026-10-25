@@ -68,12 +68,23 @@
             </div>
         </div>
 
-        <!-- Price Tag -->
-        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 text-center sm:text-left flex-shrink-0">
-            <div class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-1">کرێی مانگانە</div>
-            <div class="text-3xl font-black text-emerald-600">
-                {{ $property->formatted_price }}
+        <!-- Price Tag & Actions -->
+        <div class="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-end gap-3 flex-shrink-0">
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 text-center sm:text-left">
+                <div class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-1">کرێی مانگانە</div>
+                <div class="text-3xl font-black text-emerald-600">
+                    {{ $property->formatted_price }}
+                </div>
             </div>
+
+            <!-- Favorite Button -->
+            <button type="button" 
+                    onclick="toggleFavorite({{ $property->id }}, '{{ addslashes($property->title) }}')"
+                    data-favorite-id="{{ $property->id }}"
+                    class="px-4 py-2.5 rounded-2xl bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-600 border border-slate-200/90 shadow-sm transition-all flex items-center justify-center gap-2 text-xs font-bold active:scale-95">
+                <i class="fa-regular fa-heart text-sm text-rose-500"></i>
+                <span class="favorite-btn-text">پاشەکەوتکردن لە دڵخوازەکان</span>
+            </button>
         </div>
     </div>
 

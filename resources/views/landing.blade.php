@@ -83,8 +83,15 @@
                             @endif
                         </div>
 
-                        <!-- Price Tag Badge Floating -->
-                        <div class="absolute top-4 left-4 z-20">
+                        <!-- Top Left: Price & Favorite Heart -->
+                        <div class="absolute top-4 left-4 z-20 flex items-center gap-1.5">
+                            <button type="button" 
+                                    onclick="toggleFavorite({{ $property->id }}, '{{ addslashes($property->title) }}')"
+                                    data-favorite-id="{{ $property->id }}"
+                                    class="w-8 h-8 rounded-full bg-white/95 backdrop-blur-md text-slate-400 hover:text-rose-500 hover:bg-rose-50 flex items-center justify-center shadow-md border border-slate-150 transition-all hover:scale-110 active:scale-95"
+                                    title="پاشەکەوتکردن لە دڵخوازەکان">
+                                <i class="fa-regular fa-heart text-xs"></i>
+                            </button>
                             <span class="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-900 text-xs font-black shadow-md border border-slate-150 font-mono">
                                 {{ $property->formatted_price }}
                             </span>

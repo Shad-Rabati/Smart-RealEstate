@@ -301,6 +301,13 @@
                         <span>ئوتێلەکان</span>
                     </a>
 
+                    <!-- 5. دڵخوازەکان -->
+                    <a href="{{ route('favorites.index') }}" class="px-3.5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 {{ request()->routeIs('favorites.*') ? 'bg-white text-rose-700 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}" title="خانووە دڵخوازەکانت">
+                        <i class="fa-solid fa-heart {{ request()->routeIs('favorites.*') ? 'text-rose-600' : 'text-rose-400' }} text-xs"></i>
+                        <span>دڵخوازەکان</span>
+                        <span class="favorites-badge-count hidden px-1.5 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-mono font-black">0</span>
+                    </a>
+
                     <div class="w-px h-3.5 bg-slate-300/70 mx-1"></div>
 
                     <!-- 5. نزیکترین لە منەوە -->
@@ -382,6 +389,11 @@
                 <a href="{{ route('hotels.index') }}" class="px-2 py-1.5 rounded-full transition-all flex items-center gap-1 {{ request()->routeIs('hotels.*') ? 'bg-amber-50 text-amber-700 font-extrabold shadow-sm' : 'hover:text-amber-600' }}">
                     <i class="fa-solid fa-hotel text-xs"></i>
                     <span>ئوتێل</span>
+                </a>
+                <a href="{{ route('favorites.index') }}" class="px-2 py-1.5 rounded-full transition-all flex items-center gap-1 relative {{ request()->routeIs('favorites.*') ? 'bg-rose-50 text-rose-700 font-extrabold shadow-sm' : 'hover:text-rose-600' }}" title="خانووە دڵخوازەکانت">
+                    <i class="fa-solid fa-heart text-xs text-rose-500"></i>
+                    <span>دڵخواز</span>
+                    <span class="favorites-badge-count hidden px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[9px] font-mono font-black">0</span>
                 </a>
                 <button type="button" onclick="triggerNearestSearch()" class="px-2 py-1.5 rounded-full text-blue-600 hover:bg-blue-50 transition-colors flex items-center gap-1 font-bold">
                     <i class="fa-solid fa-location-crosshairs text-xs"></i>
@@ -778,7 +790,153 @@
                 closeLocationModal();
             }
         });
+
+        // ==========================================
+        // Universal Favorites / Wishlist System
+        // ==========================================
+        const FAVORITES_KEY = 'estate_user_favorites';
+
+        function getFavorites() {
+            try {
+                const stored = localStorage.getItem(FAVORITES_KEY);
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function isFavorite(id) {
+            const favs = getFavorites();
+            return favs.includes(Number(id));
+        }
+
+        function toggleFavorite(id, title = '') {
+            id = Number(id);
+            let favs = getFavorites();
+            const index = favs.indexOf(id);
+            let isAdded = false;
+
+            if (index > -1) {
+                favs.splice(index, 1);
+                isAdded = false;
+            } else {
+                favs.push(id);
+                isAdded = true;
+            }
+
+            localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+            updateFavoriteNavbarCount();
+            updateAllFavoriteButtons();
+
+            // If on favorites page, smoothly remove card when unfavorited
+            const card = document.getElementById(`favorite-card-${id}`);
+            if (card && !isAdded) {
+                card.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    card.remove();
+                    const remainingCards = document.querySelectorAll('[id^="favorite-card-"]');
+                    const countBadge = document.getElementById('favPageCount');
+                    if (countBadge) countBadge.innerText = remainingCards.length;
+                    if (remainingCards.length === 0) {
+                        const emptyState = document.getElementById('favoritesEmptyState');
+                        const clearBtn = document.getElementById('clearAllFavoritesBtn');
+                        if (emptyState) emptyState.classList.remove('hidden');
+                        if (clearBtn) clearBtn.classList.add('hidden');
+                    }
+                }, 250);
+            }
+
+            showFavoriteToast(isAdded, title);
+            return isAdded;
+        }
+
+        function updateFavoriteNavbarCount() {
+            const favs = getFavorites();
+            const count = favs.length;
+            const badges = document.querySelectorAll('.favorites-badge-count');
+            badges.forEach(badge => {
+                badge.innerText = count;
+                if (count > 0) {
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
+        }
+
+        function updateAllFavoriteButtons() {
+            const buttons = document.querySelectorAll('[data-favorite-id]');
+            buttons.forEach(btn => {
+                const id = Number(btn.getAttribute('data-favorite-id'));
+                const active = isFavorite(id);
+                const heartIcon = btn.querySelector('.fa-heart');
+                const textSpan = btn.querySelector('.favorite-btn-text');
+
+                if (active) {
+                    btn.classList.add('is-favorited');
+                    if (heartIcon) {
+                        heartIcon.classList.remove('fa-regular');
+                        heartIcon.classList.add('fa-solid', 'text-rose-500');
+                    }
+                    if (textSpan) {
+                        textSpan.innerText = 'لە دڵخوازەکاندایە';
+                    }
+                } else {
+                    btn.classList.remove('is-favorited');
+                    if (heartIcon) {
+                        heartIcon.classList.remove('fa-solid', 'text-rose-500');
+                        heartIcon.classList.add('fa-regular');
+                    }
+                    if (textSpan) {
+                        textSpan.innerText = 'پاشەکەوتکردن لە دڵخوازەکان';
+                    }
+                }
+            });
+        }
+
+        let toastTimeout = null;
+        function showFavoriteToast(isAdded, title = '') {
+            const toast = document.getElementById('favoriteToast');
+            const toastMsg = document.getElementById('favoriteToastMessage');
+            const toastIcon = document.getElementById('favoriteToastIcon');
+            if (!toast) return;
+
+            if (isAdded) {
+                toastIcon.innerHTML = '<i class="fa-solid fa-heart text-rose-500"></i>';
+                toastMsg.innerText = title ? `«${title}» زیادکرا بۆ دڵخوازەکان ❤️` : 'خانووەکە زیادکرا بۆ لیستی دڵخوازەکانت ❤️';
+            } else {
+                toastIcon.innerHTML = '<i class="fa-regular fa-heart text-slate-400"></i>';
+                toastMsg.innerText = title ? `«${title}» لە دڵخوازەکان لابرا` : 'خانووەکە لە لیستی دڵخوازەکان لابرا';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateFavoriteNavbarCount();
+            updateAllFavoriteButtons();
+        });
     </script>
+
+    <!-- Favorite Toast Notification -->
+    <div id="favoriteToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 max-w-sm w-full px-4 sm:px-0">
+        <div class="bg-slate-900/95 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700/60 flex items-center gap-3 backdrop-blur-md">
+            <div id="favoriteToastIcon" class="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="flex-1 text-xs font-bold" id="favoriteToastMessage">
+                خانووەکە زیادکرا بۆ لیستی دڵخوازەکانت ❤️
+            </div>
+            <a href="{{ route('favorites.index') }}" class="text-[11px] font-black text-rose-400 hover:text-rose-300 underline underline-offset-2 shrink-0">
+                بینینی لیست
+            </a>
+        </div>
+    </div>
 
     @stack('scripts')
 </body>
