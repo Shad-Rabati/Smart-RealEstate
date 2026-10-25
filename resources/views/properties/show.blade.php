@@ -24,17 +24,17 @@
                 @if($property->status === 'available')
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        سەوز (بەردەستە بۆ کرێ)
+                        {{ __('messages.available_status') }}
                     </span>
                 @elseif($property->status === 'reserved')
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-slate-100 text-slate-800 border border-slate-300">
                         <span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
-                        رەساسی (لە دانوستان / گێراندا)
+                        {{ __('messages.reserved_status') }}
                     </span>
                 @else
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-rose-100 text-rose-800 border border-rose-300">
                         <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                        سور (بەکرێ گیراوە)
+                        {{ __('messages.rented_status') }}
                     </span>
                 @endif
 
@@ -43,13 +43,13 @@
                 </span>
 
                 <span class="text-xs text-slate-600">
-                    <i class="fa-solid fa-eye ml-1"></i> {{ $property->views_count }} بینین
+                    <i class="fa-solid fa-eye ml-1"></i> {{ $property->views_count }} {{ __('messages.views') }}
                 </span>
 
                 @if($property->has_video)
                     <a href="#videoTourSection" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-600 border border-rose-200 hover:bg-rose-100 transition-colors">
                         <i class="fa-solid fa-circle-play text-rose-600"></i>
-                        <span>گەشتی ڤیدیۆیی (Video Tour)</span>
+                        <span>{{ __('messages.video_tour') }}</span>
                     </a>
                 @endif
             </div>
@@ -71,7 +71,7 @@
         <!-- Price Tag & Actions -->
         <div class="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-end gap-3 flex-shrink-0">
             <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 text-center sm:text-left">
-                <div class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-1">کرێی مانگانە</div>
+                <div class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-1">{{ __('messages.rent_price') }}</div>
                 <div class="text-3xl font-black text-emerald-600">
                     {{ $property->formatted_price }}
                 </div>

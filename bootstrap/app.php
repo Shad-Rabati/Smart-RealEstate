@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
             return route('agency.login');
         });
         $middleware->web(append: [
+            \App\Http\Middleware\SetLocaleMiddleware::class,
             \App\Http\Middleware\TrackVisitorMiddleware::class,
         ]);
         $middleware->alias([

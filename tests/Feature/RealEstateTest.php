@@ -450,4 +450,48 @@ class RealEstateTest extends TestCase
             'html' => '',
         ]);
     }
+
+    public function test_language_switcher_and_localization(): void
+    {
+        // 1. Default should be Kurdish (ku)
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('dir="rtl"', false);
+        $response->assertSee('lang="ku"', false);
+
+        // 2. Switch to English
+        $switchEn = $this->get(route('locale.switch', 'en'));
+        $switchEn->assertRedirect();
+        $switchEn->assertSessionHas('locale', 'en');
+
+        $responseEn = $this->withSession(['locale' => 'en'])->get('/');
+        $responseEn->assertStatus(200);
+        $responseEn->assertSee('dir="ltr"', false);
+        $responseEn->assertSee('lang="en"', false);
+        $responseEn->assertSee('Sulaymaniyah Real Estate');
+        $responseEn->assertSee('Search Properties');
+
+        // 3. Switch to Arabic
+        $switchAr = $this->get(route('locale.switch', 'ar'));
+        $switchAr->assertRedirect();
+        $switchAr->assertSessionHas('locale', 'ar');
+
+        $responseAr = $this->withSession(['locale' => 'ar'])->get('/');
+        $responseAr->assertStatus(200);
+        $responseAr->assertSee('dir="rtl"', false);
+        $responseAr->assertSee('lang="ar"', false);
+        $responseAr->assertSee('عقارات السليمانية');
+        $responseAr->assertSee('بحث العقارات');
+
+        // 4. Switch back to Kurdish
+        $switchKu = $this->get(route('locale.switch', 'ku'));
+        $switchKu->assertRedirect();
+        $switchKu->assertSessionHas('locale', 'ku');
+
+        $responseKu = $this->withSession(['locale' => 'ku'])->get('/');
+        $responseKu->assertStatus(200);
+        $responseKu->assertSee('dir="rtl"', false);
+        $responseKu->assertSee('lang="ku"', false);
+        $responseKu->assertSee('خانوبەرەی سلێمانی');
+    }
 }

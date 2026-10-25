@@ -12,11 +12,13 @@ use App\Http\Controllers\Agency\DashboardController as AgencyDashboardController
 use App\Http\Controllers\AgencyPublicController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Admin\HotelController as AdminHotelController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
 // Public Website Routes
+Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 Route::redirect('/login', '/agency/login')->name('login');
 Route::get('/', [HomeController::class, 'landing'])->name('home');
 Route::get('/properties', [HomeController::class, 'index'])->name('properties.index');

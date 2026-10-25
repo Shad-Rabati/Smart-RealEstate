@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ckb" dir="rtl">
+<html lang="{{ app()->getLocale() }}" dir="{{ in_array(app()->getLocale(), ['ku', 'ar']) ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'خانوبەرەی سلێمانی | دۆزینەوەی خانووی کرێ بەبێ سەردانی نووسینگە')</title>
+    <title>@yield('title', __('messages.app_name') . ' | ' . __('messages.app_tagline'))</title>
 
     <!-- DNS Prefetch & Preconnect for all CDN origins (speeds up external resource loading) -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -19,8 +19,8 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
-    <!-- Google Fonts: Vazirmatn for modern Kurdish typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Vazirmatn & Inter for Kurdish, Arabic & English typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,7 +29,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Vazirmatn', 'sans-serif'],
+                        sans: ['Vazirmatn', 'Inter', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -264,12 +264,12 @@
                         <div class="flex flex-col">
                             <div class="flex items-center gap-1.5">
                                 <span class="text-lg font-black text-slate-900 tracking-tight leading-none group-hover:text-emerald-700 transition-colors">
-                                    خانوبەرەی <span class="bg-gradient-to-l from-emerald-600 to-teal-600 bg-clip-text text-transparent">سلێمانی</span>
+                                    {{ __('messages.app_name') }}
                                 </span>
                             </div>
                             <span class="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5 mt-1 leading-none">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                دۆزینەوەی خانووی کرێ بە نەخشە
+                                {{ __('messages.app_tagline') }}
                             </span>
                         </div>
                     </a>
@@ -280,81 +280,131 @@
                     <!-- 1. سەرەکی -->
                     <a href="{{ route('home') }}" class="px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 {{ request()->routeIs('home') ? 'bg-white text-emerald-800 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}">
                         <i class="fa-solid fa-house {{ request()->routeIs('home') ? 'text-emerald-600' : 'text-slate-400' }} text-xs"></i>
-                        <span>سەرەکی</span>
+                        <span>{{ __('messages.home') }}</span>
                     </a>
 
                     <!-- 2. گەڕانی خانوو -->
                     <a href="{{ route('properties.index') }}" class="px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 {{ request()->routeIs('properties.*') ? 'bg-white text-emerald-800 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}">
                         <i class="fa-solid fa-map-location-dot {{ request()->routeIs('properties.*') ? 'text-emerald-600' : 'text-slate-400' }} text-xs"></i>
-                        <span>گەڕانی خانوو</span>
+                        <span>{{ __('messages.search_properties') }}</span>
                     </a>
 
                     <!-- 3. نووسینگەکان -->
                     <a href="{{ route('agencies.index') }}" class="px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 {{ request()->routeIs('agencies.*') ? 'bg-white text-emerald-800 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}">
                         <i class="fa-solid fa-building {{ request()->routeIs('agencies.*') ? 'text-emerald-600' : 'text-slate-400' }} text-xs"></i>
-                        <span>نووسینگەکان</span>
+                        <span>{{ __('messages.agencies') }}</span>
                     </a>
 
                     <!-- 4. ئوتێلەکان -->
                     <a href="{{ route('hotels.index') }}" class="px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 {{ request()->routeIs('hotels.*') ? 'bg-white text-amber-800 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}">
                         <i class="fa-solid fa-hotel {{ request()->routeIs('hotels.*') ? 'text-amber-500' : 'text-slate-400' }} text-xs"></i>
-                        <span>ئوتێلەکان</span>
+                        <span>{{ __('messages.hotels') }}</span>
                     </a>
 
                     <!-- 5. دڵخوازەکان -->
-                    <a href="{{ route('favorites.index') }}" class="px-3.5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 {{ request()->routeIs('favorites.*') ? 'bg-white text-rose-700 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}" title="خانووە دڵخوازەکانت">
+                    <a href="{{ route('favorites.index') }}" class="px-3.5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 {{ request()->routeIs('favorites.*') ? 'bg-white text-rose-700 shadow-sm shadow-slate-900/5 font-black ring-1 ring-slate-900/5' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60' }}" title="{{ __('messages.favorites') }}">
                         <i class="fa-solid fa-heart {{ request()->routeIs('favorites.*') ? 'text-rose-600' : 'text-rose-400' }} text-xs"></i>
-                        <span>دڵخوازەکان</span>
+                        <span>{{ __('messages.favorites') }}</span>
                         <span class="favorites-badge-count hidden px-1.5 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-mono font-black">0</span>
                     </a>
 
                     <div class="w-px h-3.5 bg-slate-300/70 mx-1"></div>
 
-                    <!-- 5. نزیکترین لە منەوە -->
+                    <!-- 6. نزیکترین لە منەوە -->
                     <button type="button" onclick="triggerNearestSearch()" class="px-3.5 py-2 rounded-full text-xs font-bold text-slate-700 hover:text-blue-700 hover:bg-white/80 transition-all flex items-center gap-2 group/near">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                         </span>
                         <i class="fa-solid fa-location-crosshairs text-blue-600 text-xs group-hover/near:scale-110 transition-transform"></i>
-                        <span>نزیکترین لە منەوە</span>
+                        <span>{{ __('messages.nearest') }}</span>
                     </button>
                 </nav>
 
-                <!-- Left Side: Agency Authentication Area -->
+                <!-- Left Side: Language Switcher & Agency Authentication Area -->
                 <div class="flex items-center gap-2">
+                    <!-- Language Selector Dropdown -->
+                    <div class="relative" id="langDropdownWrapper">
+                        <button type="button" 
+                                onclick="toggleLangDropdown(event)" 
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-200/80 text-slate-700 border border-slate-200/80 transition-all shadow-sm active:scale-95 cursor-pointer"
+                                title="{{ __('messages.language') }}">
+                            @if(app()->getLocale() === 'en')
+                                <span class="text-xs">🇬🇧</span>
+                                <span class="font-extrabold text-[11px] font-mono">EN</span>
+                            @elseif(app()->getLocale() === 'ar')
+                                <span class="text-xs">🇸🇦</span>
+                                <span class="font-extrabold text-[11px]">عربي</span>
+                            @else
+                                <span class="text-xs">☀️</span>
+                                <span class="font-extrabold text-[11px]">کوردی</span>
+                            @endif
+                            <i class="fa-solid fa-chevron-down text-[8px] text-slate-400"></i>
+                        </button>
+
+                        <div id="langDropdownMenu" class="hidden absolute top-full mt-2 {{ in_array(app()->getLocale(), ['ku', 'ar']) ? 'left-0' : 'right-0' }} w-36 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50">
+                            <a href="{{ route('locale.switch', 'ku') }}" class="flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors {{ app()->getLocale() === 'ku' ? 'bg-emerald-50 text-emerald-700 font-black' : 'text-slate-700 hover:bg-slate-50' }}">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">☀️</span>
+                                    <span>کوردی</span>
+                                </div>
+                                @if(app()->getLocale() === 'ku')
+                                    <i class="fa-solid fa-check text-emerald-600 text-xs"></i>
+                                @endif
+                            </a>
+                            <a href="{{ route('locale.switch', 'en') }}" class="flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors {{ app()->getLocale() === 'en' ? 'bg-emerald-50 text-emerald-700 font-black' : 'text-slate-700 hover:bg-slate-50' }}">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">🇬🇧</span>
+                                    <span>English</span>
+                                </div>
+                                @if(app()->getLocale() === 'en')
+                                    <i class="fa-solid fa-check text-emerald-600 text-xs"></i>
+                                @endif
+                            </a>
+                            <a href="{{ route('locale.switch', 'ar') }}" class="flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors {{ app()->getLocale() === 'ar' ? 'bg-emerald-50 text-emerald-700 font-black' : 'text-slate-700 hover:bg-slate-50' }}">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm">🇸🇦</span>
+                                    <span>العربية</span>
+                                </div>
+                                @if(app()->getLocale() === 'ar')
+                                    <i class="fa-solid fa-check text-emerald-600 text-xs"></i>
+                                @endif
+                            </a>
+                        </div>
+                    </div>
+
                     @auth
                         @if(Auth::user()->isAdmin())
                             <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
                                 <i class="fa-solid fa-shield-halved text-xs"></i>
-                                <span>پانێڵی سەرپەرشتیار</span>
+                                <span>{{ __('messages.admin_panel') }}</span>
                             </a>
                             <form action="{{ route('admin.logout') }}" method="POST" class="inline">
                                 @csrf
-                                <button type="submit" class="w-9 h-9 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-colors" title="دەرچوون">
+                                <button type="submit" class="w-9 h-9 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-colors" title="{{ __('messages.logout') }}">
                                     <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
                                 </button>
                             </form>
                         @elseif(Auth::user()->agency)
                             @if(Auth::user()->agency->verified)
-                                <a href="{{ route('agency.credits') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-black bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 border border-amber-500/30 transition-all hover:scale-105 shadow-sm" title="باڵانسی کریدت بۆ دانانی خانوو">
+                                <a href="{{ route('agency.credits') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-black bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 border border-amber-500/30 transition-all hover:scale-105 shadow-sm" title="{{ __('messages.credits') }}">
                                     <i class="fa-solid fa-coins text-amber-500 text-xs"></i>
                                     <span class="font-mono">{{ Auth::user()->agency->credits }}</span>
-                                    <span class="text-[10px] text-amber-700 font-bold">کریدت</span>
+                                    <span class="text-[10px] text-amber-700 font-bold">{{ __('messages.credits') }}</span>
                                 </a>
                                 <a href="{{ route('agency.dashboard') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
                                     <i class="fa-solid fa-gauge-high"></i>
-                                    <span>پانێڵی نووسینگە</span>
+                                    <span>{{ __('messages.agency_dashboard') }}</span>
                                 </a>
                             @else
-                                <a href="{{ route('agency.pending') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]" title="لە چاوەڕوانی پەسەندکردنی سەرپەرشتیار">
+                                <a href="{{ route('agency.pending') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]" title="{{ __('messages.pending_approval') }}">
                                     <i class="fa-solid fa-hourglass-half"></i>
-                                    <span>لە چاوەڕوانی پەسەندکردندا</span>
+                                    <span>{{ __('messages.pending_approval') }}</span>
                                 </a>
                             @endif
                             <form action="{{ route('agency.logout') }}" method="POST" class="inline">
                                 @csrf
-                                <button type="submit" class="w-9 h-9 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-colors" title="دەرچوون">
+                                <button type="submit" class="w-9 h-9 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-colors" title="{{ __('messages.logout') }}">
                                     <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
                                 </button>
                             </form>
@@ -363,7 +413,7 @@
                         <!-- چوونەژوورەوە Action Button -->
                         <a href="{{ route('agency.login') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black bg-slate-900 hover:bg-emerald-600 text-white shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]">
                             <i class="fa-solid fa-arrow-right-to-bracket text-emerald-400 text-xs"></i>
-                            <span>چوونەژوورەوە</span>
+                            <span>{{ __('messages.login') }}</span>
                         </a>
                     @endauth
                 </div>
@@ -376,28 +426,28 @@
             <div class="flex items-center justify-around text-xs font-bold text-slate-700 max-w-md mx-auto">
                 <a href="{{ route('home') }}" class="px-2.5 py-1.5 rounded-full transition-all flex items-center gap-1 {{ request()->routeIs('home') ? 'bg-emerald-50 text-emerald-700 font-extrabold shadow-sm' : 'hover:text-emerald-600' }}">
                     <i class="fa-solid fa-house text-xs"></i>
-                    <span>سەرەکی</span>
+                    <span>{{ __('messages.home') }}</span>
                 </a>
                 <a href="{{ route('properties.index') }}" class="px-2.5 py-1.5 rounded-full transition-all flex items-center gap-1 {{ request()->routeIs('properties.*') ? 'bg-emerald-50 text-emerald-700 font-extrabold shadow-sm' : 'hover:text-emerald-600' }}">
                     <i class="fa-solid fa-map-location-dot text-xs"></i>
-                    <span>گەڕان</span>
+                    <span>{{ __('messages.search_properties') }}</span>
                 </a>
                 <a href="{{ route('agencies.index') }}" class="px-2 py-1.5 rounded-full transition-all flex items-center gap-1 {{ request()->routeIs('agencies.*') ? 'bg-emerald-50 text-emerald-700 font-extrabold shadow-sm' : 'hover:text-emerald-600' }}">
                     <i class="fa-solid fa-building text-xs"></i>
-                    <span>نووسینگە</span>
+                    <span>{{ __('messages.agency') }}</span>
                 </a>
                 <a href="{{ route('hotels.index') }}" class="px-2 py-1.5 rounded-full transition-all flex items-center gap-1 {{ request()->routeIs('hotels.*') ? 'bg-amber-50 text-amber-700 font-extrabold shadow-sm' : 'hover:text-amber-600' }}">
                     <i class="fa-solid fa-hotel text-xs"></i>
-                    <span>ئوتێل</span>
+                    <span>{{ __('messages.hotel') }}</span>
                 </a>
-                <a href="{{ route('favorites.index') }}" class="px-2 py-1.5 rounded-full transition-all flex items-center gap-1 relative {{ request()->routeIs('favorites.*') ? 'bg-rose-50 text-rose-700 font-extrabold shadow-sm' : 'hover:text-rose-600' }}" title="خانووە دڵخوازەکانت">
+                <a href="{{ route('favorites.index') }}" class="px-2 py-1.5 rounded-full transition-all flex items-center gap-1 relative {{ request()->routeIs('favorites.*') ? 'bg-rose-50 text-rose-700 font-extrabold shadow-sm' : 'hover:text-rose-600' }}" title="{{ __('messages.favorites') }}">
                     <i class="fa-solid fa-heart text-xs text-rose-500"></i>
-                    <span>دڵخواز</span>
+                    <span>{{ __('messages.favorites') }}</span>
                     <span class="favorites-badge-count hidden px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[9px] font-mono font-black">0</span>
                 </a>
                 <button type="button" onclick="triggerNearestSearch()" class="px-2 py-1.5 rounded-full text-blue-600 hover:bg-blue-50 transition-colors flex items-center gap-1 font-bold">
                     <i class="fa-solid fa-location-crosshairs text-xs"></i>
-                    <span>نزیکترین</span>
+                    <span>{{ __('messages.nearest_short') }}</span>
                 </button>
             </div>
         </div>
@@ -789,7 +839,21 @@
             if (e.target === modal) {
                 closeLocationModal();
             }
+
+            // Close Language Dropdown if clicked outside
+            const menu = document.getElementById('langDropdownMenu');
+            const wrapper = document.getElementById('langDropdownWrapper');
+            if (menu && wrapper && !wrapper.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
         });
+
+        // Language Switcher Dropdown Toggle
+        function toggleLangDropdown(e) {
+            if (e) e.stopPropagation();
+            const menu = document.getElementById('langDropdownMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
 
         // ==========================================
         // Universal Favorites / Wishlist System

@@ -19,10 +19,10 @@
         <div class="relative inline-flex items-center">
             <i class="fa-solid fa-arrow-down-short-wide absolute right-3 text-slate-400 text-xs pointer-events-none"></i>
             <select id="sortSelectDropdown" onchange="updateSort(this.value)" class="pr-8 pl-8 py-2 rounded-2xl border border-slate-200 text-xs font-bold bg-white text-slate-700 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all cursor-pointer shadow-sm hover:border-slate-300 appearance-none">
-                <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>تازەترینەکان</option>
-                <option value="nearest" {{ request('sort') == 'nearest' ? 'selected' : '' }}>📍 نزیکترین لە منەوە</option>
-                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>نزمترین نرخ (هەرزانترین)</option>
-                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>بەرزترین نرخ (گرانترین)</option>
+                <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>{{ __('messages.sort_latest') }}</option>
+                <option value="nearest" {{ request('sort') == 'nearest' ? 'selected' : '' }}>{{ __('messages.sort_nearest') }}</option>
+                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>{{ __('messages.sort_price_asc') }}</option>
+                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>{{ __('messages.sort_price_desc') }}</option>
             </select>
             <i class="fa-solid fa-chevron-down absolute left-3 text-slate-400 text-[10px] pointer-events-none"></i>
         </div>
@@ -58,17 +58,17 @@
                     @if($prop->status === 'available')
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-emerald-800 backdrop-blur-md shadow-md border border-white/60">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span>بەردەست</span>
+                            <span>{{ __('messages.available') }}</span>
                         </span>
                     @elseif($prop->status === 'reserved')
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-slate-700 backdrop-blur-md shadow-md border border-white/60">
                             <span class="w-2 h-2 rounded-full bg-slate-400"></span>
-                            <span>دانوستان</span>
+                            <span>{{ __('messages.reserved') }}</span>
                         </span>
                     @else
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black bg-white/95 text-rose-700 backdrop-blur-md shadow-md border border-white/60">
                             <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-                            <span>گیراوە</span>
+                            <span>{{ __('messages.rented') }}</span>
                         </span>
                     @endif
                 </div>
@@ -77,7 +77,7 @@
                 <div class="absolute top-2.5 left-2.5 pointer-events-none flex items-center gap-1.5">
                     @if($prop->has_video)
                         <span class="px-2 py-0.5 rounded-xl text-[10px] font-black bg-rose-600 text-white border border-white/20 shadow-md flex items-center gap-1">
-                            <i class="fa-solid fa-play text-[8px]"></i> ڤیدیۆ
+                            <i class="fa-solid fa-play text-[8px]"></i> {{ __('messages.video') }}
                         </span>
                     @endif
                     <span class="px-2.5 py-1 rounded-xl text-[10.5px] font-extrabold bg-slate-900/80 backdrop-blur-md text-white border border-white/20 shadow-sm">
@@ -147,14 +147,14 @@
             </a>
 
             <div class="flex items-center gap-1.5">
-                <button type="button" onclick="showRouteToProperty({{ $prop->latitude }}, {{ $prop->longitude }}, '{{ addslashes($prop->title) }}', '{{ $prop->neighborhood }}')" class="px-2.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white transition-all font-bold text-xs flex items-center gap-1 shadow-sm" title="ڕێ نیشاندان">
+                <button type="button" onclick="showRouteToProperty({{ $prop->latitude }}, {{ $prop->longitude }}, '{{ addslashes($prop->title) }}', '{{ $prop->neighborhood }}')" class="px-2.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white transition-all font-bold text-xs flex items-center gap-1 shadow-sm" title="{{ __('messages.route') }}">
                     <i class="fa-solid fa-diamond-turn-right text-xs"></i>
-                    <span>ڕێگە</span>
+                    <span>{{ __('messages.route') }}</span>
                 </button>
 
-                <button type="button" onclick="focusPropertyOnMap({{ $prop->id }}, {{ $prop->latitude }}, {{ $prop->longitude }})" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 transition-all font-bold text-xs flex items-center gap-1 shadow-sm" title="پیشاندان لەسەر نەخشە">
+                <button type="button" onclick="focusPropertyOnMap({{ $prop->id }}, {{ $prop->latitude }}, {{ $prop->longitude }})" class="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 transition-all font-bold text-xs flex items-center gap-1 shadow-sm" title="{{ __('messages.show_on_map') }}">
                     <i class="fa-solid fa-map-pin text-emerald-600 text-xs"></i>
-                    <span>نەخشە</span>
+                    <span>{{ __('messages.map') }}</span>
                 </button>
             </div>
         </div>

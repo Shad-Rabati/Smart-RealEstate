@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'دڵخوازەکانم (خانووە پاشەکەوتکراوەکان) | خانوبەرەی سلێمانی')
+@section('title', __('messages.favorites_title') . ' | ' . __('messages.app_name'))
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -10,16 +10,16 @@
         <div>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 text-rose-600 border border-rose-200 text-xs font-black mb-2">
                 <i class="fa-solid fa-heart text-rose-500"></i>
-                <span>پاشەکەوتی تایبەتی تۆ</span>
+                <span>{{ __('messages.favorites') }}</span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-                <span>خانووە دڵخوازەکانم</span>
+                <span>{{ __('messages.favorites_title') }}</span>
                 <span id="favPageCount" class="px-3 py-0.5 rounded-full bg-slate-900 text-white text-xs font-mono font-black">
                     {{ $properties->count() }}
                 </span>
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 font-semibold mt-1">
-                سەرجەم ئەو خانووانەی لە کاتی گەڕاندا پاشەکەوتت کردوون بۆ ئەوەی دواتر بە ئاسانی بیانبینیتەوە
+                {{ __('messages.favorites_subtitle') }}
             </p>
         </div>
 
@@ -29,11 +29,11 @@
                     onclick="clearAllFavorites()" 
                     class="hidden px-4 py-2.5 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-black border border-rose-200/80 transition-all flex items-center gap-1.5">
                 <i class="fa-solid fa-trash-can text-xs"></i>
-                <span>پاککردنەوەی هەمووی</span>
+                <span>{{ __('messages.clear_all') }}</span>
             </button>
             <a href="{{ route('properties.index') }}" class="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black transition-all shadow-md flex items-center gap-2">
                 <i class="fa-solid fa-map-location-dot text-xs"></i>
-                <span>گەڕان بەدوای خانووی زیاتر</span>
+                <span>{{ __('messages.explore_more') }}</span>
             </a>
         </div>
     </div>
@@ -42,7 +42,7 @@
     <div id="favoritesLoading" class="py-16 text-center">
         <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm text-slate-700 text-xs font-bold">
             <i class="fa-solid fa-circle-notch fa-spin text-rose-500 text-base"></i>
-            <span>بارکردنی خانووە دڵخوازەکانت...</span>
+            <span>{{ __('messages.favorites') }}...</span>
         </div>
     </div>
 
@@ -52,15 +52,15 @@
             <i class="fa-regular fa-heart"></i>
         </div>
         <div class="space-y-1">
-            <h3 class="text-base sm:text-lg font-black text-slate-900">هێشتا هیچ خانوویەکت لە دڵخوازەکان پاشەکەوت نەکردووە</h3>
+            <h3 class="text-base sm:text-lg font-black text-slate-900">{{ __('messages.favorites_empty') }}</h3>
             <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
-                لە کاتی گەڕاندا لەسەر نەخشە یان لە لاپەڕەی سەرەکی، کلیک لەسەر ئایکۆنی دڵ <i class="fa-solid fa-heart text-rose-500 text-xs"></i> بکە تاوەکو لێرەدا پاشەکەوت ببێت.
+                {{ __('messages.favorites_empty_desc') }}
             </p>
         </div>
         <div class="pt-2">
             <a href="{{ route('properties.index') }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-black transition-all shadow-md">
                 <i class="fa-solid fa-map-location-dot"></i>
-                <span>گەڕان لەناو خانووەکانی سلێمانی</span>
+                <span>{{ __('messages.explore_more') }}</span>
             </a>
         </div>
     </div>
