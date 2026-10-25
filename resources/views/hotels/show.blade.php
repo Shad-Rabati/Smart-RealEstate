@@ -92,10 +92,10 @@
 
     <!-- Breadcrumb -->
     <nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
-        <a href="{{ route('home') }}" class="hover:text-slate-900 transition-colors">ماڵپەڕی سەرەکی</a>
-        <i class="fa-solid fa-chevron-left text-[10px]"></i>
-        <a href="{{ route('hotels.index') }}" class="hover:text-slate-900 transition-colors">ئوتێلەکان</a>
-        <i class="fa-solid fa-chevron-left text-[10px]"></i>
+        <a href="{{ route('home') }}" class="hover:text-slate-900 transition-colors">{{ __('ماڵپەڕی سەرەکی') }}</a>
+        <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px]"></i>
+        <a href="{{ route('hotels.index') }}" class="hover:text-slate-900 transition-colors">{{ __('ئوتێلەکان') }}</a>
+        <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px]"></i>
         <span class="text-slate-800 font-bold truncate max-w-xs">{{ $hotel->name }}</span>
     </nav>
 
@@ -106,17 +106,17 @@
                 <!-- Stars -->
                 <div class="inline-flex items-center gap-1 bg-amber-50 text-amber-600 border border-amber-200 px-3 py-1 rounded-full text-xs font-black">
                     <span>{{ str_repeat('★', $hotel->stars) }}</span>
-                    <span>{{ $hotel->stars }} ئەستێرە</span>
+                    <span>{{ $hotel->stars }} {{ __('ئەستێرە') }}</span>
                 </div>
 
                 @if($hotel->is_featured)
                     <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-xs px-3 py-1 rounded-full shadow-sm">
-                        ئوتێلی تایبەت
+                        {{ __('ئوتێلی تایبەت') }}
                     </span>
                 @endif
 
                 <span class="bg-slate-100 text-slate-700 text-xs px-3 py-1 rounded-full font-bold">
-                    سلێمانی، {{ $hotel->neighborhood }}
+                    {{ __('سلێمانی') }}، {{ __($hotel->neighborhood) }}
                 </span>
             </div>
 
@@ -134,10 +134,10 @@
 
         <!-- Price Callout -->
         <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-4 text-center md:text-left min-w-[180px]">
-            <span class="text-xs text-amber-900 font-bold block mb-0.5">دەستپێکی نرخ</span>
+            <span class="text-xs text-amber-900 font-bold block mb-0.5">{{ __('دەستپێکی نرخ') }}</span>
             <div class="text-2xl sm:text-3xl font-black text-amber-600">
                 ${{ number_format($hotel->price_per_night) }}
-                <span class="text-xs font-bold text-slate-500">/ شەو</span>
+                <span class="text-xs font-bold text-slate-500">{{ __('/ شەو') }}</span>
             </div>
         </div>
     </div>
@@ -171,10 +171,10 @@
             <!-- Description -->
             <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-3">
                 <h2 class="text-base font-black text-slate-900 flex items-center gap-2 pb-3 border-b border-slate-100">
-                    <i class="fa-solid fa-circle-info text-amber-500"></i> دەربارەی ئوتێلەکە
+                    <i class="fa-solid fa-circle-info text-amber-500"></i> {{ __('دەربارەی ئوتێلەکە') }}
                 </h2>
                 <div class="text-sm text-slate-700 leading-relaxed space-y-3">
-                    {!! nl2br(e($hotel->description ?? 'زانیاری وەسف نەنووسراوە.')) !!}
+                    {!! nl2br(e($hotel->description ?? __('زانیاری وەسف نەنووسراوە.'))) !!}
                 </div>
             </div>
 
@@ -182,7 +182,7 @@
             @if(!empty($hotel->amenities) && is_array($hotel->amenities))
                 <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-4">
                     <h2 class="text-base font-black text-slate-900 flex items-center gap-2 pb-3 border-b border-slate-100">
-                        <i class="fa-solid fa-bell-concierge text-amber-500"></i> خزمەتگوزاری و تایبەتمەندییەکان
+                        <i class="fa-solid fa-bell-concierge text-amber-500"></i> {{ __('خزمەتگوزاری و تایبەتمەندییەکان') }}
                     </h2>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -192,7 +192,7 @@
                                     <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-sm shrink-0">
                                         <i class="fa-solid {{ $amenityDefinitions[$amKey]['icon'] }}"></i>
                                     </div>
-                                    <span class="text-xs font-bold text-slate-800">{{ $amenityDefinitions[$amKey]['label'] }}</span>
+                                    <span class="text-xs font-bold text-slate-800">{{ __($amenityDefinitions[$amKey]['label']) }}</span>
                                 </div>
                             @endif
                         @endforeach
@@ -205,10 +205,10 @@
                 <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
                     <div>
                         <h2 class="text-base font-black text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-map-location-dot text-amber-500"></i> لۆکەیشن لەسەر نەخشەی سلێمانی
+                            <i class="fa-solid fa-map-location-dot text-amber-500"></i> {{ __('لۆکەیشن لەسەر نەخشەی سلێمانی') }}
                         </h2>
                         <p class="text-xs text-slate-500 mt-0.5">
-                            سلێمانی، {{ $hotel->neighborhood }} • {{ $hotel->address ?? 'شەقامی سەرەکی' }}
+                            {{ __('سلێمانی') }}، {{ __($hotel->neighborhood) }} • {{ $hotel->address ?? __('سلێمانی') }}
                         </p>
                     </div>
 
@@ -217,18 +217,18 @@
                         <div class="p-0.5 rounded-xl bg-slate-100 flex items-center gap-0.5 border border-slate-200/80 text-xs">
                             <button type="button" id="btnHotelDetailStreet" onclick="switchHotelDetailTile('street')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-[11px] shadow-sm transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-map text-amber-400 text-[10px]"></i>
-                                <span>مۆدێرن</span>
+                                <span>{{ __('مۆدێرن') }}</span>
                             </button>
                             <button type="button" id="btnHotelDetailSat" onclick="switchHotelDetailTile('satellite')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-[11px] transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-earth-americas text-blue-500 text-[10px]"></i>
-                                <span>سەتەلایت</span>
+                                <span>{{ __('سەتەلایت') }}</span>
                             </button>
                         </div>
 
                         <!-- One-Click Live Turn-by-Turn Route Button -->
                         <button type="button" id="btnHotelNavigation" onclick="startHotelNavigation()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs shadow-md shadow-blue-500/30 flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer">
                             <i class="fa-solid fa-diamond-turn-right text-xs"></i>
-                            <span id="btnHotelNavText">ڕێگە لە شوێنی منەوە</span>
+                            <span id="btnHotelNavText">{{ __('ڕێگە لە شوێنی منەوە') }}</span>
                         </button>
                     </div>
                 </div>
@@ -239,13 +239,13 @@
 
                     <!-- Clean Zoom Controls -->
                     <div class="absolute left-3 top-3 z-[400] flex flex-col gap-1 pointer-events-auto">
-                        <button type="button" onclick="hotelMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="نزیککردنەوە">
+                        <button type="button" onclick="hotelMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('نزیککردنەوە') }}">
                             <i class="fa-solid fa-plus text-xs"></i>
                         </button>
-                        <button type="button" onclick="hotelMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="دوورخستنەوە">
+                        <button type="button" onclick="hotelMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('دوورخستنەوە') }}">
                             <i class="fa-solid fa-minus text-xs"></i>
                         </button>
-                        <button type="button" onclick="recenterHotelMap()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="گەڕانەوە بۆ ئوتێلەکە">
+                        <button type="button" onclick="recenterHotelMap()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('گەڕانەوە بۆ ئوتێلەکە') }}">
                             <i class="fa-solid fa-crosshairs text-xs"></i>
                         </button>
                     </div>
@@ -260,11 +260,11 @@
                                     </div>
                                     <div class="min-w-0">
                                         <div class="flex items-center gap-1.5 flex-wrap">
-                                            <span class="text-[11px] font-bold text-blue-300">ڕێگەی گەیشتن:</span>
+                                            <span class="text-[11px] font-bold text-blue-300">{{ __('ڕێگەی گەیشتن:') }}</span>
                                             <span id="hotelRouteDistanceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/30"></span>
                                         </div>
                                         <div class="text-xs font-black text-white truncate max-w-[260px]">
-                                            {{ $hotel->name }} • {{ $hotel->neighborhood }}
+                                            {{ $hotel->name }} • {{ __($hotel->neighborhood) }}
                                         </div>
                                     </div>
                                 </div>
@@ -274,10 +274,10 @@
                                         <i class="fa-solid fa-location-arrow text-[10px]"></i>
                                         <span>Google Maps</span>
                                     </a>
-                                    <button type="button" onclick="startHotelNavigation(true)" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="نوێکردنەوەی شوێنی GPS">
+                                    <button type="button" onclick="startHotelNavigation(true)" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="{{ __('نوێکردنەوەی شوێنی GPS') }}">
                                         <i class="fa-solid fa-crosshairs"></i>
                                     </button>
-                                    <button type="button" onclick="clearHotelDetailRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="لابردنی هێڵی ڕێگە">
+                                    <button type="button" onclick="clearHotelDetailRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="{{ __('لابردنی هێڵی ڕێگە') }}">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -289,7 +289,7 @@
                 
                 <div class="text-xs text-slate-500 flex items-center gap-2">
                     <i class="fa-solid fa-location-crosshairs text-amber-500"></i>
-                    <span>ناونیشان: {{ $hotel->address ?? 'سلێمانی، ' . $hotel->neighborhood }}</span>
+                    <span>{{ __('ناونیشان:') }} {{ $hotel->address ?? __('سلێمانی') . '، ' . __($hotel->neighborhood) }}</span>
                 </div>
             </div>
 
@@ -300,13 +300,13 @@
             
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-5">
                 <div class="text-center pb-4 border-b border-slate-100 space-y-1">
-                    <span class="text-xs font-bold text-slate-500">نرخی مانەوەی یەک شەو</span>
+                    <span class="text-xs font-bold text-slate-500">{{ __('نرخی مانەوەی یەک شەو') }}</span>
                     <div class="text-3xl font-black text-emerald-600">
                         ${{ number_format($hotel->price_per_night) }}
-                        <span class="text-xs font-normal text-slate-500">/ شەو</span>
+                        <span class="text-xs font-normal text-slate-500">{{ __('/ شەو') }}</span>
                     </div>
                     <span class="inline-block text-[11px] text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full font-bold">
-                        بەپێی ژوور و بەروار دەگۆڕێت
+                        {{ __('بەپێی ژوور و بەروار دەگۆڕێت') }}
                     </span>
                 </div>
 
@@ -315,19 +315,19 @@
                     @if($hotel->clean_whatsapp)
                         <a href="https://wa.me/{{ $hotel->clean_whatsapp }}?text={{ urlencode('سڵاو، دەمەوێت لە ئوتێلی ' . $hotel->name . ' حجز بکەم. تکایە زانیاری ژووری بەردەست و نرخەکانم پێ بڵێن.') }}" target="_blank" class="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm text-center shadow-md transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>حجزکردن لە ڕێگەی واتسئەپ</span>
+                            <span>{{ __('حجزکردن لە ڕێگەی واتسئەپ') }}</span>
                         </a>
                     @endif
 
                     <a href="tel:{{ $hotel->phone }}" class="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm text-center shadow-md transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
                         <i class="fa-solid fa-phone text-xs"></i>
-                        <span>پەیوەندی بە ڕیسێپشن ({{ $hotel->phone }})</span>
+                        <span>{{ __('پەیوەندی بە ڕیسێپشن') }} ({{ $hotel->phone }})</span>
                     </a>
 
                     @if($hotel->website)
                         <a href="{{ $hotel->website }}" target="_blank" class="w-full py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs text-center transition-colors flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-globe text-xs"></i>
-                            <span>سەردانی وێبسایتی فەرمی</span>
+                            <span>{{ __('سەردانی وێبسایتی فەرمی') }}</span>
                         </a>
                     @endif
                 </div>
@@ -335,24 +335,24 @@
                 <!-- Hotel Info List -->
                 <div class="pt-4 border-t border-slate-100 space-y-2.5 text-xs text-slate-600">
                     <div class="flex items-center justify-between">
-                        <span class="font-medium text-slate-500">شار / گەڕەک:</span>
-                        <span class="font-bold text-slate-800">سلێمانی، {{ $hotel->neighborhood }}</span>
+                        <span class="font-medium text-slate-500">{{ __('شار / گەڕەک:') }}</span>
+                        <span class="font-bold text-slate-800">{{ __('سلێمانی') }}، {{ __($hotel->neighborhood) }}</span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="font-medium text-slate-500">پلەی ئوتێل:</span>
-                        <span class="font-bold text-amber-500">{{ str_repeat('★', $hotel->stars) }} ({{ $hotel->stars }} ئەستێرە)</span>
+                        <span class="font-medium text-slate-500">{{ __('پلەی ئوتێل:') }}</span>
+                        <span class="font-bold text-amber-500">{{ str_repeat('★', $hotel->stars) }} ({{ $hotel->stars }} {{ __('ئەستێرە') }})</span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="font-medium text-slate-500">ڕیسێپشن:</span>
-                        <span class="font-bold text-emerald-600">٢٤ کاتژمێر کراوەیە</span>
+                        <span class="font-medium text-slate-500">{{ __('ڕیسێپشن:') }}</span>
+                        <span class="font-bold text-emerald-600">{{ __('٢٤ کاتژمێر کراوەیە') }}</span>
                     </div>
                 </div>
 
                 <!-- Share -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-center gap-3">
-                    <button type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('بەستەری ئوتێل کۆپیکرا!');" class="text-xs font-bold text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-1">
+                    <button type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('{{ __('بەستەری ئوتێل کۆپیکرا!') }}');" class="text-xs font-bold text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-1">
                         <i class="fa-solid fa-link text-[11px]"></i>
-                        <span>کۆپیکردنی بەستەر</span>
+                        <span>{{ __('کۆپیکردنی بەستەر') }}</span>
                     </button>
                 </div>
 
@@ -365,7 +365,7 @@
     <!-- Related Hotels -->
     @if(isset($relatedHotels) && $relatedHotels->count() > 0)
         <div class="pt-8 border-t border-slate-200/80 space-y-4">
-            <h2 class="text-lg font-black text-slate-900">ئوتێلە هاوشێوەکان لە سلێمانی</h2>
+            <h2 class="text-lg font-black text-slate-900">{{ __('ئوتێلە هاوشێوەکان لە سلێمانی') }}</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 @foreach($relatedHotels as $rel)
                     <a href="{{ route('hotels.show', $rel->slug) }}" class="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all group flex items-center gap-3">
@@ -373,8 +373,8 @@
                         <div class="overflow-hidden">
                             <div class="text-[10px] text-amber-500 font-bold">{{ str_repeat('★', $rel->stars) }}</div>
                             <h4 class="text-xs font-black text-slate-900 group-hover:text-amber-600 transition-colors truncate">{{ $rel->name }}</h4>
-                            <div class="text-[11px] text-slate-500 truncate">{{ $rel->neighborhood }}</div>
-                            <div class="text-xs font-black text-emerald-600 mt-0.5">${{ number_format($rel->price_per_night) }} /شەو</div>
+                            <div class="text-[11px] text-slate-500 truncate">{{ __($rel->neighborhood) }}</div>
+                            <div class="text-xs font-black text-emerald-600 mt-0.5">${{ number_format($rel->price_per_night) }} {{ __('/ شەو') }}</div>
                         </div>
                     </a>
                 @endforeach

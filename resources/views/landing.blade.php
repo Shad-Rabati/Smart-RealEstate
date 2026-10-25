@@ -16,17 +16,21 @@
                 <!-- VIP Crown Badge -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 via-amber-400/20 to-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-black shadow-lg shadow-amber-500/10 backdrop-blur-md">
                     <i class="fa-solid fa-crown text-amber-400 animate-bounce"></i>
-                    <span>ناوەندی پۆلێنکردنی خانوبەرەی سلێمانی و ڕیکلامی VIP</span>
+                    <span>{{ __('ناوەندی پۆلێنکردنی خانوبەرەی سلێمانی و ڕیکلامی VIP') }}</span>
                 </div>
 
-                <!-- Main Headline (Contains 'خانوبەرەی' & 'سلێمانی') -->
+                <!-- Main Headline -->
                 <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.25] text-white">
-                    پلاتفۆرمی نایابی <span class="bg-gradient-to-l from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">خانوبەرەی سلێمانی</span>
+                    @if(app()->getLocale() === 'ku')
+                        پلاتفۆرمی نایابی <span class="bg-gradient-to-l from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">خانوبەرەی سلێمانی</span>
+                    @else
+                        {{ __('پلاتفۆرمی نایابی خانوبەرەی سلێمانی') }}
+                    @endif
                 </h1>
 
                 <!-- Subtitle -->
                 <p class="text-base sm:text-lg text-slate-300 font-medium leading-relaxed max-w-2xl mx-auto">
-                    باشترین خانووی کرێ، پڕۆژەی نیشتەجێبوون، شوقەی ناوازە و ئوتێلە نایابەکان لە تەواوی گەڕەکەکانی شاری سلێمانی بە شێوەیەکی مۆدێرن و ڕاستەوخۆ ببینە.
+                    {{ __('باشترین خانووی کرێ، پڕۆژەی نیشتەجێبوون، شوقەی ناوازە و ئوتێلە نایابەکان لە تەواوی گەڕەکەکانی شاری سلێمانی بە شێوەیەکی مۆدێرن و ڕاستەوخۆ ببینە.') }}
                 </p>
             </div>
         </div>
@@ -40,18 +44,18 @@
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20 text-xs font-extrabold mb-2">
                         <i class="fa-solid fa-star text-amber-500"></i>
-                        <span>ڕیکلامی نایاب و هەڵبژێردراو (VIP)</span>
+                        <span>{{ __('ڕیکلامی نایاب و هەڵبژێردراو (VIP)') }}</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                        موڵک و پڕۆژە سەرنجڕاکێشەکانی ئەم هەفتەیە
+                        {{ __('موڵک و پڕۆژە سەرنجڕاکێشەکانی ئەم هەفتەیە') }}
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-semibold mt-1">
-                        تایبەتترین شوێنەکان بە کواڵیتی بەرز و پێداویستی تەواوەوە
+                        {{ __('تایبەتترین شوێنەکان بە کواڵیتی بەرز و پێداویستی تەواوەوە') }}
                     </p>
                 </div>
                 <a href="{{ route('properties.index') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-black transition-all hover:shadow-md">
-                    <span>بینینی هەموو خانووەکان</span>
-                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>{{ __('بینینی هەموو خانووەکان') }}</span>
+                    <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-xs"></i>
                 </a>
             </div>
 
@@ -164,9 +168,9 @@
                 @empty
                     <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-slate-200">
                         <i class="fa-solid fa-house-chimney-crack text-slate-300 text-4xl mb-3"></i>
-                        <p class="text-sm font-bold text-slate-600">لە ئێستادا هیچ موڵکێکی VIP بەردەست نییە</p>
+                        <p class="text-sm font-bold text-slate-600">{{ __('لە ئێستادا هیچ موڵکێکی VIP بەردەست نییە') }}</p>
                         <a href="{{ route('properties.index') }}" class="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold">
-                            بینینی هەموو خانووەکان لەسەر نەخشە
+                            {{ __('بینینی هەموو خانووەکان لەسەر نەخشە') }}
                         </a>
                     </div>
                 @endforelse
@@ -182,29 +186,29 @@
                 <div class="lg:col-span-2 space-y-3">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-black">
                         <i class="fa-solid fa-bullhorn text-amber-400"></i>
-                        <span>شوێنی تایبەتی ڕیکلامی VIP</span>
+                        <span>{{ __('شوێنی تایبەتی ڕیکلامی VIP') }}</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-black text-white leading-snug">
-                        خاوەن نووسینگە یان پڕۆژەی نیشتەجێبوونیت لە سلێمانی؟
+                        {{ __('خاوەن نووسینگە یان پڕۆژەی نیشتەجێبوونیت لە سلێمانی؟') }}
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-                        موڵکەکانت و پڕۆژە ناوازەکانت بخەرە پێش چاوی هەزاران کڕیار و کرێچی ڕۆژانە لە سەرەکیترین پەیجی خانوبەرەی سلێمانی. بەرزترین ئاستی بینین بەدەستبهێنە.
+                        {{ __('موڵکەکانت و پڕۆژە ناوازەکانت بخەرە پێش چاوی هەزاران کڕیار و کرێچی ڕۆژانە لە سەرەکیترین پەیجی خانوبەرەی سلێمانی. بەرزترین ئاستی بینین بەدەستبهێنە.') }}
                     </p>
                     <div class="flex flex-wrap items-center gap-4 pt-2 text-xs font-bold text-amber-200">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> بەرزترین بینەری ڕۆژانە</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> بڵاوکردنەوەی ناوی نووسینگە</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> دانانی لۆگۆ و پەیوەندی خێرا</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> {{ __('بەرزترین بینەری ڕۆژانە') }}</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> {{ __('بڵاوکردنەوەی ناوی نووسینگە') }}</span>
+                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-emerald-400"></i> {{ __('دانانی لۆگۆ و پەیوەندی خێرا') }}</span>
                     </div>
                 </div>
 
                 <div class="flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
                     <a href="https://wa.me/9647701234567?text={{ urlencode('سڵاو، دەمەوێت سەبارەت بە ڕیکلامی VIP لە پلاتفۆرمی خانوبەرەی سلێمانی زانیاری وەربگرم') }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-black text-xs sm:text-sm shadow-xl shadow-emerald-500/25 transition-all hover:scale-105 active:scale-95">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>داواکردنی ڕیکلامی VIP لە واتسئەپ</span>
+                        <span>{{ __('داواکردنی ڕیکلامی VIP لە واتسئەپ') }}</span>
                     </a>
                     <a href="{{ route('agency.register') }}" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-all hover:scale-105">
                         <i class="fa-solid fa-building text-amber-400"></i>
-                        <span>تۆمارکردنی نووسینگەی نوێ</span>
+                        <span>{{ __('تۆمارکردنی نووسینگەی نوێ') }}</span>
                     </a>
                 </div>
             </div>
@@ -215,10 +219,10 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                        گەڕان بەپێی گەڕەکە ناسراوەکانی سلێمانی
+                        {{ __('گەڕان بەپێی گەڕەکە ناسراوەکانی سلێمانی') }}
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-semibold mt-1">
-                        گەڕەکی دڵخوازی خۆت هەڵبژێرە بۆ بینینی هەموو خانووەکانی لەسەر نەخشە
+                        {{ __('گەڕەکی دڵخوازی خۆت هەڵبژێرە بۆ بینینی هەموو خانووەکانی لەسەر نەخشە') }}
                     </p>
                 </div>
             </div>
@@ -227,7 +231,7 @@
                 @foreach($neighborhoods as $neighborhood)
                     <a href="{{ route('properties.index', ['neighborhood' => $neighborhood]) }}" class="p-3 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:bg-emerald-50/50 shadow-sm hover:shadow transition-all text-center group flex flex-col items-center justify-center gap-1.5">
                         <i class="fa-solid fa-location-dot text-slate-400 group-hover:text-emerald-600 group-hover:scale-110 transition-all text-xs"></i>
-                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-800 transition-colors">{{ $neighborhood }}</span>
+                        <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-800 transition-colors">{{ __($neighborhood) }}</span>
                     </a>
                 @endforeach
             </div>
@@ -239,18 +243,18 @@
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-700 border border-blue-500/20 text-xs font-extrabold mb-2">
                         <i class="fa-solid fa-shield-check text-blue-500"></i>
-                        <span>نووسینگە فەرمییەکان</span>
+                        <span>{{ __('نووسینگە فەرمییەکان') }}</span>
                     </div>
                     <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                        نووسینگە پێشەنگ و باوەڕپێکراوەکان
+                        {{ __('نووسینگە پێشەنگ و باوەڕپێکراوەکان') }}
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-500 font-semibold mt-1">
-                        لەگەڵ نووسینگە فەرمییەکانی سلێمانی ڕاستەوخۆ و بەبێ نێوەندگیر پەیوەندی بکە
+                        {{ __('لەگەڵ نووسینگە فەرمییەکانی سلێمانی ڕاستەوخۆ و بەبێ نێوەندگیر پەیوەندی بکە') }}
                     </p>
                 </div>
                 <a href="{{ route('agencies.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-black transition-colors">
-                    <span>تەواوی نووسینگەکان ({{ $counts['agencies'] ?? 0 }})</span>
-                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <span>{{ __('تەواوی نووسینگەکان') }} ({{ $counts['agencies'] ?? 0 }})</span>
+                    <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-xs"></i>
                 </a>
             </div>
 
@@ -264,7 +268,7 @@
                                     {{ $agency->name }}
                                 </h3>
                                 <div class="text-[11px] text-emerald-600 font-bold flex items-center gap-1 mt-0.5">
-                                    <i class="fa-solid fa-circle-check text-[10px]"></i> باوەڕپێکراو
+                                    <i class="fa-solid fa-circle-check text-[10px]"></i> {{ __('باوەڕپێکراو') }}
                                 </div>
                             </div>
                         </div>
@@ -276,16 +280,16 @@
                             </div>
                             <div class="flex items-center gap-1.5 font-bold text-slate-700">
                                 <i class="fa-solid fa-house text-emerald-600 text-xs"></i>
-                                <span>{{ $agency->properties_count }} موڵکی بەردەست</span>
+                                <span>{{ $agency->properties_count }} {{ __('موڵکی بەردەست') }}</span>
                             </div>
                         </div>
 
                         <div class="pt-2 border-t border-slate-100 flex items-center gap-2">
                             <a href="{{ route('agencies.show', $agency->slug) }}" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-800 text-xs font-black text-center transition-colors">
-                                پڕۆفایلی نووسینگە
+                                {{ __('پڕۆفایلی نووسینگە') }}
                             </a>
                             @if($agency->whatsapp_link)
-                                <a href="{{ $agency->whatsapp_link }}" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white flex items-center justify-center transition-colors" title="واتسئەپ">
+                                <a href="{{ $agency->whatsapp_link }}" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-500 text-emerald-600 hover:text-white flex items-center justify-center transition-colors" title="{{ __('واتسئەپ') }}">
                                     <i class="fa-brands fa-whatsapp text-base"></i>
                                 </a>
                             @endif
@@ -302,18 +306,18 @@
                     <div>
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 border border-amber-500/20 text-xs font-extrabold mb-2">
                             <i class="fa-solid fa-hotel text-amber-500"></i>
-                            <span>بەشی گەشتیاری و حەوانەوە</span>
+                            <span>{{ __('بەشی گەشتیاری و حەوانەوە') }}</span>
                         </div>
                         <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                            ئوتێلە ناوازەکانی شاری سلێمانی
+                            {{ __('ئوتێلە ناوازەکانی شاری سلێمانی') }}
                         </h2>
                         <p class="text-xs sm:text-sm text-slate-500 font-semibold mt-1">
-                            بۆ گەشتیاران و میوانانی شار، باشترین ئوتێل بە نەخشە و نرخی شەوانە
+                            {{ __('بۆ گەشتیاران و میوانانی شار، باشترین ئوتێل بە نەخشە و نرخی شەوانە') }}
                         </p>
                     </div>
                     <a href="{{ route('hotels.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-black border border-amber-200/80 transition-colors">
-                        <span>هەموو ئوتێلەکان</span>
-                        <i class="fa-solid fa-arrow-left text-xs"></i>
+                        <span>{{ __('هەموو ئوتێلەکان') }}</span>
+                        <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-xs"></i>
                     </a>
                 </div>
 
@@ -326,11 +330,11 @@
                                     @for($i = 0; $i < $hotel->stars; $i++)
                                         <i class="fa-solid fa-star text-[10px]"></i>
                                     @endfor
-                                    <span class="text-white mr-1 font-mono">{{ $hotel->stars }} ئەستێرە</span>
+                                    <span class="text-white mr-1 font-mono">{{ $hotel->stars }} {{ __('ئەستێرە') }}</span>
                                 </div>
                                 <div class="absolute bottom-3 right-3 text-white text-xs font-bold drop-shadow flex items-center gap-1.5">
                                     <i class="fa-solid fa-location-dot text-rose-400"></i>
-                                    <span>{{ $hotel->neighborhood }}</span>
+                                    <span>{{ __($hotel->neighborhood) }}</span>
                                 </div>
                             </div>
 
@@ -346,13 +350,13 @@
 
                                 <div class="flex items-center justify-between pt-2 border-t border-slate-150">
                                     <div class="flex flex-col">
-                                        <span class="text-[10px] text-slate-400 font-bold">نرخی شەوانە لە</span>
+                                        <span class="text-[10px] text-slate-400 font-bold">{{ __('نرخی شەوانە لە') }}</span>
                                         <span class="text-base font-black text-amber-600 font-mono">
                                             {{ number_format($hotel->price_per_night) }} {{ $hotel->price_currency === 'USD' ? '$' : 'د.ع' }}
                                         </span>
                                     </div>
                                     <a href="{{ route('hotels.show', $hotel->slug) }}" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-amber-600 text-white text-xs font-black transition-colors">
-                                        بینینی ئوتێل
+                                        {{ __('بینینی ئوتێل') }}
                                     </a>
                                 </div>
                             </div>

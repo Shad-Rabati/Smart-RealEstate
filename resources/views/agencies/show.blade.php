@@ -14,11 +14,11 @@
                 <div class="space-y-1.5">
                     <div class="flex items-center gap-2">
                         <h1 class="text-xl sm:text-2xl font-black text-slate-900">{{ $agency->name }}</h1>
-                        <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">باوەڕپێکراو</span>
+                        <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">{{ __('باوەڕپێکراو') }}</span>
                     </div>
 
                     @if($agency->owner_name)
-                        <div class="text-xs text-slate-700 font-medium">بەڕێوەبەر: {{ $agency->owner_name }}</div>
+                        <div class="text-xs text-slate-700 font-medium">{{ __('بەڕێوەبەر:') }} {{ $agency->owner_name }}</div>
                     @endif
 
                     <div class="flex items-center gap-2 text-xs text-slate-700">
@@ -33,7 +33,7 @@
                 @if($agency->whatsapp_link)
                     <a href="{{ $agency->whatsapp_link }}" target="_blank" class="px-5 py-3 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-sm transition-all">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>نامە لە واتسئاپ</span>
+                        <span>{{ __('نامە لە واتسئاپ') }}</span>
                     </a>
                 @endif
 
@@ -53,19 +53,19 @@
         <!-- Agency Property Counters -->
         <div class="mt-6 pt-4 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                <span class="text-slate-700 block font-medium">کۆی موڵکەکان</span>
+                <span class="text-slate-700 block font-medium">{{ __('کۆی موڵکەکان') }}</span>
                 <span class="text-lg font-black text-slate-900">{{ $agency->properties_count }}</span>
             </div>
             <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100">
-                <span class="text-emerald-800 block font-medium">🟢 بەردەستە (سەوز)</span>
+                <span class="text-emerald-800 block font-medium">{{ __('🟢 بەردەستە (سەوز)') }}</span>
                 <span class="text-lg font-black text-emerald-700">{{ $agency->available_properties_count }}</span>
             </div>
             <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                <span class="text-slate-800 block font-medium">⚪ دانوستان (رەساسی)</span>
+                <span class="text-slate-800 block font-medium">{{ __('⚪ دانوستان (رەساسی)') }}</span>
                 <span class="text-lg font-black text-slate-700">{{ $agency->reserved_properties_count }}</span>
             </div>
             <div class="bg-rose-50 p-3 rounded-xl border border-rose-100">
-                <span class="text-rose-800 block font-medium">🔴 گیراوە (سور)</span>
+                <span class="text-rose-800 block font-medium">{{ __('🔴 گیراوە (سور)') }}</span>
                 <span class="text-lg font-black text-rose-700">{{ $agency->rented_properties_count }}</span>
             </div>
         </div>
@@ -75,21 +75,21 @@
     <div class="space-y-6">
         <div class="flex flex-wrap items-center justify-between gap-4">
             <h2 class="text-lg font-black text-slate-900">
-                خانووە تۆمارکراوەکانی ئەم نووسینگەیە
+                {{ __('خانووە تۆمارکراوەکانی ئەم نووسینگەیە') }}
             </h2>
 
             <div class="flex items-center gap-2 text-xs">
                 <a href="{{ route('agencies.show', $agency->slug) }}" class="px-3 py-1.5 rounded-xl {{ !request('status') || request('status') === 'all' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700' }} font-bold">
-                    هەمووی ({{ $agency->properties_count }})
+                    {{ __('هەمووی') }} ({{ $agency->properties_count }})
                 </a>
                 <a href="{{ route('agencies.show', [$agency->slug, 'status' => 'available']) }}" class="px-3 py-1.5 rounded-xl {{ request('status') === 'available' ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-700' }} font-bold">
-                    🟢 بەردەستە ({{ $agency->available_properties_count }})
+                    {{ __('🟢 بەردەستە') }} ({{ $agency->available_properties_count }})
                 </a>
                 <a href="{{ route('agencies.show', [$agency->slug, 'status' => 'reserved']) }}" class="px-3 py-1.5 rounded-xl {{ request('status') === 'reserved' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-700' }} font-bold">
-                    ⚪ لە دانوستاندا ({{ $agency->reserved_properties_count }})
+                    {{ __('⚪ لە دانوستاندا') }} ({{ $agency->reserved_properties_count }})
                 </a>
                 <a href="{{ route('agencies.show', [$agency->slug, 'status' => 'rented']) }}" class="px-3 py-1.5 rounded-xl {{ request('status') === 'rented' ? 'bg-rose-600 text-white' : 'bg-rose-50 text-rose-700' }} font-bold">
-                    🔴 گیراوە ({{ $agency->rented_properties_count }})
+                    {{ __('🔴 گیراوە') }} ({{ $agency->rented_properties_count }})
                 </a>
             </div>
         </div>
@@ -104,15 +104,15 @@
                             <div class="absolute top-2 right-2">
                                 @if($prop->status === 'available')
                                     <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-emerald-500 text-white shadow-sm">
-                                        🟢 سەوز (بەردەست)
+                                        {{ __('🟢 سەوز (بەردەست)') }}
                                     </span>
                                 @elseif($prop->status === 'reserved')
                                     <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-slate-600 text-white shadow-sm">
-                                        ⚪ رەساسی (دانوستان)
+                                        {{ __('⚪ رەساسی (دانوستان)') }}
                                     </span>
                                 @else
                                     <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-rose-600 text-white shadow-sm">
-                                        🔴 سور (گیراو)
+                                        {{ __('🔴 سور (گیراو)') }}
                                     </span>
                                 @endif
                             </div>
@@ -129,22 +129,22 @@
                         </div>
 
                         <div class="flex items-center gap-3 text-xs text-slate-700 mb-3">
-                            <span><i class="fa-solid fa-location-dot ml-1 text-slate-400"></i> {{ $prop->neighborhood }}</span>
-                            <span><i class="fa-solid fa-bed ml-1 text-slate-400"></i> {{ $prop->bedrooms }} ژوور</span>
-                            <span><i class="fa-solid fa-ruler-combined ml-1 text-slate-400"></i> {{ $prop->area_sqm }}م²</span>
+                            <span><i class="fa-solid fa-location-dot ml-1 text-slate-400"></i> {{ __($prop->neighborhood) }}</span>
+                            <span><i class="fa-solid fa-bed ml-1 text-slate-400"></i> {{ $prop->bedrooms }} {{ __('ژوور') }}</span>
+                            <span><i class="fa-solid fa-ruler-combined ml-1 text-slate-400"></i> {{ $prop->area_sqm }} {{ __('م²') }}</span>
                         </div>
                     </div>
 
                     <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-[11px] text-slate-700">{{ $prop->property_type_label }}</span>
+                        <span class="text-[11px] text-slate-700">{{ __($prop->property_type_label) }}</span>
                         <a href="{{ route('properties.show', $prop->slug) }}" class="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold transition-colors">
-                            وردەکاری خانوو
+                            {{ __('وردەکاری خانوو') }}
                         </a>
                     </div>
                 </div>
             @empty
                 <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-slate-200">
-                    <p class="text-sm text-slate-700">هیچ خانوویەک لەم دۆخەدا نییە.</p>
+                    <p class="text-sm text-slate-700">{{ __('هیچ خانوویەک لەم دۆخەدا نییە.') }}</p>
                 </div>
             @endforelse
         </div>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ckb" dir="rtl">
+<html lang="{{ app()->getLocale() }}" dir="{{ in_array(app()->getLocale(), ['ku', 'ar']) ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>کاتەکەت بەسەرچوو (419) | خانوبەرەی سلێمانی</title>
+    <title>{{ __('کاتەکەت بەسەرچوو (419) | خانوبەرەی سلێمانی') }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,24 +24,24 @@
 
         <div class="space-y-2">
             <span class="inline-block text-[11px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 px-3 py-1 rounded-full">
-                کۆدی هەڵە: 419 (Page Expired)
+                {{ __('کۆدی هەڵە: 419 (Page Expired)') }}
             </span>
             <h1 class="text-2xl font-black text-slate-900">
-                کاتەکەت لە پەڕەکەدا بەسەرچوو
+                {{ __('کاتەکەت لە پەڕەکەدا بەسەرچوو') }}
             </h1>
             <p class="text-sm text-slate-600 leading-relaxed">
-                بەهۆی مانەوە بۆ ماوەیەکی درێژ لەسەر پەڕەکە، دانیشتنەکەت کۆتایی هات. تکایە پەڕەکە نوێبکەرەوە و دووبارە هەوڵبدەرەوە.
+                {{ __('بەهۆی مانەوە بۆ ماوەیەکی درێژ لەسەر پەڕەکە، دانیشتنەکەت کۆتایی هات. تکایە پەڕەکە نوێبکەرەوە و دووبارە هەوڵبدەرەوە.') }}
             </p>
         </div>
 
         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button onclick="window.history.back();" class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
                 <i class="fa-solid fa-arrow-rotate-right text-xs"></i>
-                <span>گەڕانەوە و هەوڵدانەوە</span>
+                <span>{{ __('گەڕانەوە و هەوڵدانەوە') }}</span>
             </button>
             <a href="{{ url('/') }}" class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition-all flex items-center justify-center gap-2">
                 <i class="fa-solid fa-house text-xs"></i>
-                <span>پەڕەی سەرەکی</span>
+                <span>{{ __('پەڕەی سەرەکی') }}</span>
             </a>
         </div>
 

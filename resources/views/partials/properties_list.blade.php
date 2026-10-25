@@ -1,13 +1,13 @@
 <div class="flex items-center justify-between pb-3 border-b border-slate-200/80 mb-3">
     <div>
         <h2 class="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <span>خانووەکانی کرێ</span>
+            <span>{{ __('خانووەکانی کرێ') }}</span>
             @if(request('neighborhood') && request('neighborhood') !== 'all')
-                <span class="text-emerald-600 font-bold text-base">لە {{ request('neighborhood') }}</span>
+                <span class="text-emerald-600 font-bold text-base">({{ __(request('neighborhood')) }})</span>
             @endif
         </h2>
         <p class="text-xs text-slate-500 font-medium mt-0.5">
-            پیشاندانی <span id="currentShowingCount" class="font-bold text-slate-700">{{ $properties->count() }}</span> لە کۆی <span id="totalPropertiesCount" class="font-bold text-slate-700">{{ $properties->total() }}</span> خانووی بەردەست
+            {{ __('پیشاندانی') }} <span id="currentShowingCount" class="font-bold text-slate-700">{{ $properties->count() }}</span> {{ __('لە کۆی') }} <span id="totalPropertiesCount" class="font-bold text-slate-700">{{ $properties->total() }}</span> {{ __('خانووی بەردەست') }}
         </p>
     </div>
 
@@ -111,15 +111,15 @@
                 <div class="flex items-center gap-1.5 text-xs text-slate-600 mt-2.5 flex-wrap">
                     <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-slate-50 text-slate-700 font-semibold border border-slate-100">
                         <i class="fa-solid fa-location-dot text-emerald-600 text-[10px]"></i>
-                        <span>{{ $prop->neighborhood }}</span>
+                        <span>{{ __($prop->neighborhood) }}</span>
                     </span>
                     <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-slate-50 text-slate-700 font-semibold border border-slate-100">
                         <i class="fa-solid fa-bed text-slate-400 text-[10px]"></i>
-                        <span>{{ $prop->bedrooms }} ژوور</span>
+                        <span>{{ $prop->bedrooms }} {{ __('ژوور') }}</span>
                     </span>
                     <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-slate-50 text-slate-700 font-semibold border border-slate-100">
                         <i class="fa-solid fa-ruler-combined text-slate-400 text-[10px]"></i>
-                        <span>{{ $prop->area_sqm }} م²</span>
+                        <span>{{ $prop->area_sqm }} {{ __('م²') }}</span>
                     </span>
                 </div>
 
@@ -129,9 +129,9 @@
                         <span class="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60">
                             <i class="fa-solid fa-location-crosshairs text-blue-500 animate-pulse"></i>
                             @if($prop->distance_km < 1)
-                                {{ round($prop->distance_km * 1000) }} مەتر لە تۆوە دوورە
+                                {{ round($prop->distance_km * 1000) }} {{ __('مەتر لە تۆوە دوورە') }}
                             @else
-                                {{ $prop->distance_km }} کم لە تۆوە دوورە
+                                {{ $prop->distance_km }} {{ __('کم لە تۆوە دوورە') }}
                             @endif
                         </span>
                     </div>

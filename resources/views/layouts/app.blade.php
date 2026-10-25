@@ -500,27 +500,27 @@
                             <i class="fa-solid fa-house-chimney text-lg"></i>
                         </div>
                         <span class="text-xl font-black text-white">
-                            خانوبەرەی <span class="text-emerald-400">سلێمانی</span>
+                            {{ __('messages.app_name') }}
                         </span>
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        پلاتفۆرمی سەردەمیانەی کرێی خانوو لە سلێمانی. بەبێ پێویستی سەردانیکردنی دەیان نووسینگەی جیاواز، ڕاستەوخۆ لەسەر نەخشەی شارەکە خانووی دڵخوازی خۆت بدۆزەرەوە یان نزیکترین شوێن لە خۆتەوە هەڵبژێرە.
+                        {{ __('پلاتفۆرمی سەردەمیانەی کرێی خانوو لە سلێمانی. بەبێ پێویستی سەردانیکردنی دەیان نووسینگەی جیاواز، ڕاستەوخۆ لەسەر نەخشەی شارەکە خانووی دڵخوازی خۆت بدۆزەرەوە یان نزیکترین شوێن لە خۆتەوە هەڵبژێرە.') }}
                     </p>
                     <div class="flex items-center gap-2.5 text-xs text-slate-400 pt-1 flex-wrap">
                         <a href="{{ route('home') }}" class="hover:text-emerald-400 transition-colors flex items-center gap-1 font-semibold">
-                            <i class="fa-solid fa-house text-emerald-500"></i> سەرەکی
+                            <i class="fa-solid fa-house text-emerald-500"></i> {{ __('messages.home') }}
                         </a>
                         <span>•</span>
                         <a href="{{ route('properties.index') }}" class="hover:text-emerald-400 transition-colors flex items-center gap-1 font-semibold">
-                            <i class="fa-solid fa-map-location-dot text-emerald-500"></i> گەڕانی خانوو
+                            <i class="fa-solid fa-map-location-dot text-emerald-500"></i> {{ __('messages.search_properties') }}
                         </a>
                         <span>•</span>
                         <a href="{{ route('agencies.index') }}" class="hover:text-emerald-400 transition-colors flex items-center gap-1 font-semibold">
-                            <i class="fa-solid fa-building text-emerald-500"></i> نووسینگەکان
+                            <i class="fa-solid fa-building text-emerald-500"></i> {{ __('messages.agencies') }}
                         </a>
                         <span>•</span>
                         <a href="{{ route('hotels.index') }}" class="hover:text-amber-400 transition-colors flex items-center gap-1 font-semibold">
-                            <i class="fa-solid fa-hotel text-amber-500"></i> ئوتێلەکان
+                            <i class="fa-solid fa-hotel text-amber-500"></i> {{ __('messages.hotels') }}
                         </a>
                     </div>
                 </div>
@@ -531,15 +531,15 @@
                         <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 text-base shadow-sm">
                             <i class="fa-solid fa-briefcase"></i>
                         </div>
-                        <h4 class="text-white font-black text-base">نووسینگەکانی خانوبەرە</h4>
+                        <h4 class="text-white font-black text-base">{{ __('نووسینگەکانی خانوبەرە') }}</h4>
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        خاوەنی نووسینگەی خانوبەرەیت لە سلێمانی؟ هەژماری خۆت تۆمار بکە و خانووەکانت لەسەر نەخشەی شار دابنێ تا کڕیاران و کرێچییەکان ڕاستەوخۆ پەیوەندیت پێوە بکەن.
+                        {{ __('خاوەنی نووسینگەی خانوبەرەیت لە سلێمانی؟ هەژماری خۆت تۆمار بکە و خانووەکانت لەسەر نەخشەی شار دابنێ تا کڕیاران و کرێچییەکان ڕاستەوخۆ پەیوەندیت پێوە بکەن.') }}
                     </p>
                     <div class="pt-1">
                         <a href="{{ route('agency.register') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
                             <i class="fa-solid fa-plus-circle text-xs"></i>
-                            <span>تۆمارکردنی نووسینگە بە خۆڕایی</span>
+                            <span>{{ __('تۆمارکردنی نووسینگە بە خۆڕایی') }}</span>
                         </a>
                     </div>
                 </div>
@@ -550,20 +550,20 @@
                         <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 text-base shadow-sm">
                             <i class="fa-solid fa-hotel"></i>
                         </div>
-                        <h4 class="text-white font-black text-base">ئوتێلەکانی سلێمانی</h4>
+                        <h4 class="text-white font-black text-base">{{ __('ئوتێلەکانی سلێمانی') }}</h4>
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        گەشتیاریت یان بەدوای شوێنی مانەوە دەگەڕێیت؟ هەموو ئوتێلە ناودارەکانی سلێمانی لەسەر نەخشەی شارەکە ببینە، بەپێی ئەستێرە و نرخ فلتەریان بکە و حجز بکە.
+                        {{ __('گەشتیاریت یان بەدوای شوێنی مانەوە دەگەڕێیت؟ هەموو ئوتێلە ناودارەکانی سلێمانی لەسەر نەخشەی شارەکە ببینە، بەپێی ئەستێرە و نرخ فلتەریان بکە و حجز بکە.') }}
                     </p>
                     <div class="pt-1 space-y-2">
                         <a href="{{ route('hotels.index') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
                             <i class="fa-solid fa-map-location-dot text-xs"></i>
-                            <span>نەخشە و لیستی ئوتێلەکان</span>
+                            <span>{{ __('نەخشە و لیستی ئوتێلەکان') }}</span>
                         </a>
                         <div>
                             <a href="https://wa.me/9647701234567?text={{ urlencode('سڵاو، دەمەوێت ئوتێلەکەم لە پلاتفۆرمی سلێمانی تۆمار بکەم') }}" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-amber-400 transition-colors font-medium">
                                 <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
-                                <span>تۆمارکردنی ئوتێلی نوێ لە پلاتفۆرم</span>
+                                <span>{{ __('تۆمارکردنی ئوتێلی نوێ لە پلاتفۆرم') }}</span>
                             </a>
                         </div>
                     </div>
@@ -576,8 +576,8 @@
                             <i class="fa-solid fa-headset"></i>
                         </div>
                         <div>
-                            <h4 class="text-white font-black text-base">پەیوەندی و تۆڕەکانمان</h4>
-                            <span class="text-[11px] text-slate-400 block">ڕاستەوخۆ قسەمان لەگەڵ بکە</span>
+                            <h4 class="text-white font-black text-base">{{ __('پەیوەندی و تۆڕەکانمان') }}</h4>
+                            <span class="text-[11px] text-slate-400 block">{{ __('ڕاستەوخۆ قسەمان لەگەڵ بکە') }}</span>
                         </div>
                     </div>
                     
@@ -585,22 +585,22 @@
                         <!-- WhatsApp Link -->
                         <a href="https://wa.me/9647701234567?text={{ urlencode('سڵاو، لە پلاتفۆرمی خانوبەرەی سلێمانییەوە پەیوەندیتان پێوە دەکەم') }}" target="_blank" class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 text-xs font-bold transition-all group shadow-sm">
                             <i class="fa-brands fa-whatsapp text-base"></i>
-                            <span class="flex-1">واتسئاپ (WhatsApp)</span>
-                            <i class="fa-solid fa-arrow-left text-[10px] group-hover:translate-x-[-3px] transition-transform"></i>
+                            <span class="flex-1">WhatsApp</span>
+                            <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-[10px] group-hover:translate-x-[-3px] transition-transform"></i>
                         </a>
 
                         <!-- Instagram Link -->
                         <a href="https://instagram.com" target="_blank" class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-gradient-to-r from-[#833ab4]/20 via-[#fd1d1d]/20 to-[#fcb045]/20 hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] text-rose-300 hover:text-white border border-rose-500/30 text-xs font-bold transition-all group shadow-sm">
                             <i class="fa-brands fa-instagram text-base"></i>
-                            <span class="flex-1">ئینستاگرام (Instagram)</span>
-                            <i class="fa-solid fa-arrow-left text-[10px] group-hover:translate-x-[-3px] transition-transform"></i>
+                            <span class="flex-1">Instagram</span>
+                            <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-[10px] group-hover:translate-x-[-3px] transition-transform"></i>
                         </a>
 
                         <!-- TikTok Link -->
                         <a href="https://tiktok.com" target="_blank" class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/5 hover:bg-black text-slate-300 hover:text-white border border-white/10 hover:border-cyan-400/50 text-xs font-bold transition-all group shadow-sm">
                             <i class="fa-brands fa-tiktok text-base text-cyan-400"></i>
-                            <span class="flex-1">تیکتۆک (TikTok)</span>
-                            <i class="fa-solid fa-arrow-left text-[10px] group-hover:translate-x-[-3px] transition-transform"></i>
+                            <span class="flex-1">TikTok</span>
+                            <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-[10px] group-hover:translate-x-[-3px] transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -609,14 +609,14 @@
 
             <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <div>
-                    © {{ date('Y') }} پلاتفۆرمی خانوبەرەی سلێمانی. هەموو مافەکان پارێزراون.
+                    © {{ date('Y') }} {{ __('messages.app_name') }}. {{ __('هەموو مافەکان پارێزراوە') }}.
                 </div>
                 <div class="flex items-center gap-4">
-                    <span>دیزاینکراوە بە تایبەتی بۆ خەڵکی خۆشەویستی شاری سلێمانی</span>
+                    <span>{{ __('دیزاینکراوە بە تایبەتی بۆ خەڵکی خۆشەویستی شاری سلێمانی') }}</span>
                     <span>•</span>
                     <a href="{{ route('admin.login') }}" class="text-slate-500 hover:text-emerald-400 transition-colors flex items-center gap-1">
                         <i class="fa-solid fa-lock text-[10px]"></i>
-                        <span>سەرپەرشتیار</span>
+                        <span>{{ __('سەرپەرشتیار') }}</span>
                     </a>
                 </div>
             </div>
@@ -634,8 +634,8 @@
                         <i class="fa-solid fa-location-crosshairs animate-pulse"></i>
                     </div>
                     <div>
-                        <h3 class="font-black text-slate-900 text-base">دیاریکردنی شوێنی ئێوە</h3>
-                        <p class="text-xs text-slate-500">بۆ دۆزینەوەی نزیکترین خانووەکانی کرێ</p>
+                        <h3 class="font-black text-slate-900 text-base">{{ __('دیاریکردنی شوێنی ئێوە') }}</h3>
+                        <p class="text-xs text-slate-500">{{ __('بۆ دۆزینەوەی نزیکترین خانووەکانی کرێ') }}</p>
                     </div>
                 </div>
                 <button type="button" onclick="closeLocationModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-sm transition-colors">
@@ -647,45 +647,45 @@
             <div class="space-y-2">
                 <button type="button" id="modalGPSBtn" onclick="requestDeviceGPS()" class="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm shadow-md shadow-blue-500/20 transition-all hover:scale-[1.01] active:scale-[0.99]">
                     <i class="fa-solid fa-location-arrow text-base"></i>
-                    <span>دۆزینەوە لە ڕێگەی GPS ی ئامێرەکەم</span>
+                    <span>{{ __('دۆزینەوە لە ڕێگەی GPS ی ئامێرەکەم') }}</span>
                 </button>
                 <div id="gpsStatusMessage" class="hidden text-center text-xs font-semibold py-1"></div>
             </div>
 
             <div class="relative flex py-1 items-center">
                 <div class="flex-grow border-t border-slate-200"></div>
-                <span class="flex-shrink mx-3 text-slate-400 text-xs font-bold">یان گەڕەکەکەت لە سلێمانی دیاریبکە</span>
+                <span class="flex-shrink mx-3 text-slate-400 text-xs font-bold">{{ __('یان گەڕەکەکەت لە سلێمانی دیاریبکە') }}</span>
                 <div class="flex-grow border-t border-slate-200"></div>
             </div>
 
             <!-- Option 2: Neighborhood Buttons Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5685, 45.3950, 'سەرچنار')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 سەرچنار
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5685, 45.3950, 'سەرچنار')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('سەرچنار') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5640, 45.4410, 'تووی مەلیک')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 تووی مەلیک
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5640, 45.4410, 'تووی مەلیک')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('تووی مەلیک') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5510, 45.4120, 'بەختیاری')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 بەختیاری
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5510, 45.4120, 'بەختیاری')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('بەختیاری') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5780, 45.4520, 'بناری گۆیژە')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 گۆیژە
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5780, 45.4520, 'بناری گۆیژە')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('گۆیژە') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5820, 45.3620, 'ڕاپەڕین')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 ڕاپەڕین
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5820, 45.3620, 'ڕاپەڕین')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('ڕاپەڕین') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5420, 45.4220, 'زەرگەتە')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 زەرگەتە
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5420, 45.4220, 'زەرگەتە')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('زەرگەتە') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.6020, 45.2850, 'تاسڵوجە')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 تاسڵوجە
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.6020, 45.2850, 'تاسڵوجە')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('تاسڵوجە') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5720, 45.4260, 'چوارچرا')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 چوارچرا
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5720, 45.4260, 'چوارچرا')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('چوارچرا') }}
                 </button>
-                <button type="button" onclick="selectNeighborhoodAndLocate(35.5558, 45.4351, 'ناوەندی سلێمانی')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-right text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
-                    📍 سەنتەری شار
+                <button type="button" onclick="selectNeighborhoodAndLocate(35.5558, 45.4351, 'ناوەندی سلێمانی')" class="p-2.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-start text-xs font-bold text-slate-700 hover:text-emerald-800 transition-all">
+                    📍 {{ __('سەنتەری شار') }}
                 </button>
             </div>
 

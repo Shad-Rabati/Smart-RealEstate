@@ -483,7 +483,23 @@ class RealEstateTest extends TestCase
         $responseAr->assertSee('عقارات السليمانية');
         $responseAr->assertSee('بحث العقارات');
 
-        // 4. Switch back to Kurdish
+        // 4. Test properties, hotels, and agencies pages translate properly
+        $responsePropEn = $this->withSession(['locale' => 'en'])->get(route('properties.index'));
+        $responsePropEn->assertStatus(200);
+        $responsePropEn->assertSee('Property Type');
+        $responsePropEn->assertSee('Bedrooms:');
+        $responsePropEn->assertSee('Min Price:');
+
+        $responseHotelsAr = $this->withSession(['locale' => 'ar'])->get(route('hotels.index'));
+        $responseHotelsAr->assertStatus(200);
+        $responseHotelsAr->assertSee('فنادق وأماكن الإقامة السياحية في السليمانية');
+        $responseHotelsAr->assertSee('الفنادق المتاحة');
+
+        $responseAgenciesEn = $this->withSession(['locale' => 'en'])->get(route('agencies.index'));
+        $responseAgenciesEn->assertStatus(200);
+        $responseAgenciesEn->assertSee('Real Estate Agencies in Sulaymaniyah');
+
+        // 5. Switch back to Kurdish
         $switchKu = $this->get(route('locale.switch', 'ku'));
         $switchKu->assertRedirect();
         $switchKu->assertSessionHas('locale', 'ku');

@@ -7,12 +7,12 @@
 
     <!-- Breadcrumb -->
     <nav class="flex items-center gap-2 text-xs text-slate-700 font-medium flex-wrap">
-        <a href="{{ route('home') }}" class="hover:text-emerald-700">سەرەکی</a>
-        <i class="fa-solid fa-chevron-left text-[10px] text-slate-400"></i>
-        <a href="{{ route('properties.index') }}" class="hover:text-emerald-700">گەڕانی خانوو</a>
-        <i class="fa-solid fa-chevron-left text-[10px] text-slate-400"></i>
-        <a href="{{ route('properties.index', ['neighborhood' => $property->neighborhood]) }}" class="hover:text-emerald-700">{{ $property->neighborhood }}</a>
-        <i class="fa-solid fa-chevron-left text-[10px] text-slate-400"></i>
+        <a href="{{ route('home') }}" class="hover:text-emerald-700">{{ __('سەرەکی') }}</a>
+        <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px] text-slate-400"></i>
+        <a href="{{ route('properties.index') }}" class="hover:text-emerald-700">{{ __('گەڕانی خانوو') }}</a>
+        <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px] text-slate-400"></i>
+        <a href="{{ route('properties.index', ['neighborhood' => $property->neighborhood]) }}" class="hover:text-emerald-700">{{ __($property->neighborhood) }}</a>
+        <i class="fa-solid fa-chevron-left rtl:rotate-0 ltr:rotate-180 text-[10px] text-slate-400"></i>
         <span class="text-slate-900 font-bold truncate max-w-xs">{{ $property->title }}</span>
     </nav>
 
@@ -60,7 +60,7 @@
 
             <div class="flex items-center gap-2 text-sm text-slate-700">
                 <i class="fa-solid fa-location-dot text-emerald-600"></i>
-                <span>سلێمانی، {{ $property->neighborhood }}</span>
+                <span>{{ __('سلێمانی') }}، {{ __($property->neighborhood) }}</span>
                 @if($property->street_address)
                     <span class="text-slate-400">|</span>
                     <span class="text-slate-700">{{ $property->street_address }}</span>
@@ -83,7 +83,7 @@
                     data-favorite-id="{{ $property->id }}"
                     class="px-4 py-2.5 rounded-2xl bg-white hover:bg-rose-50 text-slate-700 hover:text-rose-600 border border-slate-200/90 shadow-sm transition-all flex items-center justify-center gap-2 text-xs font-bold active:scale-95">
                 <i class="fa-regular fa-heart text-sm text-rose-500"></i>
-                <span class="favorite-btn-text">پاشەکەوتکردن لە دڵخوازەکان</span>
+                <span class="favorite-btn-text">{{ __('پاشەکەوتکردن لە دڵخوازەکان') }}</span>
             </button>
         </div>
     </div>
@@ -114,45 +114,45 @@
             <!-- Specs Grid (Rooms, Area, etc.) -->
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
                 <h3 class="text-base font-bold text-slate-900 mb-4 pb-3 border-b border-slate-100 flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-emerald-600"></i> تایبەتمەندییە سەرەکییەکان
+                    <i class="fa-solid fa-sliders text-emerald-600"></i> {{ __('تایبەتمەندییە سەرەکییەکان') }}
                 </h3>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                     <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                         <i class="fa-solid fa-bed text-emerald-600 text-lg mb-1 block"></i>
-                        <span class="text-xs text-slate-700 block font-medium">ژووری خەوتن</span>
-                        <span class="text-base font-black text-slate-900">{{ $property->bedrooms }} ژوور</span>
+                        <span class="text-xs text-slate-700 block font-medium">{{ __('ژووری خەوتن') }}</span>
+                        <span class="text-base font-black text-slate-900">{{ $property->bedrooms }} {{ __('ژوور') }}</span>
                     </div>
 
                     <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                         <i class="fa-solid fa-bath text-emerald-600 text-lg mb-1 block"></i>
-                        <span class="text-xs text-slate-700 block font-medium">حەمام و دەستشۆر</span>
+                        <span class="text-xs text-slate-700 block font-medium">{{ __('حەمام و دەستشۆر') }}</span>
                         <span class="text-base font-black text-slate-900">{{ $property->bathrooms }}</span>
                     </div>
 
                     <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                         <i class="fa-solid fa-ruler-combined text-emerald-600 text-lg mb-1 block"></i>
-                        <span class="text-xs text-slate-700 block font-medium">ڕووبەر</span>
-                        <span class="text-base font-black text-slate-900">{{ $property->area_sqm }} مەتر²</span>
+                        <span class="text-xs text-slate-700 block font-medium">{{ __('ڕووبەر') }}</span>
+                        <span class="text-base font-black text-slate-900">{{ $property->area_sqm }} {{ __('م²') }}</span>
                     </div>
 
                     <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                         <i class="fa-solid fa-couch text-emerald-600 text-lg mb-1 block"></i>
-                        <span class="text-xs text-slate-700 block font-medium">کەلوپەل</span>
-                        <span class="text-base font-black text-slate-900">{{ $property->is_furnished ? 'مەفروش' : 'بێ کەلوپەل' }}</span>
+                        <span class="text-xs text-slate-700 block font-medium">{{ __('کەلوپەل') }}</span>
+                        <span class="text-base font-black text-slate-900">{{ $property->is_furnished ? __('مەفروش') : __('بێ کەلوپەل') }}</span>
                     </div>
                 </div>
 
                 <!-- Secondary Badges -->
                 <div class="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-slate-100 text-xs">
                     <span class="px-3 py-1.5 rounded-xl {{ $property->has_parking ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-400' }} font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-square-parking"></i> گەراج / پارکینگ: {{ $property->has_parking ? 'هەیەتی' : 'نییەتی' }}
+                        <i class="fa-solid fa-square-parking"></i> {{ __('گەراج / پارکینگ') }}: {{ $property->has_parking ? __('هەیەتی') : __('نییەتی') }}
                     </span>
                     <span class="px-3 py-1.5 rounded-xl {{ $property->has_elevator ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-400' }} font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-elevator"></i> ئەسانسۆر: {{ $property->has_elevator ? 'هەیەتی' : 'نییەتی' }}
+                        <i class="fa-solid fa-elevator"></i> {{ __('ئەسانسۆر') }}: {{ $property->has_elevator ? __('هەیەتی') : __('نییەتی') }}
                     </span>
                     <span class="px-3 py-1.5 rounded-xl {{ $property->has_generator ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-400' }} font-bold flex items-center gap-1.5">
-                        <i class="fa-solid fa-bolt"></i> موەلیدەی بەردەوام: {{ $property->has_generator ? 'هەیەتی' : 'نییەتی' }}
+                        <i class="fa-solid fa-bolt"></i> {{ __('موەلیدەی بەردەوام') }}: {{ $property->has_generator ? __('هەیەتی') : __('نییەتی') }}
                     </span>
                 </div>
             </div>
@@ -160,19 +160,19 @@
             <!-- Description -->
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
                 <h3 class="text-base font-bold text-slate-900 pb-3 border-b border-slate-100 flex items-center gap-2">
-                    <i class="fa-solid fa-align-right text-emerald-600"></i> وەسف و وردەکاری خانوو
+                    <i class="fa-solid fa-align-right text-emerald-600"></i> {{ __('وەسف و وردەکاری خانوو') }}
                 </h3>
                 <div class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
-                    {{ $property->description ?: 'هیچ وەسفێکی زیادە دانەنراوە.' }}
+                    {{ $property->description ?: __('هیچ وەسفێکی زیادە دانەنراوە.') }}
                 </div>
 
                 @if($property->features && count($property->features) > 0)
                     <div class="mt-4 pt-4 border-t border-slate-100">
-                        <h4 class="text-xs font-bold text-slate-800 mb-2">خزمەتگوزارییەکانی تر:</h4>
+                        <h4 class="text-xs font-bold text-slate-800 mb-2">{{ __('خزمەتگوزارییەکانی تر:') }}</h4>
                         <div class="flex flex-wrap gap-2">
                             @foreach($property->features as $feature)
                                 <span class="px-3 py-1 rounded-xl bg-slate-100 text-slate-700 text-xs font-medium flex items-center gap-1.5">
-                                    <i class="fa-solid fa-check text-emerald-600 text-xs"></i> {{ $feature }}
+                                    <i class="fa-solid fa-check text-emerald-600 text-xs"></i> {{ __($feature) }}
                                 </span>
                             @endforeach
                         </div>
@@ -188,10 +188,10 @@
                             <span class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-sm">
                                 <i class="fa-solid fa-circle-play"></i>
                             </span>
-                            <span>گەشتی ڤیدیۆیی خانوو (Video Tour / Reels)</span>
+                            <span>{{ __('گەشتی ڤیدیۆیی خانوو (Video Tour / Reels)') }}</span>
                         </h3>
                         <a href="{{ $property->video_url }}" target="_blank" rel="noopener" class="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1">
-                            <span>کردنەوە لە سەرچاوە</span>
+                            <span>{{ __('کردنەوە لە سەرچاوە') }}</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                         </a>
                     </div>
@@ -215,13 +215,13 @@
                                     <i class="fa-solid fa-play"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-sm text-white">ڤیدیۆی تەواوی ئەم خانووە ببینە</h4>
-                                    <p class="text-xs text-slate-400 mt-0.5">بە کوالێتی بەرز لە {{ ucfirst($property->video_type) }} بڵاوکراوەتەوە</p>
+                                    <h4 class="font-bold text-sm text-white">{{ __('ڤیدیۆی تەواوی ئەم خانووە ببینە') }}</h4>
+                                    <p class="text-xs text-slate-400 mt-0.5">{{ __('بە کوالێتی بەرز لە') }} {{ ucfirst($property->video_type) }} {{ __('بڵاوکراوەتەوە') }}</p>
                                 </div>
                             </div>
                             <a href="{{ $property->video_url }}" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-md shrink-0">
                                 <i class="fa-solid fa-circle-play"></i>
-                                <span>سەیرکردنی ڤیدیۆ</span>
+                                <span>{{ __('سەیرکردنی ڤیدیۆ') }}</span>
                             </a>
                         </div>
                     @endif
@@ -235,10 +235,10 @@
                     <div>
                         <h3 class="text-base font-black text-slate-900 flex items-center gap-2">
                             <i class="fa-solid fa-map-location-dot text-emerald-600"></i>
-                            <span>شوێنی ورد لەسەر نەخشەی سلێمانی</span>
+                            <span>{{ __('شوێنی ورد لەسەر نەخشەی سلێمانی') }}</span>
                         </h3>
                         <p class="text-xs text-slate-500 mt-0.5">
-                            سلێمانی، گەڕەکی {{ $property->neighborhood }} • {{ $property->street_address }}
+                            {{ __('سلێمانی') }}، {{ __('گەڕەکی') }} {{ __($property->neighborhood) }} • {{ $property->street_address }}
                         </p>
                     </div>
 
@@ -247,18 +247,18 @@
                         <div class="p-0.5 rounded-xl bg-slate-100 flex items-center gap-0.5 border border-slate-200/80 text-xs">
                             <button type="button" id="btnDetailTileStreet" onclick="switchDetailMapTile('street')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-[11px] shadow-sm transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-map text-emerald-400 text-[10px]"></i>
-                                <span>مۆدێرن</span>
+                                <span>{{ __('مۆدێرن') }}</span>
                             </button>
                             <button type="button" id="btnDetailTileSat" onclick="switchDetailMapTile('satellite')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-[11px] transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-earth-americas text-blue-500 text-[10px]"></i>
-                                <span>سەتەلایت</span>
+                                <span>{{ __('سەتەلایت') }}</span>
                             </button>
                         </div>
 
                         <!-- One-Click Live Turn-by-Turn Route Button -->
                         <button type="button" id="btnDetailNavigation" onclick="startDetailNavigation()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs shadow-md shadow-blue-500/30 flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer">
                             <i class="fa-solid fa-diamond-turn-right text-xs"></i>
-                            <span id="btnDetailNavText">ڕێگە نیشاندان لە شوێنی تۆوە</span>
+                            <span id="btnDetailNavText">{{ __('ڕێگە نیشاندان لە شوێنی تۆوە') }}</span>
                         </button>
                     </div>
                 </div>
@@ -269,13 +269,13 @@
 
                     <!-- Clean Zoom Controls -->
                     <div class="absolute left-3 top-3 z-[400] flex flex-col gap-1 pointer-events-auto">
-                        <button type="button" onclick="detailMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="نزیککردنەوە">
+                        <button type="button" onclick="detailMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('نزیککردنەوە') }}">
                             <i class="fa-solid fa-plus text-xs"></i>
                         </button>
-                        <button type="button" onclick="detailMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="دوورخستنەوە">
+                        <button type="button" onclick="detailMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('دوورخستنەوە') }}">
                             <i class="fa-solid fa-minus text-xs"></i>
                         </button>
-                        <button type="button" onclick="recenterDetailMap()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="گەڕانەوە بۆ خانووەکە">
+                        <button type="button" onclick="recenterDetailMap()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('گەڕانەوە بۆ خانووەکە') }}">
                             <i class="fa-solid fa-crosshairs text-xs"></i>
                         </button>
                     </div>
@@ -290,11 +290,11 @@
                                     </div>
                                     <div class="min-w-0">
                                         <div class="flex items-center gap-1.5 flex-wrap">
-                                            <span class="text-[11px] font-bold text-blue-300">ڕێگەی گەیشتن:</span>
+                                            <span class="text-[11px] font-bold text-blue-300">{{ __('ڕێگەی گەیشتن:') }}</span>
                                             <span id="detailRouteDistanceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/30"></span>
                                         </div>
                                         <div class="text-xs font-black text-white truncate max-w-[260px]">
-                                            {{ $property->title }} • {{ $property->neighborhood }}
+                                            {{ $property->title }} • {{ __($property->neighborhood) }}
                                         </div>
                                     </div>
                                 </div>
@@ -304,10 +304,10 @@
                                         <i class="fa-solid fa-location-arrow text-[10px]"></i>
                                         <span>Google Maps</span>
                                     </a>
-                                    <button type="button" onclick="startDetailNavigation(true)" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="نوێکردنەوەی شوێنی GPS">
+                                    <button type="button" onclick="startDetailNavigation(true)" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="{{ __('نوێکردنەوەی شوێنی GPS') }}">
                                         <i class="fa-solid fa-crosshairs"></i>
                                     </button>
-                                    <button type="button" onclick="clearDetailRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="لابردنی هێڵی ڕێگە">
+                                    <button type="button" onclick="clearDetailRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="{{ __('لابردنی هێڵی ڕێگە') }}">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -320,10 +320,10 @@
                 <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
                     <span class="flex items-center gap-1.5">
                         <i class="fa-solid fa-location-dot text-emerald-600"></i>
-                        <span>سلێمانی، گەڕەکی {{ $property->neighborhood }} (شوێن لەسەر نەخشە دیاریکراوە)</span>
+                        <span>{{ __('سلێمانی') }}، {{ __('گەڕەکی') }} {{ __($property->neighborhood) }} ({{ __('شوێن لەسەر نەخشە دیاریکراوە') }})</span>
                     </span>
                     <a href="https://www.google.com/maps/dir/?api=1&destination={{ $property->latitude }},{{ $property->longitude }}&travelmode=driving" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold hover:underline flex items-center gap-1">
-                        <span>کردنەوە لە Google Maps</span>
+                        <span>{{ __('کردنەوە لە Google Maps') }}</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                     </a>
                 </div>
@@ -337,7 +337,7 @@
             <!-- Agency Box -->
             <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-5">
                 <div class="text-xs font-bold text-slate-600 uppercase tracking-wider">
-                    نووسینگەی بەرپرسی ئەم موڵکە
+                    {{ __('نووسینگەی بەرپرسی ئەم موڵکە') }}
                 </div>
 
                 <div class="flex items-center gap-4">
@@ -349,10 +349,10 @@
                             </a>
                         </h4>
                         @if($property->agency->owner_name)
-                            <span class="text-xs text-slate-700 block">خاوەنکار: {{ $property->agency->owner_name }}</span>
+                            <span class="text-xs text-slate-700 block">{{ __('خاوەنکار:') }} {{ $property->agency->owner_name }}</span>
                         @endif
                         <span class="text-xs text-emerald-700 font-bold block mt-0.5">
-                            <i class="fa-solid fa-circle-check text-xs"></i> نووسینگەی باوەڕپێکراو
+                            <i class="fa-solid fa-circle-check text-xs"></i> {{ __('نووسینگەی باوەڕپێکراو') }}
                         </span>
                     </div>
                 </div>
@@ -369,19 +369,20 @@
                     @if($property->agency->whatsapp_link)
                         <a href="{{ $property->agency->whatsapp_link }}?text={{ urlencode('سڵاو، لەسەر ئەم خانووە پەیوەندیتان پێوە دەکەم: ' . $property->title . ' لە پلاتفۆرمی خانوبەرەی سلێمانی ' . url()->current()) }}" target="_blank" class="w-full py-3.5 px-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.02]">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>نامە بنێرە لە واتسئاپ</span>
+                            <span>{{ __('نامە بنێرە لە واتسئاپ') }}</span>
                         </a>
                     @endif
 
                     <a href="tel:{{ $property->agency->phone }}" class="w-full py-3.5 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.02]">
                         <i class="fa-solid fa-phone text-base"></i>
-                        <span>پەیوەندی تەلەفۆنی ({{ $property->agency->phone }})</span>
+                        <span>{{ __('پەیوەندی تەلەفۆنی') }} ({{ $property->agency->phone }})</span>
                     </a>
                 </div>
 
                 <div class="pt-3 border-t border-slate-100 text-center">
-                    <a href="{{ route('agencies.show', $property->agency->slug) }}" class="text-xs font-bold text-emerald-700 hover:text-emerald-800">
-                        بینینی هەموو خانووەکانی ئەم نووسینگەیە ←
+                    <a href="{{ route('agencies.show', $property->agency->slug) }}" class="text-xs font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1.5">
+                        <span>{{ __('بینینی هەموو خانووەکانی ئەم نووسینگەیە') }}</span>
+                        <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-xs"></i>
                     </a>
                 </div>
             </div>
@@ -389,10 +390,10 @@
             <!-- Safety Note -->
             <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-xs text-amber-900 space-y-1.5">
                 <div class="font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-shield-halved text-amber-600"></i> ڕێنمایی بۆ کرێچییە بەڕێزەکان
+                    <i class="fa-solid fa-shield-halved text-amber-600"></i> {{ __('ڕێنمایی بۆ کرێچییە بەڕێزەکان') }}
                 </div>
                 <p class="leading-relaxed text-[11px] text-amber-800">
-                    پێش ئەنجامدانی هەر مامەڵەیەک یان پێدانی هەر بڕە پارەیەک، دڵنیابەرەوە لە بینینی خانوو لە نزیکەوە و واژووکردنی گرێبەستی فەرمی لە نووسینگەی خانوبەرە.
+                    {{ __('پێش ئەنجامدانی هەر مامەڵەیەک یان پێدانی هەر بڕە پارەیەک، دڵنیابەرەوە لە بینینی خانوو لە نزیکەوە و واژووکردنی گرێبەستی فەرمی لە نووسینگەی خانوبەرە.') }}
                 </p>
             </div>
 
@@ -404,7 +405,7 @@
     @if($nearbyProperties->count() > 0)
         <div class="space-y-4 pt-8 border-t border-slate-200">
             <h3 class="text-lg font-black text-slate-900">
-                خانووی هاوشێوەی بەردەست لە سلێمانی
+                {{ __('خانووی هاوشێوەی بەردەست لە سلێمانی') }}
             </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -413,7 +414,7 @@
                         <div class="h-44 rounded-xl overflow-hidden bg-slate-100 relative mb-3">
                             <img src="{{ $np->primary_image_url }}" alt="{{ $np->title }}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             <span class="absolute top-2 right-2 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-white shadow-sm">
-                                🟢 بەردەستە
+                                🟢 {{ __('بەردەستە') }}
                             </span>
                         </div>
                         <h4 class="font-bold text-sm text-slate-900 line-clamp-1 mb-1 group-hover:text-emerald-700">
@@ -425,9 +426,10 @@
                             {{ $np->formatted_price }}
                         </div>
                         <div class="flex items-center justify-between text-xs text-slate-700 pt-2 border-t border-slate-100">
-                            <span><i class="fa-solid fa-location-dot ml-1 text-slate-400"></i> {{ $np->neighborhood }}</span>
-                            <a href="{{ route('properties.show', $np->slug) }}" class="font-bold text-slate-900 hover:text-emerald-600">
-                                بینین ←
+                            <span><i class="fa-solid fa-location-dot ml-1 text-slate-400"></i> {{ __($np->neighborhood) }}</span>
+                            <a href="{{ route('properties.show', $np->slug) }}" class="font-bold text-slate-900 hover:text-emerald-600 inline-flex items-center gap-1">
+                                <span>{{ __('بینین') }}</span>
+                                <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180 text-xs"></i>
                             </a>
                         </div>
                     </div>
@@ -535,7 +537,7 @@
         toggleBtn.type = 'button';
         toggleBtn.id = containerId + '_touchToggle';
         toggleBtn.className = 'absolute top-3 right-3 z-[400] flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 text-slate-800 text-[11px] font-bold shadow-md border border-slate-200/90 active:scale-95 transition-all lg:hidden pointer-events-auto select-none';
-        toggleBtn.innerHTML = '<i class="fa-solid fa-hand text-emerald-600 text-[11px]"></i> <span>جووڵاندنی نەخشە</span>';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-hand text-emerald-600 text-[11px]"></i> <span>{{ __('جووڵاندنی نەخشە') }}</span>';
 
         toggleBtn.onclick = function (e) {
             e.stopPropagation();
@@ -543,11 +545,11 @@
             if (mapActive) {
                 mapInstance.dragging.enable();
                 toggleBtn.className = 'absolute top-3 right-3 z-[400] flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 text-white text-[11px] font-bold shadow-lg ring-2 ring-emerald-300 active:scale-95 transition-all lg:hidden pointer-events-auto select-none';
-                toggleBtn.innerHTML = '<i class="fa-solid fa-lock-open text-[11px]"></i> <span>نەخشە کراوەیە (تەواو)</span>';
+                toggleBtn.innerHTML = '<i class="fa-solid fa-lock-open text-[11px]"></i> <span>{{ __('نەخشە کراوەیە (تەواو)') }}</span>';
             } else {
                 mapInstance.dragging.disable();
                 toggleBtn.className = 'absolute top-3 right-3 z-[400] flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 text-slate-800 text-[11px] font-bold shadow-md border border-slate-200/90 active:scale-95 transition-all lg:hidden pointer-events-auto select-none';
-                toggleBtn.innerHTML = '<i class="fa-solid fa-hand text-emerald-600 text-[11px]"></i> <span>جووڵاندنی نەخشە</span>';
+                toggleBtn.innerHTML = '<i class="fa-solid fa-hand text-emerald-600 text-[11px]"></i> <span>{{ __('جووڵاندنی نەخشە') }}</span>';
             }
         };
 
@@ -614,7 +616,7 @@
     // Starting coordinates (Default Sulaymaniyah Center, dynamically updated by user or GPS)
     let currentStartLat = 35.5558;
     let currentStartLng = 45.4351;
-    let currentStartName = 'سەنتەری شار';
+    let currentStartName = '{{ __('سەنتەری شار') }}';
 
     // Quick Neighborhood Start Point Switcher
     function setDetailStartLocation(lat, lng, name) {
@@ -627,7 +629,7 @@
 
         const btnText = document.getElementById('btnDetailNavText');
         if (btnText) {
-            btnText.innerHTML = `<i class="fa-solid fa-route text-emerald-400 ml-1"></i> ڕێگە لە ${name}ەوە`;
+            btnText.innerHTML = `<i class="fa-solid fa-route text-emerald-400 ml-1"></i> {{ __('ڕێگە لە') }} ${name}`;
         }
     }
 
@@ -646,7 +648,7 @@
         fetchDetailRoute(currentStartLat, currentStartLng);
 
         if (btnText) {
-            btnText.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping ml-1"></span> ڕێگە کراوەیە (${currentStartName})`;
+            btnText.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping ml-1"></span> {{ __('ڕێگە کراوەیە') }} (${currentStartName})`;
         }
 
         // 2. Query GPS in the background without freezing or blocking the user!
@@ -664,11 +666,11 @@
                     if (distKm <= 45) {
                         currentStartLat = uLat;
                         currentStartLng = uLng;
-                        currentStartName = 'شوێنی تۆ (GPS)';
-                        updateDetailUserMarker(uLat, uLng, 'شوێنی ئێستای تۆ (GPS)');
+                        currentStartName = '{{ __('شوێنی تۆ (GPS)') }}';
+                        updateDetailUserMarker(uLat, uLng, '{{ __('شوێنی ڕاستەقینەت (GPS)') }}');
                         fetchDetailRoute(uLat, uLng);
                         if (btnText) {
-                            btnText.innerHTML = '<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping ml-1"></span> شوێنی ڕاستەقینەت (GPS)';
+                            btnText.innerHTML = '<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping ml-1"></span> {{ __('شوێنی ڕاستەقینەت (GPS)') }}';
                         }
                     }
                 },
@@ -680,13 +682,13 @@
         }
     }
 
-    function updateDetailUserMarker(userLat, userLng, label = 'شوێنی دەستپێک') {
+    function updateDetailUserMarker(userLat, userLng, label = '{{ __('شوێنی دەستپێک') }}') {
         if (!detailMap) return;
 
         const popupHtml = `
             <div class="p-1 font-bold text-xs text-center" style="font-family: 'Vazirmatn'">
                 <div class="text-blue-600 mb-0.5">📍 ${label}</div>
-                <div class="text-[10px] text-slate-500 font-normal">دەتوانیت ئەم پینە ڕابکێشیت بۆ هەر شوێنێک</div>
+                <div class="text-[10px] text-slate-500 font-normal">{{ __('دەتوانیت ئەم پینە ڕابکێشیت بۆ هەر شوێنێک') }}</div>
             </div>
         `;
 
@@ -718,12 +720,12 @@
                 const newPos = e.target.getLatLng();
                 currentStartLat = newPos.lat;
                 currentStartLng = newPos.lng;
-                currentStartName = 'شوێنی دەستنیشانکراو';
+                currentStartName = '{{ __('شوێنی دەستنیشانکراو') }}';
                 fetchDetailRoute(newPos.lat, newPos.lng);
 
                 const btnText = document.getElementById('btnDetailNavText');
                 if (btnText) {
-                    btnText.innerHTML = '<i class="fa-solid fa-location-dot text-blue-400 ml-1"></i> ڕێگە لە شوێنی دیاریکراوەوە';
+                    btnText.innerHTML = '<i class="fa-solid fa-location-dot text-blue-400 ml-1"></i> {{ __('ڕێگە لە شوێنی دیاریکراوەوە') }}';
                 }
             });
         } else {
@@ -787,7 +789,7 @@
         const distBadge = document.getElementById('detailRouteDistanceBadge');
         const gmapsBtn = document.getElementById('detailGoogleMapsBtn');
 
-        if (distBadge) distBadge.innerText = `🚗 ~${durationMin} خولەک (${distanceKm} کم)`;
+        if (distBadge) distBadge.innerText = `🚗 ~${durationMin} {{ __('خولەک') }} (${distanceKm} {{ __('کم') }})`;
         if (gmapsBtn) {
             gmapsBtn.href = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${PROP_LAT},${PROP_LNG}&travelmode=driving`;
         }
@@ -819,7 +821,7 @@
         if (hud) hud.classList.add('hidden');
 
         const btnText = document.getElementById('btnDetailNavText');
-        if (btnText) btnText.innerHTML = 'ڕێگە نیشاندان لە شوێنی تۆوە';
+        if (btnText) btnText.innerHTML = '{{ __('ڕێگە نیشاندان لە شوێنی تۆوە') }}';
     }
 </script>
 @endpush

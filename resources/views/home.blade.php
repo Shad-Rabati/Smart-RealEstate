@@ -17,29 +17,29 @@
             <!-- Top Badge -->
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md shadow-sm">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span>پلاتفۆرمی فەرمی خانوبەرەی سلێمانی</span>
+                <span>{{ __('پلاتفۆرمی فەرمی خانوبەرەی سلێمانی') }}</span>
             </div>
 
             <!-- Main Headline -->
             <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                خانووی کرێ لە <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">سلێمانی</span> بەبێ سەردانی نووسینگەکان
+                {{ __('خانووی کرێ لە سلێمانی بەبێ سەردانی نووسینگەکان') }}
             </h1>
 
             <!-- Subtitle -->
             <p class="text-sm sm:text-base text-slate-300/90 leading-relaxed max-w-2xl mx-auto">
-                ڕاستەوخۆ لەسەر نەخشەی شار بەپێی ڕەنگەکانی دۆخی خانوو بزانە کام خانوو بەردەستە، و بە یەک کلیک نزیکترین شوێن لە خۆتەوە بدۆزەرەوە.
+                {{ __('ڕاستەوخۆ لەسەر نەخشەی شار بەپێی ڕەنگەکانی دۆخی خانوو بزانە کام خانوو بەردەستە، و بە یەک کلیک نزیکترین شوێن لە خۆتەوە بدۆزەرەوە.') }}
             </p>
 
             <!-- Action Buttons -->
             <div class="flex flex-wrap items-center justify-center gap-3 pt-1">
                 <button type="button" onclick="triggerNearestSearch()" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all hover:scale-105 active:scale-95">
                     <i class="fa-solid fa-location-crosshairs text-base animate-pulse"></i>
-                    <span>نزیکترین خانوو لە منەوە بدۆزەرەوە</span>
+                    <span>{{ __('نزیکترین خانوو لە منەوە بدۆزەرەوە') }}</span>
                 </button>
 
                 <a href="{{ route('agencies.index') }}" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-bold text-xs sm:text-sm backdrop-blur-md transition-all">
                     <i class="fa-solid fa-building text-emerald-400"></i>
-                    <span>بینینی نووسینگەکان</span>
+                    <span>{{ __('بینینی نووسینگەکان') }}</span>
                 </a>
             </div>
 
@@ -50,20 +50,20 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                     </span>
-                    <span class="font-bold text-white">بەردەستە بۆ کرێ</span>
-                    <span class="text-emerald-400 font-semibold text-[11px]">(سەوز)</span>
+                    <span class="font-bold text-white">{{ __('بەردەستە بۆ کرێ') }}</span>
+                    <span class="text-emerald-400 font-semibold text-[11px]">{{ __('(سەوز)') }}</span>
                 </div>
 
                 <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-slate-200 shadow-sm hover:bg-white/15 transition-all">
                     <span class="h-2.5 w-2.5 rounded-full bg-slate-400"></span>
-                    <span class="font-bold text-white">لە گفتوگۆدا</span>
-                    <span class="text-slate-300 font-semibold text-[11px]">(رەساسی)</span>
+                    <span class="font-bold text-white">{{ __('لە گفتوگۆدا') }}</span>
+                    <span class="text-slate-300 font-semibold text-[11px]">{{ __('(رەساسی)') }}</span>
                 </div>
 
                 <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-slate-200 shadow-sm hover:bg-white/15 transition-all">
                     <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
-                    <span class="font-bold text-white">بەکرێ گیراوە</span>
-                    <span class="text-rose-400 font-semibold text-[11px]">(سور)</span>
+                    <span class="font-bold text-white">{{ __('بەکرێ گیراوە') }}</span>
+                    <span class="text-rose-400 font-semibold text-[11px]">{{ __('(سور)') }}</span>
                 </div>
             </div>
 
@@ -82,45 +82,45 @@
                 
                 <!-- Keyword search -->
                 <div class="lg:col-span-2 relative">
-                    <label class="block text-xs font-bold text-slate-700 mb-1">گەڕان بە وشە / ناو / کۆڵان</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('گەڕان بە وشە / ناو / کۆڵان') }}</label>
                     <div class="relative">
                         <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-slate-400 text-sm"></i>
-                        <input type="text" name="q" value="{{ request('q') }}" placeholder="بۆ نموونە: خانووی سەرچنار، شوقە..." class="w-full pr-10 pl-4 py-2.5 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm outline-none transition-all">
+                        <input type="text" name="q" value="{{ request('q') }}" placeholder="{{ __('بۆ نموونە: خانووی سەرچنار، شوقە...') }}" class="w-full pr-10 pl-4 py-2.5 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm outline-none transition-all">
                     </div>
                 </div>
 
                 <!-- Neighborhood filter -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">گەڕەکی سلێمانی</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('گەڕەکی سلێمانی') }}</label>
                     <select name="neighborhood" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm outline-none bg-white">
-                        <option value="all">هەموو گەڕەکەکان</option>
+                        <option value="all">{{ __('هەموو گەڕەکەکان') }}</option>
                         @foreach($neighborhoods as $n)
-                            <option value="{{ $n }}" {{ request('neighborhood') == $n ? 'selected' : '' }}>{{ $n }}</option>
+                            <option value="{{ $n }}" {{ request('neighborhood') == $n ? 'selected' : '' }}>{{ __($n) }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <!-- Property Type -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">جۆری موڵک</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('جۆری موڵک') }}</label>
                     <select name="type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm outline-none bg-white">
-                        <option value="all">هەموو جۆرەکان</option>
-                        <option value="house" {{ request('type') == 'house' ? 'selected' : '' }}>خانوو</option>
-                        <option value="apartment" {{ request('type') == 'apartment' ? 'selected' : '' }}>شوقە</option>
-                        <option value="villa" {{ request('type') == 'villa' ? 'selected' : '' }}>ڤێلا</option>
-                        <option value="floor" {{ request('type') == 'floor' ? 'selected' : '' }}>نهۆم</option>
-                        <option value="commercial" {{ request('type') == 'commercial' ? 'selected' : '' }}>دوکان / شوێنی بازرگانی</option>
+                        <option value="all">{{ __('هەموو جۆرەکان') }}</option>
+                        <option value="house" {{ request('type') == 'house' ? 'selected' : '' }}>{{ __('خانوو') }}</option>
+                        <option value="apartment" {{ request('type') == 'apartment' ? 'selected' : '' }}>{{ __('شوقە') }}</option>
+                        <option value="villa" {{ request('type') == 'villa' ? 'selected' : '' }}>{{ __('ڤێلا') }}</option>
+                        <option value="floor" {{ request('type') == 'floor' ? 'selected' : '' }}>{{ __('نهۆم') }}</option>
+                        <option value="commercial" {{ request('type') == 'commercial' ? 'selected' : '' }}>{{ __('دوکان / شوێنی بازرگانی') }}</option>
                     </select>
                 </div>
 
                 <!-- Status Selector (The requested colors) -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">دۆخی خانوو (ڕەنگ)</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('دۆخی خانوو (ڕەنگ)') }}</label>
                     <select name="status" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-sm outline-none font-semibold bg-white">
-                        <option value="all">هەموو دۆخەکان (سەوز + رەساسی + سور)</option>
-                        <option value="available" {{ request('status') == 'available' ? 'selected' : '' }} class="text-emerald-600 font-bold">🟢 سەوز (بەردەستە بۆ کرێ)</option>
-                        <option value="reserved" {{ request('status') == 'reserved' ? 'selected' : '' }} class="text-slate-600 font-bold">⚪ رەساسی (لە دانوستاندا)</option>
-                        <option value="rented" {{ request('status') == 'rented' ? 'selected' : '' }} class="text-rose-600 font-bold">🔴 سور (بەکرێ گیراوە)</option>
+                        <option value="all">{{ __('هەموو دۆخەکان (سەوز + رەساسی + سور)') }}</option>
+                        <option value="available" {{ request('status') == 'available' ? 'selected' : '' }} class="text-emerald-600 font-bold">{{ __('🟢 سەوز (بەردەستە بۆ کرێ)') }}</option>
+                        <option value="reserved" {{ request('status') == 'reserved' ? 'selected' : '' }} class="text-slate-600 font-bold">{{ __('⚪ رەساسی (لە دانوستاندا)') }}</option>
+                        <option value="rented" {{ request('status') == 'rented' ? 'selected' : '' }} class="text-rose-600 font-bold">{{ __('🔴 سور (بەکرێ گیراوە)') }}</option>
                     </select>
                 </div>
 
@@ -130,45 +130,45 @@
             <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap items-center gap-3">
                     <div class="flex items-center gap-1.5">
-                        <span class="text-xs font-bold text-slate-600">نزمترین نرخ:</span>
+                        <span class="text-xs font-bold text-slate-600">{{ __('نزمترین نرخ:') }}</span>
                         <div class="relative w-24">
-                            <input type="number" name="min_price" id="form_min_price" value="{{ request('min_price') }}" placeholder="کەمترین $" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs outline-none focus:border-emerald-500">
+                            <input type="number" name="min_price" id="form_min_price" value="{{ request('min_price') }}" placeholder="{{ __('کەمترین $') }}" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs outline-none focus:border-emerald-500">
                         </div>
                     </div>
 
                     <div class="flex items-center gap-1.5">
-                        <span class="text-xs font-bold text-slate-600">بەرزترین نرخ:</span>
+                        <span class="text-xs font-bold text-slate-600">{{ __('بەرزترین نرخ:') }}</span>
                         <div class="relative w-24">
-                            <input type="number" name="max_price" id="form_max_price" value="{{ request('max_price') }}" placeholder="زۆرترین $" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs outline-none focus:border-emerald-500">
+                            <input type="number" name="max_price" id="form_max_price" value="{{ request('max_price') }}" placeholder="{{ __('زۆرترین $') }}" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs outline-none focus:border-emerald-500">
                         </div>
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <span class="text-xs font-bold text-slate-600">ژووری خەوتن:</span>
+                        <span class="text-xs font-bold text-slate-600">{{ __('ژووری خەوتن:') }}</span>
                         <select name="bedrooms" class="px-3 py-1.5 rounded-lg border border-slate-300 text-xs bg-white">
-                            <option value="all">هەمووی</option>
-                            <option value="1" {{ request('bedrooms') == '1' ? 'selected' : '' }}>+١ ژوور</option>
-                            <option value="2" {{ request('bedrooms') == '2' ? 'selected' : '' }}>+٢ ژوور</option>
-                            <option value="3" {{ request('bedrooms') == '3' ? 'selected' : '' }}>+٣ ژوور</option>
-                            <option value="4" {{ request('bedrooms') == '4' ? 'selected' : '' }}>+٤ ژوور</option>
+                            <option value="all">{{ __('هەمووی') }}</option>
+                            <option value="1" {{ request('bedrooms') == '1' ? 'selected' : '' }}>{{ __('+١ ژوور') }}</option>
+                            <option value="2" {{ request('bedrooms') == '2' ? 'selected' : '' }}>{{ __('+٢ ژوور') }}</option>
+                            <option value="3" {{ request('bedrooms') == '3' ? 'selected' : '' }}>{{ __('+٣ ژوور') }}</option>
+                            <option value="4" {{ request('bedrooms') == '4' ? 'selected' : '' }}>{{ __('+٤ ژوور') }}</option>
                         </select>
                     </div>
 
                     <!-- Furnished toggle -->
                     <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs font-bold text-slate-700">
                         <input type="checkbox" name="furnished" value="1" {{ request('furnished') == '1' ? 'checked' : '' }} class="rounded text-emerald-600 focus:ring-emerald-500">
-                        <span>مەفروش (بە کەلوپەلەوە)</span>
+                        <span>{{ __('مەفروش (بە کەلوپەلەوە)') }}</span>
                     </label>
                 </div>
 
                 <div class="flex items-center gap-2 flex-wrap">
                     <button type="submit" id="filterSubmitBtn" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-colors flex items-center gap-1.5">
                         <i class="fa-solid fa-filter"></i>
-                        <span>فلتەرکردن</span>
+                        <span>{{ __('فلتەرکردن') }}</span>
                     </button>
                     <button type="button" onclick="clearFiltersAjax()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors flex items-center gap-1.5">
                         <i class="fa-solid fa-arrow-rotate-right text-[11px]"></i>
-                        <span>سڕینەوەی فلتەر</span>
+                        <span>{{ __('سڕینەوەی فلتەر') }}</span>
                     </button>
                 </div>
             </div>
@@ -185,15 +185,15 @@
             </div>
             <div>
                 <div class="text-xs font-bold text-blue-900" id="userLocationTitle">
-                    شوێنی ئێوە لەسەر نەخشەی سلێمانی چالاککراوە!
+                    {{ __('شوێنی ئێوە لەسەر نەخشەی سلێمانی چالاککراوە!') }}
                 </div>
                 <div class="text-[11px] text-blue-700">
-                    خانووەکان بەپێی دووری لە شوێنی تۆوە ڕیزبەند کراون (نزیکترین لە پێشەوە).
+                    {{ __('خانووەکان بەپێی دووری لە شوێنی تۆوە ڕیزبەند کراون (نزیکترین لە پێشەوە).') }}
                 </div>
             </div>
         </div>
         <button type="button" onclick="clearUserLocation()" class="text-xs text-blue-700 hover:text-blue-900 font-bold hover:underline">
-            لابردنی شوێن
+            {{ __('لابردنی شوێن') }}
         </button>
     </div>
 
@@ -202,22 +202,22 @@
         <div class="inline-flex items-center p-1 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-xs font-bold text-slate-700">
             <button type="button" id="viewModeSplitBtn" onclick="switchViewMode('split')" class="px-4 py-2 rounded-xl bg-slate-900 text-white shadow-sm flex items-center gap-2 transition-all">
                 <i class="fa-solid fa-table-columns text-emerald-400"></i>
-                <span>هاوبەش (نەخشە + خانوو)</span>
+                <span>{{ __('هاوبەش (نەخشە + خانوو)') }}</span>
             </button>
             <button type="button" id="viewModeListBtn" onclick="switchViewMode('list')" class="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 transition-all">
                 <i class="fa-solid fa-grip text-slate-400"></i>
-                <span>تەنها خانووەکان</span>
+                <span>{{ __('تەنها خانووەکان') }}</span>
             </button>
             <button type="button" id="viewModeMapBtn" onclick="switchViewMode('map')" class="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 transition-all">
                 <i class="fa-solid fa-map-location-dot text-slate-400"></i>
-                <span>تەنها نەخشە</span>
+                <span>{{ __('تەنها نەخشە') }}</span>
             </button>
         </div>
 
         <div class="hidden sm:flex items-center gap-3 text-xs text-slate-600 font-semibold bg-white px-4 py-2 rounded-2xl border border-slate-200/80 shadow-sm">
-            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span> بەردەست</span>
-            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> دانوستان</span>
-            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span> گیراوە</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span> {{ __('بەردەست') }}</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> {{ __('دانوستان') }}</span>
+            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span> {{ __('گیراوە') }}</span>
         </div>
     </div>
 

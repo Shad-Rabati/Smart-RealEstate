@@ -103,10 +103,10 @@ class Property extends Model
     public function getStatusLabelAttribute(): string
     {
         return match ($this->status) {
-            'available' => 'بەردەستە (بەکرێ نەگیراوە)',
-            'rented' => 'بەکرێ گیراوە',
-            'reserved' => 'لە دانوستاندایە / لە گێراندا',
-            default => 'نادیار',
+            'available' => __('بەردەستە (بەکرێ نەگیراوە)'),
+            'rented' => __('بەکرێ گیراوە'),
+            'reserved' => __('لە دانوستاندایە / لە گێراندا'),
+            default => __('نادیار'),
         };
     }
 
@@ -133,30 +133,31 @@ class Property extends Model
     public function getStatusBadgeHtmlAttribute(): string
     {
         return match ($this->status) {
-            'available' => '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> بەردەستە (سەوز)</span>',
-            'rented' => '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> بەکرێ گیراوە (سور)</span>',
-            'reserved' => '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-300"><span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span> لە دانوستاندا (رەساسی)</span>',
-            default => '<span class="px-2 py-1 rounded text-xs bg-gray-100">نادیار</span>',
+            'available' => '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> ' . __('بەردەستە (سەوز)') . '</span>',
+            'rented' => '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> ' . __('بەکرێ گیراوە (سور)') . '</span>',
+            'reserved' => '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-300"><span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span> ' . __('لە دانوستاندا (رەساسی)') . '</span>',
+            default => '<span class="px-2 py-1 rounded text-xs bg-gray-100">' . __('نادیار') . '</span>',
         };
     }
 
     public function getPropertyTypeLabelAttribute(): string
     {
         return match ($this->property_type) {
-            'house' => 'خانوو',
-            'apartment' => 'شوقە',
-            'villa' => 'ڤێلا',
-            'floor' => 'نهۆم',
-            'commercial' => 'شوێنی بازرگانی / دوکان',
+            'house' => __('خانوو'),
+            'apartment' => __('شوقە'),
+            'villa' => __('ڤێلا'),
+            'floor' => __('نهۆم'),
+            'commercial' => __('شوێنی بازرگانی / دوکان'),
             default => $this->property_type,
         };
     }
 
     public function getFormattedPriceAttribute(): string
     {
-        $symbol = $this->price_currency === 'USD' ? '$' : 'د.ع';
+        $symbol = $this->price_currency === 'USD' ? '$' : __('د.ع');
         $formattedNum = number_format((float) $this->rent_price, 0);
-        return "{$formattedNum} {$symbol} / مانگانە";
+        $period = __('مانگانە');
+        return "{$formattedNum} {$symbol} / {$period}";
     }
 
     public function getPrimaryImageUrlAttribute(): string

@@ -98,20 +98,20 @@
         <div class="relative z-10 max-w-3xl space-y-3">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
                 <i class="fa-solid fa-hotel text-amber-400"></i>
-                <span>بەشی تایبەتی ئوتێل و شوێنی مانەوە لە سلێمانی</span>
+                <span>{{ __('بەشی تایبەتی ئوتێل و شوێنی مانەوە لە سلێمانی') }}</span>
             </div>
             <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                ئوتێل و شوێنی مانەوەی گەشتیاری لە سلێمانی
+                {{ __('ئوتێل و شوێنی مانەوەی گەشتیاری لە سلێمانی') }}
             </h1>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                بە فلتەری ڕاستەوخۆ و خێرا ئوتێلی دڵخوازت بدۆزەرەوە، بەراوردی نرخ بکە، نەخشە و ڕێگەی گەیشتن لە شوێنی خۆتەوە ببینە و پەیوەندی بە ڕیسێپشنەوە بکە.
+                {{ __('بە فلتەری ڕاستەوخۆ و خێرا ئوتێلی دڵخوازت بدۆزەرەوە، بەراوردی نرخ بکە، نەخشە و ڕێگەی گەیشتن لە شوێنی خۆتەوە ببینە و پەیوەندی بە ڕیسێپشنەوە بکە.') }}
             </p>
 
             <!-- Action Button: Nearest Hotel to me -->
             <div class="pt-2">
                 <button type="button" onclick="shouldFocusNearestHotel = true; triggerNearestSearch()" class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 transition-all hover:scale-105 active:scale-95 cursor-pointer">
                     <i class="fa-solid fa-location-crosshairs text-base animate-pulse"></i>
-                    <span>نزیکترین ئوتێل لە منەوە بدۆزەرەوە</span>
+                    <span>{{ __('نزیکترین ئوتێل لە منەوە بدۆزەرەوە') }}</span>
                 </button>
             </div>
         </div>
@@ -134,41 +134,41 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <!-- Search Keyword -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">گەڕان بەپێی ناو یان ناونیشان</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('گەڕان بەپێی ناو یان ناونیشان') }}</label>
                     <div class="relative">
-                        <input type="text" name="q" id="filter_q" value="{{ request('q') }}" placeholder="ناوی ئوتێل، شەقام، گەڕەک..." autocomplete="off" class="w-full pl-3 pr-9 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs outline-none bg-slate-50 focus:bg-white transition-all">
+                        <input type="text" name="q" id="filter_q" value="{{ request('q') }}" placeholder="{{ __('ناوی ئوتێل، شەقام، گەڕەک...') }}" autocomplete="off" class="w-full pl-3 pr-9 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs outline-none bg-slate-50 focus:bg-white transition-all">
                         <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-slate-400 text-xs"></i>
                     </div>
                 </div>
 
                 <!-- Stars Selector -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">پلەی ئوتێل (ئەستێرە)</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('پلەی ئوتێل (ئەستێرە)') }}</label>
                     <select name="stars" id="filter_stars" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs outline-none bg-white">
-                        <option value="all">هەموو ئەستێرەکان</option>
-                        <option value="5" {{ request('stars') == '5' ? 'selected' : '' }}>⭐⭐⭐⭐⭐ ٥ ئەستێرە (لوکس)</option>
-                        <option value="4" {{ request('stars') == '4' ? 'selected' : '' }}>⭐⭐⭐⭐ ٤ ئەستێرە</option>
-                        <option value="3" {{ request('stars') == '3' ? 'selected' : '' }}>⭐⭐⭐ ٣ ئەستێرە (ئابووری)</option>
+                        <option value="all">{{ __('هەموو ئەستێرەکان') }}</option>
+                        <option value="5" {{ request('stars') == '5' ? 'selected' : '' }}>{{ __('⭐⭐⭐⭐⭐ ٥ ئەستێرە (لوکس)') }}</option>
+                        <option value="4" {{ request('stars') == '4' ? 'selected' : '' }}>{{ __('⭐⭐⭐⭐ ٤ ئەستێرە') }}</option>
+                        <option value="3" {{ request('stars') == '3' ? 'selected' : '' }}>{{ __('⭐⭐⭐ ٣ ئەستێرە (ئابووری)') }}</option>
                     </select>
                 </div>
 
                 <!-- Neighborhood -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">گەڕەک یان ناوچە</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('گەڕەک یان ناوچە') }}</label>
                     <select name="neighborhood" id="filter_neighborhood" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs outline-none bg-white">
-                        <option value="all">هەموو ناوچەکان</option>
+                        <option value="all">{{ __('هەموو ناوچەکان') }}</option>
                         @foreach($neighborhoods as $n)
-                            <option value="{{ $n }}" {{ request('neighborhood') == $n ? 'selected' : '' }}>{{ $n }}</option>
+                            <option value="{{ $n }}" {{ request('neighborhood') == $n ? 'selected' : '' }}>{{ __($n) }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <!-- Price Range -->
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">نرخی شەوانە ($)</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">{{ __('نرخی شەوانە ($)') }}</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" name="min_price" id="filter_min_price" value="{{ request('min_price') }}" placeholder="کەمترین $" class="w-1/2 px-2.5 py-2.5 rounded-xl border border-slate-300 text-xs outline-none">
-                        <input type="number" name="max_price" id="filter_max_price" value="{{ request('max_price') }}" placeholder="زۆرترین $" class="w-1/2 px-2.5 py-2.5 rounded-xl border border-slate-300 text-xs outline-none">
+                        <input type="number" name="min_price" id="filter_min_price" value="{{ request('min_price') }}" placeholder="{{ __('کەمترین $') }}" class="w-1/2 px-2.5 py-2.5 rounded-xl border border-slate-300 text-xs outline-none">
+                        <input type="number" name="max_price" id="filter_max_price" value="{{ request('max_price') }}" placeholder="{{ __('زۆرترین $') }}" class="w-1/2 px-2.5 py-2.5 rounded-xl border border-slate-300 text-xs outline-none">
                     </div>
                 </div>
             </div>
@@ -177,22 +177,22 @@
             <div class="flex items-center justify-between gap-3 pt-3 border-t border-slate-100 flex-wrap">
                 <div class="flex items-center gap-2">
                     <!-- GPS Locate Me Button -->
-                    <button type="button" id="hotelsGpsBtn" onclick="shouldFocusNearestHotel = true; triggerNearestSearch()" class="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs border border-blue-200 transition-all flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95" title="دیاریکردنی شوێنی من بۆ نزیکترین ئوتێل">
+                    <button type="button" id="hotelsGpsBtn" onclick="shouldFocusNearestHotel = true; triggerNearestSearch()" class="px-3.5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs border border-blue-200 transition-all flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95" title="{{ __('شوێنی من (GPS)') }}">
                         <i class="fa-solid fa-location-crosshairs text-blue-600"></i>
-                        <span>شوێنی من (GPS)</span>
+                        <span>{{ __('شوێنی من (GPS)') }}</span>
                     </button>
 
                     <!-- Realtime Indicator Badge -->
                     <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>فلتەری ڕاستەوخۆ چالاکە</span>
+                        <span>{{ __('فلتەری ڕاستەوخۆ چالاکە') }}</span>
                     </div>
                 </div>
 
                 <!-- Reset Filter Button -->
-                <button type="button" onclick="clearHotelsFiltersAjax()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors flex items-center gap-1.5 cursor-pointer" title="سڕینەوەی فلتەرەکان">
+                <button type="button" onclick="clearHotelsFiltersAjax()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors flex items-center gap-1.5 cursor-pointer" title="{{ __('سڕینەوەی فلتەر') }}">
                     <i class="fa-solid fa-arrow-rotate-right text-[10px]"></i>
-                    <span>سڕینەوەی فلتەر</span>
+                    <span>{{ __('سڕینەوەی فلتەر') }}</span>
                 </button>
             </div>
 
@@ -207,15 +207,15 @@
             </div>
             <div>
                 <div class="text-xs font-bold text-blue-900" id="userLocationTitle">
-                    شوێنی ئێوە لەسەر نەخشەی سلێمانی چالاککراوە!
+                    {{ __('شوێنی ئێوە لەسەر نەخشەی سلێمانی چالاککراوە!') }}
                 </div>
                 <div class="text-[11px] text-blue-700">
-                    ئوتێلەکان بەپێی دووری لە شوێنی تۆوە ڕیزبەند کراون (نزیکترین لە پێشەوە).
+                    {{ __('ئوتێلەکان بەپێی دووری لە شوێنی تۆوە ڕیزبەند کراون (نزیکترین لە پێشەوە).') }}
                 </div>
             </div>
         </div>
         <button type="button" onclick="clearUserLocation()" class="text-xs text-blue-700 hover:text-blue-900 font-bold hover:underline shrink-0">
-            لابردنی شوێن
+            {{ __('لابردنی شوێن') }}
         </button>
     </div>
 
@@ -224,27 +224,27 @@
         <div class="inline-flex items-center p-1 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-xs font-bold text-slate-700">
             <button type="button" id="viewModeSplitBtn" onclick="switchViewMode('split')" class="px-4 py-2 rounded-xl bg-slate-900 text-white shadow-sm flex items-center gap-2 transition-all">
                 <i class="fa-solid fa-table-columns text-amber-400"></i>
-                <span>هاوبەش (نەخشە + ئوتێل)</span>
+                <span>{{ __('هاوبەش (نەخشە + ئوتێل)') }}</span>
             </button>
             <button type="button" id="viewModeListBtn" onclick="switchViewMode('list')" class="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 transition-all">
                 <i class="fa-solid fa-grip text-slate-400"></i>
-                <span>تەنها ئوتێلەکان</span>
+                <span>{{ __('تەنها ئوتێلەکان') }}</span>
             </button>
             <button type="button" id="viewModeMapBtn" onclick="switchViewMode('map')" class="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 transition-all">
                 <i class="fa-solid fa-map-location-dot text-slate-400"></i>
-                <span>تەنها نەخشە</span>
+                <span>{{ __('تەنها نەخشە') }}</span>
             </button>
         </div>
 
         <!-- Sorting selector (Instant AJAX) -->
         <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-slate-500">ڕیزبەندی:</span>
+            <span class="text-xs font-bold text-slate-500">{{ __('ڕیزبەندی:') }}</span>
             <select id="hotelsSortDropdown" onchange="changeSort(this.value)" class="px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 outline-none cursor-pointer">
-                <option value="default" {{ request('sort', 'default') == 'default' ? 'selected' : '' }}>تایبەت و پلەبەرز</option>
-                <option value="nearest" {{ request('sort') == 'nearest' ? 'selected' : '' }}>📍 نزیکترین لە من (GPS)</option>
-                <option value="stars_desc" {{ request('sort') == 'stars_desc' ? 'selected' : '' }}>⭐ پلەی ئەستێرە (زۆرترین)</option>
-                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>💵 نرخ: لە کەمەوە بۆ زۆر</option>
-                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>💎 نرخ: لە زۆرەوە بۆ کەم</option>
+                <option value="default" {{ request('sort', 'default') == 'default' ? 'selected' : '' }}>{{ __('تایبەت و پلەبەرز') }}</option>
+                <option value="nearest" {{ request('sort') == 'nearest' ? 'selected' : '' }}>{{ __('📍 نزیکترین لە من (GPS)') }}</option>
+                <option value="stars_desc" {{ request('sort') == 'stars_desc' ? 'selected' : '' }}>{{ __('⭐ پلەی ئەستێرە (زۆرترین)') }}</option>
+                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>{{ __('💵 نرخ: لە کەمەوە بۆ زۆر') }}</option>
+                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>{{ __('💎 نرخ: لە زۆرەوە بۆ کەم') }}</option>
             </select>
         </div>
     </div>
@@ -264,9 +264,9 @@
                 <!-- Map Top Clean Header -->
                 <div class="flex items-center justify-between px-2 py-1.5 border-b border-slate-100 mb-2.5">
                     <div class="flex items-center gap-2">
-                        <span class="font-black text-slate-900 text-sm">نەخشەی ئوتێلەکان</span>
+                        <span class="font-black text-slate-900 text-sm">{{ __('نەخشەی ئوتێلەکان') }}</span>
                         <span id="mapHotelsCountBadge" class="text-[11px] bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-0.5 rounded-full font-bold">
-                            {{ count($mapHotels) }} ئوتێل
+                            {{ count($mapHotels) }} {{ __('ئوتێل') }}
                         </span>
                     </div>
 
@@ -275,19 +275,19 @@
                         <div class="p-0.5 rounded-xl bg-slate-100 flex items-center gap-0.5 border border-slate-200/80 text-xs">
                             <button type="button" id="btnHotelModern" onclick="switchHotelLayer('osm')" class="px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-[11px] shadow-sm transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-map text-amber-400 text-[10px]"></i>
-                                <span>مۆدێرن</span>
+                                <span>{{ __('مۆدێرن') }}</span>
                             </button>
                             <button type="button" id="btnHotelSat" onclick="switchHotelLayer('sat')" class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-[11px] transition-all flex items-center gap-1">
                                 <i class="fa-solid fa-earth-americas text-blue-500 text-[10px]"></i>
-                                <span>سەتەلایت</span>
+                                <span>{{ __('سەتەلایت') }}</span>
                             </button>
                         </div>
 
                         <!-- Recenter & Fullscreen buttons -->
-                        <button type="button" onclick="resetHotelsView()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="گەڕانەوە بۆ ناوەندی سلێمانی">
+                        <button type="button" onclick="resetHotelsView()" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="{{ __('گەڕانەوە بۆ ناوەندی سلێمانی') }}">
                             <i class="fa-solid fa-crosshairs text-[11px]"></i>
                         </button>
-                        <button type="button" onclick="toggleMapFullscreen()" id="mapFullscreenBtn" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="تەواوی شاشە">
+                        <button type="button" onclick="toggleMapFullscreen()" id="mapFullscreenBtn" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition-all" title="{{ __('تەواوی شاشە') }}">
                             <i class="fa-solid fa-expand text-[11px]"></i>
                         </button>
                     </div>
@@ -299,10 +299,10 @@
 
                     <!-- Floating Zoom Controls in corner -->
                     <div class="absolute left-3 top-3 z-[400] flex flex-col gap-1 pointer-events-auto">
-                        <button type="button" onclick="customMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="نزیککردنەوە">
+                        <button type="button" onclick="customMapZoomIn()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('نزیککردنەوە') }}">
                             <i class="fa-solid fa-plus text-xs"></i>
                         </button>
-                        <button type="button" onclick="customMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="دوورخستنەوە">
+                        <button type="button" onclick="customMapZoomOut()" class="w-8 h-8 rounded-xl bg-white/95 hover:bg-white text-slate-800 flex items-center justify-center text-xs font-black shadow-md border border-slate-200/80 transition-all hover:scale-105 active:scale-95" title="{{ __('دوورخستنەوە') }}">
                             <i class="fa-solid fa-minus text-xs"></i>
                         </button>
                     </div>
@@ -317,7 +317,7 @@
                                     </div>
                                     <div class="min-w-0">
                                         <div class="flex items-center gap-1.5 flex-wrap">
-                                            <span class="text-[11px] font-bold text-blue-300">ڕێگەی گەیشتن:</span>
+                                            <span class="text-[11px] font-bold text-blue-300">{{ __('ڕێگەی گەیشتن:') }}</span>
                                             <span id="routeDistanceBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/30 text-emerald-300 font-extrabold border border-emerald-400/30"></span>
                                         </div>
                                         <div id="routeDestTitle" class="text-xs font-black text-white truncate max-w-[260px]"></div>
@@ -329,7 +329,7 @@
                                         <i class="fa-solid fa-location-arrow text-[10px]"></i>
                                         <span>Google Maps</span>
                                     </a>
-                                    <button type="button" onclick="clearNavigationRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="لابردنی هێڵی ڕێگە">
+                                    <button type="button" onclick="clearNavigationRoute()" class="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white text-[11px] font-bold transition-colors" title="{{ __('لابردنی هێڵی ڕێگە') }}">
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
                                 </div>
@@ -343,10 +343,10 @@
                 <div class="px-2 pt-2 text-[11px] text-slate-500 flex items-center justify-between">
                     <span class="flex items-center gap-1.5">
                         <i class="fa-solid fa-circle-info text-amber-500"></i>
-                        کلیک لەسەر هەر پینێک بکە بۆ بینینی هەموو زانیاری و کێشانی ڕێگەی گەیشتن
+                        {{ __('کلیک لەسەر هەر پینێک بکە بۆ بینینی هەموو زانیاری و کێشانی ڕێگەی گەیشتن') }}
                     </span>
                     <span class="text-amber-700 font-bold flex items-center gap-1">
-                        <i class="fa-solid fa-mountain-city"></i> سلێمانی
+                        <i class="fa-solid fa-mountain-city"></i> {{ __('سلێمانی') }}
                     </span>
                 </div>
             </div>
