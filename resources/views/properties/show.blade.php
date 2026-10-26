@@ -345,7 +345,7 @@
                     <div>
                         <h4 class="font-bold text-slate-900 text-base">
                             <a href="{{ route('agencies.show', $property->agency->slug) }}" class="hover:text-emerald-700 transition-colors">
-                                {{ __($property->agency->name) }}
+                                {{ $property->agency->localized_name }}
                             </a>
                         </h4>
                         @if($property->agency->owner_name)
@@ -360,7 +360,7 @@
                 <div class="text-xs text-slate-700 space-y-2 pt-2 border-t border-slate-100">
                     <div class="flex items-start gap-2">
                         <i class="fa-solid fa-map-pin text-slate-400 mt-0.5"></i>
-                        <span>{{ __($property->agency->address) }}</span>
+                        <span>{{ $property->agency->localized_address }}</span>
                     </div>
                 </div>
 

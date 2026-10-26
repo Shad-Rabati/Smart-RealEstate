@@ -145,7 +145,7 @@
                                 <div class="flex items-center gap-2.5">
                                     <img src="{{ $property->agency?->logo_url ?? 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80' }}" alt="{{ $property->agency?->name }}" class="w-8 h-8 rounded-full object-cover border border-slate-200">
                                     <div class="flex flex-col">
-                                        <span class="text-xs font-bold text-slate-900 line-clamp-1">{{ __($property->agency?->name) ?? __('نووسینگەی خانوبەرە') }}</span>
+                                        <span class="text-xs font-bold text-slate-900 line-clamp-1">{{ $property->agency?->localized_name ?? __('نووسینگەی خانوبەرە') }}</span>
                                         <span class="text-[10px] text-emerald-600 font-extrabold flex items-center gap-0.5">
                                             <i class="fa-solid fa-circle-check text-[9px]"></i> {{ __('باوەڕپێکراو') }}
                                         </span>
@@ -265,7 +265,7 @@
                             <img src="{{ $agency->logo_url }}" alt="{{ $agency->name }}" class="w-12 h-12 rounded-2xl object-cover border border-slate-200 group-hover:scale-105 transition-transform">
                             <div class="flex-1 min-w-0">
                                 <h3 class="text-sm font-black text-slate-900 truncate group-hover:text-emerald-700 transition-colors">
-                                    {{ __($agency->name) }}
+                                    {{ $agency->localized_name }}
                                 </h3>
                                 <div class="text-[11px] text-emerald-600 font-bold flex items-center gap-1 mt-0.5">
                                     <i class="fa-solid fa-circle-check text-[10px]"></i> {{ __('باوەڕپێکراو') }}
@@ -276,7 +276,7 @@
                         <div class="space-y-1.5 text-xs text-slate-500">
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-location-dot text-slate-400 text-xs"></i>
-                                <span class="truncate">{{ __($agency->address) ?: __('سلێمانی') }}</span>
+                                <span class="truncate">{{ $agency->localized_address }}</span>
                             </div>
                             <div class="flex items-center gap-1.5 font-bold text-slate-700">
                                 <i class="fa-solid fa-house text-emerald-600 text-xs"></i>

@@ -137,4 +137,63 @@ class Agency extends Model
         }
         return 'https://wa.me/' . $clean;
     }
+
+    public function getLocalizedNameAttribute(): string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'ku') {
+            return $this->name;
+        }
+
+        $raw = trim($this->name ?? '');
+        if ($raw === '') {
+            return '';
+        }
+
+        // 1. Direct dictionary translation
+        $translated = __($raw);
+        if ($translated !== $raw) {
+            return $translated;
+        }
+
+        // 2. Pattern match for agency prefixes: نووسینگەی or نوسینگەی
+        if (preg_match('/^(?:نووسینگەی|نوسینگەی)\s+(.+)$/u', $raw, $matches)) {
+            $core = trim($matches[1]);
+            $transCore = __($core);
+            if ($transCore !== $core) {
+                $core = $transCore;
+            }
+
+            if ($locale === 'ar') {
+                return "مكتب {$core} للعقارات";
+            } elseif ($locale === 'en') {
+                return "{$core} Real Estate Agency";
+            }
+        }
+
+        return $raw;
+    }
+
+    public function getLocalizedAddressAttribute(): string
+    {
+        $locale = app()->getLocale();
+        $fallback = $locale === 'ar' ? 'السليمانية' : ($locale === 'en' ? 'Sulaymaniyah' : 'سلێمانی');
+
+        if (empty($this->address) || filter_var($this->address, FILTER_VALIDATE_EMAIL)) {
+            return $fallback;
+        }
+
+        $raw = trim($this->address);
+        $translated = __($raw);
+        if ($translated !== $raw) {
+            return $translated;
+        }
+
+        $lower = strtolower($raw);
+        if (in_array($lower, ['baxtyre', 'bakhtiary', 'bakhtiari', 'baxtiari'])) {
+            return $locale === 'ar' ? 'السليمانية، بختياري' : ($locale === 'en' ? 'Sulaymaniyah, Bakhtiari' : 'سلێمانی، بەختیاری');
+        }
+
+        return $raw;
+    }
 }

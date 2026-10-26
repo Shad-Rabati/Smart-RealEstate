@@ -78,7 +78,7 @@
                 <div class="flex items-center justify-between pt-1">
                     <div class="flex items-center gap-2">
                         <img src="{{ $property->agency?->logo_url ?? 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=100&q=80' }}" alt="{{ $property->agency?->name }}" class="w-7 h-7 rounded-full object-cover border border-slate-200">
-                        <span class="text-xs font-bold text-slate-800 truncate max-w-[120px]">{{ __($property->agency?->name) ?? __('نووسینگە') }}</span>
+                        <span class="text-xs font-bold text-slate-800 truncate max-w-[120px]">{{ $property->agency?->localized_name ?? __('نووسینگە') }}</span>
                     </div>
 
                     <div class="flex items-center gap-1.5">

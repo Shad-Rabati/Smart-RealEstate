@@ -37,7 +37,7 @@
                         <div class="flex-1">
                             <h3 class="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 transition-colors">
                                 <a href="{{ route('agencies.show', $agency->slug) }}">
-                                    {{ __($agency->name) }}
+                                    {{ $agency->localized_name }}
                                 </a>
                             </h3>
                             @if($agency->owner_name)
@@ -56,7 +56,7 @@
                     <div class="text-xs text-slate-700 space-y-1.5 pt-2 border-t border-slate-100">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-location-dot text-slate-400"></i>
-                            <span class="truncate">{{ __($agency->address) }}</span>
+                            <span class="truncate">{{ $agency->localized_address }}</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-phone text-slate-400"></i>

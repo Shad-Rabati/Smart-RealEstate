@@ -13,7 +13,7 @@
                 
                 <div class="space-y-1.5">
                     <div class="flex items-center gap-2">
-                        <h1 class="text-xl sm:text-2xl font-black text-slate-900">{{ __($agency->name) }}</h1>
+                        <h1 class="text-xl sm:text-2xl font-black text-slate-900">{{ $agency->localized_name }}</h1>
                         <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">{{ __('باوەڕپێکراو') }}</span>
                     </div>
 
@@ -23,7 +23,7 @@
 
                     <div class="flex items-center gap-2 text-xs text-slate-700">
                         <i class="fa-solid fa-location-dot text-emerald-600"></i>
-                        <span>{{ __($agency->address) }}</span>
+                        <span>{{ $agency->localized_address }}</span>
                     </div>
                 </div>
             </div>

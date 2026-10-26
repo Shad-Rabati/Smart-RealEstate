@@ -141,9 +141,9 @@
 
         <!-- Footer: Agency & Actions -->
         <div class="pt-3 px-1 mt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <a href="{{ route('agencies.show', $prop->agency->slug) }}" class="text-slate-500 hover:text-slate-900 font-semibold truncate max-w-[130px] flex items-center gap-1.5" title="{{ __($prop->agency->name) }}">
+            <a href="{{ route('agencies.show', $prop->agency->slug) }}" class="text-slate-500 hover:text-slate-900 font-semibold truncate max-w-[130px] flex items-center gap-1.5" title="{{ $prop->agency->localized_name }}">
                 <i class="fa-solid fa-building text-slate-400 text-[11px]"></i>
-                <span class="truncate">{{ __($prop->agency->name) }}</span>
+                <span class="truncate">{{ $prop->agency->localized_name }}</span>
             </a>
 
             <div class="flex items-center gap-1.5">

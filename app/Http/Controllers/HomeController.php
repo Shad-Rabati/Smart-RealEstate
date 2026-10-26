@@ -315,7 +315,7 @@ class HomeController extends Controller
                 'distance_km' => $distance,
                 'agency' => [
                     'id' => $prop->agency->id,
-                    'name' => __($prop->agency->name),
+                    'name' => $prop->agency->localized_name,
                     'phone' => $prop->agency->phone,
                     'whatsapp' => $prop->agency->whatsapp,
                     'whatsapp_link' => $prop->agency->whatsapp_link,
